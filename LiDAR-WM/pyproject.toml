@@ -1,0 +1,27 @@
+[build-system]
+requires = ["setuptools>=68", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "lidarwm"
+version = "0.1.0"
+description = "Geometry-only latent acoustic world model for audio-prompted LiDAR segmentation"
+requires-python = ">=3.10"
+dependencies = [
+  "numpy>=1.24",
+  "scipy>=1.10",
+  "torch>=2.2",
+  "PyYAML>=6.0",
+]
+
+[project.optional-dependencies]
+foundation = ["transformers==4.49.0", "librosa>=0.10", "soundfile>=0.12"]
+diagnostics = ["scikit-learn>=1.3", "pytest>=8.0"]
+geometry = ["timm>=1.0", "addict==2.4.0", "huggingface_hub>=0.36,<1.0", "spconv-cu126==2.3.8"]
+
+[tool.setuptools.packages.find]
+where = ["src"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+pythonpath = ["src"]

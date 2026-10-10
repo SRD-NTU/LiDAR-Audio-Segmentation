@@ -1,0 +1,50 @@
+data:
+  root: $AUDIO_LIDAR_DATA_ROOT
+  audio_stride: 3
+  feature_root: cache/clap
+  equivariant_augmentation: true
+  antialias: true
+  max_train_samples: null
+  max_val_samples: null
+model:
+  architecture: revised
+  base_channels: 24
+  audio_dim: 128
+  num_categories: 16
+  lidar_width: 1800
+  audio_sample_rate: 14700
+  n_fft: 512
+  hop_length: 192
+  attention_heads: 4
+loss:
+  segmentation: 1.0
+  dice: 2.0
+  renderer: 0.05
+  consistency: 0.2
+  ranking: 0.05
+  physical_ranking: 0.02
+  balanced_focal: true
+  doa: 0.1
+  category: 0.03
+  semantic: 0.5
+  position: 0.1
+  smoothness: 0.005
+  sparsity: 0.01
+training:
+  seed: 1337
+  epochs: 80
+  batch_size: 2
+  val_batch_size: 2
+  gradient_accumulation: 4
+  learning_rate: 0.0003
+  weight_decay: 0.05
+  warmup_epochs: 2
+  clip_grad_norm: 1.0
+  num_workers: 4
+  amp: true
+  require_cuda: true
+  early_stopping_patience: 25
+  resume: null
+evaluation:
+  thresholds: [0.01,0.03,0.05,0.10,0.15,0.20,0.25,0.30,0.40,0.50,0.60,0.70,0.80]
+output_dir: runs/revised-physical

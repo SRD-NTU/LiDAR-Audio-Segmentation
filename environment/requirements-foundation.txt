@@ -1,0 +1,2 @@
+# Optional raw foundation-geometry stack; requires a compatible CUDA/PyTorch platform.
+-e ../LiDAR-WM[geometry]

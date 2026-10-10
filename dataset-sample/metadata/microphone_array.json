@@ -1,0 +1,33 @@
+{
+  "name": "square-80mm-omnidirectional",
+  "frame": "x-forward_y-left_z-up",
+  "element_type": "omnidirectional_mono",
+  "channel_order": [
+    "front_left",
+    "front_right",
+    "rear_left",
+    "rear_right"
+  ],
+  "positions_lidar_m": [
+    [
+      0.04,
+      0.04,
+      0
+    ],
+    [
+      0.04,
+      -0.04,
+      0
+    ],
+    [
+      -0.04,
+      0.04,
+      0
+    ],
+    [
+      -0.04,
+      -0.04,
+      0
+    ]
+  ]
+}

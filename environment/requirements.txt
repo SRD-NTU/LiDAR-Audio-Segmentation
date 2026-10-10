@@ -1,0 +1,4 @@
+# Run from the repository root: python -m pip install -r environment/requirements.txt
+-e ../LiDAR-WM[foundation,diagnostics]
+-r ../Graph-Based/requirements.txt
+-e ../Point-Bind-Based

@@ -24,3 +24,7 @@ dataset/
 LiDAR-WM/third_party/Point-SAM/
 LiDAR-WM/third_party/sonata/
 LiDAR-WM/learned-suppression-3d/
+
+# The curated, versioned demonstration subset is intentionally included.
+!dataset-sample/
+!dataset-sample/**

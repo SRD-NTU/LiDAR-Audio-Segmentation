@@ -1,0 +1,2078 @@
+{
+  "name": "AudioLiDAR-HM3D demonstration subset",
+  "source_version": "0.3-four-microphone-portable",
+  "selection_seed": 20261010,
+  "counts": {
+    "train": 100,
+    "val": 50,
+    "test": 50
+  },
+  "category_counts": {
+    "train": {
+      "clock": 6,
+      "coffee machine": 7,
+      "dishwasher": 6,
+      "door": 6,
+      "fan": 6,
+      "kettle": 6,
+      "keyboard": 6,
+      "microwave": 6,
+      "printer": 6,
+      "refrigerator": 6,
+      "speaker": 6,
+      "toaster": 6,
+      "toilet": 6,
+      "tv": 7,
+      "vacuum cleaner": 7,
+      "washing machine": 7
+    },
+    "val": {
+      "clock": 4,
+      "coffee machine": 3,
+      "dishwasher": 3,
+      "door": 3,
+      "fan": 3,
+      "kettle": 3,
+      "keyboard": 3,
+      "microwave": 3,
+      "printer": 3,
+      "refrigerator": 3,
+      "speaker": 3,
+      "toaster": 4,
+      "toilet": 3,
+      "tv": 3,
+      "vacuum cleaner": 3,
+      "washing machine": 3
+    },
+    "test": {
+      "clock": 3,
+      "coffee machine": 3,
+      "dishwasher": 3,
+      "door": 3,
+      "fan": 3,
+      "kettle": 3,
+      "keyboard": 4,
+      "microwave": 3,
+      "printer": 3,
+      "refrigerator": 3,
+      "speaker": 3,
+      "toaster": 3,
+      "toilet": 3,
+      "tv": 3,
+      "vacuum cleaner": 4,
+      "washing machine": 3
+    }
+  },
+  "included_assets": [
+    "lidar.npz",
+    "audio.wav"
+  ],
+  "omitted_assets": [
+    "rir.npy",
+    "metadata.json",
+    "COMPLETE.json",
+    "preview/"
+  ],
+  "files": {
+    "train/00009-vLpv2VX547B/292/00006": {
+      "lidar.npz": {
+        "bytes": 1978277,
+        "sha256": "f93eead3ec5376d36190c60e1d547cfb37b31f6110cee0a2372a865a437b1f23"
+      },
+      "audio.wav": {
+        "bytes": 1411304,
+        "sha256": "1c887fe04b4ac843a56066cf18431beb33c26ca89c6b56d21087e020010f501d"
+      }
+    },
+    "train/00009-vLpv2VX547B/292/00011": {
+      "lidar.npz": {
+        "bytes": 2747451,
+        "sha256": "5f10099254682f0e31f0e6f5d342b37569b2774ed4da60094f5e0fd3f8727037"
+      },
+      "audio.wav": {
+        "bytes": 1411304,
+        "sha256": "e7ed74add796c71f15adacdf5940a8a1c6c8217f9034faa8bba4ddea05eaaf10"
+      }
+    },
+    "train/00009-vLpv2VX547B/303/00008": {
+      "lidar.npz": {
+        "bytes": 2223847,
+        "sha256": "a94b706bdc0fa3cc875f8676e0a9adc30bb216f078d556aa284dc9ecaa8fe85b"
+      },
+      "audio.wav": {
+        "bytes": 1411304,
+        "sha256": "8683ee0aa800f9f09abfba5876822768ca16b532a2a007abe519c433965b439e"
+      }
+    },
+    "train/00009-vLpv2VX547B/324/00005": {
+      "lidar.npz": {
+        "bytes": 2924025,
+        "sha256": "cce631238a39119bab898f59d879fc1efcefce24ea4b26cae303d13b13d2cff8"
+      },
+      "audio.wav": {
+        "bytes": 1411304,
+        "sha256": "2cf98fba52955b4ce9431e75de3d5d1a7b3eb961542658b183bbdea27c241c4c"
+      }
+    },
+    "train/00009-vLpv2VX547B/48/00000": {
+      "lidar.npz": {
+        "bytes": 2859009,
+        "sha256": "22d0c1ed98ff7a425f36732acee9577e90dcc9c6d14f713e5e6773edd8907bfd"
+      },
+      "audio.wav": {
+        "bytes": 1411304,
+        "sha256": "b4f1b67ffcf89e72802731f573225542e5a733fb2563cd1acbc8d5921e3e0078"
+      }
+    },
+    "train/00009-vLpv2VX547B/48/00001": {
+      "lidar.npz": {
+        "bytes": 2807693,
+        "sha256": "6b5670869517a6a853c391eb8abc84464beeef6da6d651abc99115958daf6365"
+      },
+      "audio.wav": {
+        "bytes": 1411304,
+        "sha256": "e079899cf723b6113a551b7ccb435d85b84e05aebed850d13e4174ce36e3044e"
+      }
+    },
+    "train/00017-oEPjPNSPmzL/288/00005": {
+      "lidar.npz": {
+        "bytes": 2908931,
+        "sha256": "ac318ba61f8b7bd960147cb7bdc8ab0b7672f83451de29792ee56cb7edc11763"
+      },
+      "audio.wav": {
+        "bytes": 1411304,
+        "sha256": "48040206aa03469a71f78edbf1c4323f743c565856bfbede2aa89ae767e6b212"
+      }
+    },
+    "train/00020-XYyR54sxe6b/199/00008": {
+      "lidar.npz": {
+        "bytes": 2928275,
+        "sha256": "7bf9cb935ff186a357c8ec1a0cda01e4e5e012ac33452f509887ce493060f5b9"
+      },
+      "audio.wav": {
+        "bytes": 1411304,
+        "sha256": "005a65bac0fcb883ee45dfcd4c9fd55b70e834dd29c6f5fe877f414f010d0853"
+      }
+    },
+    "train/00023-zepmXAdrpjR/283/00002": {
+      "lidar.npz": {
+        "bytes": 2929215,
+        "sha256": "a7d761b25789f8843e2f8f3c79660d70765d5c158b6370241bb9bb99a9f2f1a2"
+      },
+      "audio.wav": {
+        "bytes": 1411304,
+        "sha256": "be897387b9c8a19e0b97e62e9df14bbe39b084b49f30d4775ff67c2de9e3fc44"
+      }
+    },
+    "train/00023-zepmXAdrpjR/471/00001": {
+      "lidar.npz": {
+        "bytes": 2402776,
+        "sha256": "705ab557045afad74fe6c86a2b8d82992862f6edfdc6651ebd700df611fee0a6"
+      },
+      "audio.wav": {
+        "bytes": 1411304,
+        "sha256": "d04fce1cceedf3fb83191ce5570a57ef71aefcaf570f7a85aa646ff509794859"
+      }
+    },
+    "train/00034-6imZUJGRUq4/124/00011": {
+      "lidar.npz": {
+        "bytes": 2901042,
+        "sha256": "51d3379e65f35f197fd20a990257feba28b91946d3a0512a9ab4af3d9ec34759"
+      },
+      "audio.wav": {
+        "bytes": 1411304,
+        "sha256": "4b44efd19441bc6eadd7b5181412b435608bcf77f220cbeea47aa595347b80c0"
+      }
+    },
+    "train/00034-6imZUJGRUq4/128/00003": {
+      "lidar.npz": {
+        "bytes": 2884557,
+        "sha256": "597e00f83c4533f5d3f7c76f0d378d2c7c8e884bb63994862bf12de0a9ca16f5"
+      },
+      "audio.wav": {
+        "bytes": 1411304,
+        "sha256": "8905ed2df51b20bd6ed94d9aff95f09bb41789221b61f911df186e0954a2d766"
+      }
+    },
+    "train/00034-6imZUJGRUq4/231/00008": {
+      "lidar.npz": {
+        "bytes": 2793496,
+        "sha256": "c58c4df1beea7be403218c8b4cd4a5e007ca6ea240cc0ba5604ae268f2f3cc4e"
+      },
+      "audio.wav": {
+        "bytes": 1411304,
+        "sha256": "7bb7acd2a7788d2cb7b637e15124227bb56149a229be88ca69a7de238b8a80d5"
+      }
+    },
+    "train/00034-6imZUJGRUq4/302/00005": {
+      "lidar.npz": {
+        "bytes": 2597607,
+        "sha256": "eeb3f7cfb2595e9fe57e81c74abd6c5e5eaa1ec05af3e729fe66295a57f127b1"
+      },
+      "audio.wav": {
+        "bytes": 1411304,
+        "sha256": "0b80a045206245e7c2b15d60e213e2f00e25fd297fe3842a5a8f19ad662cc63f"
+      }
+    },
+    "train/00034-6imZUJGRUq4/485/00001": {
+      "lidar.npz": {
+        "bytes": 2881339,
+        "sha256": "b16fa345e71bf45a8b9b3b62c3ba93561d3b63898ac3e048556ac8e6b6bb286e"
+      },
+      "audio.wav": {
+        "bytes": 1411304,
+        "sha256": "ad8b57d0e5ae63efa8439bb9a8b78141c2cac4d51d434e354319734bea9b4061"
+      }
+    },
+    "train/00055-HxmXPBbFCkH/292/00001": {
+      "lidar.npz": {
+        "bytes": 2939807,
+        "sha256": "cb96329d1afb61c081d68c044bf137b138d96f1a2f104d30a20b57e16d67a83f"
+      },
+      "audio.wav": {
+        "bytes": 1411304,
+        "sha256": "982af3f871da2d6001788964708047991507f9a380843a33b97c3a93ae2865c3"
+      }
+    },
+    "train/00055-HxmXPBbFCkH/6/00010": {
+      "lidar.npz": {
+        "bytes": 1986529,
+        "sha256": "46cebba9aa54ebe18f827b1e15b85cb42cb8ce54c3c7bbaf8291f7e41979c89f"
+      },
+      "audio.wav": {
+        "bytes": 1411304,
+        "sha256": "1fba27277cbbfa8c6e31922d003dd51f60e12cfe527480b562bc73a1458431b6"
+      }
+    },
+    "train/00057-1UnKg1rAb8A/129/00002": {
+      "lidar.npz": {
+        "bytes": 2993225,
+        "sha256": "cb5c26b84b81a04b42634ff6e3e05d83263f0439b20b95f7af1fc55a4b5da961"
+      },
+      "audio.wav": {
+        "bytes": 1411304,
+        "sha256": "7c4356a0995734aa58f7c8165a0d1fdd226ff6e4d225a51d76ad7db1affb509c"
+      }
+    },
+    "train/00057-1UnKg1rAb8A/134/00007": {
+      "lidar.npz": {
+        "bytes": 2670196,
+        "sha256": "4634998cd23da18c650a46a55c4a0d980fbe9c691dfa7f2961f0a483b0059efe"
+      },
+      "audio.wav": {
+        "bytes": 1411304,
+        "sha256": "b67af605bd7cd46fc0b90e2f2ca0786438587c6f3a7be3082ebaa3f4eceb6adf"
+      }
+    },
+    "train/00057-1UnKg1rAb8A/231/00008": {
+      "lidar.npz": {
+        "bytes": 3008693,
+        "sha256": "bbb14d2a9f225b95cae4a531721d7fefea8c2ec637e8b9e536bf4eaf65d1c175"
+      },
+      "audio.wav": {
+        "bytes": 1411304,
+        "sha256": "cc82b9c4c316aba43debc37f5c7fb86bf9d88ad54af9d6a297b477bf4bef88d1"
+      }
+    },
+    "train/00057-1UnKg1rAb8A/27/00005": {
+      "lidar.npz": {
+        "bytes": 2905873,
+        "sha256": "c63afcb74871297a7bfbba7f5a29ffc5cdf12ca7465951998f5ffdc407e3158d"
+      },
+      "audio.wav": {
+        "bytes": 1411304,
+        "sha256": "ba7051eb5904383d585d11c4b8303ef63d753e71401c3f7df5f574bca846a096"
+      }
+    },
+    "train/00057-1UnKg1rAb8A/362/00001": {
+      "lidar.npz": {
+        "bytes": 2939540,
+        "sha256": "23f16adff9c258ee087bd71778525e175a64681f27b30aa29a2a9b58c97ea27c"
+      },
+      "audio.wav": {
+        "bytes": 1411304,
+        "sha256": "08c4ab679e5b0fb29694ce71924e19a9b8f3ee2cefc4fd4cf0649b21fd4ad378"
+      }
+    },
+    "train/00057-1UnKg1rAb8A/362/00010": {
+      "lidar.npz": {
+        "bytes": 2906679,
+        "sha256": "b4feb45006f9adc91b385f0b289f6b033fa67e16a8bf39d40357d0e0b41e5215"
+      },
+      "audio.wav": {
+        "bytes": 1411304,
+        "sha256": "ed58771866066b4cb79268715d5124f09d9813656b081a10c5ef1d51c7b9830f"
+      }
+    },
+    "train/00057-1UnKg1rAb8A/486/00008": {
+      "lidar.npz": {
+        "bytes": 2842507,
+        "sha256": "53e71d130a02d2af67512eac2bc52644dd4bd86254a528f19d83385504379395"
+      },
+      "audio.wav": {
+        "bytes": 1411304,
+        "sha256": "f0be2e21c8a22dcdbf88576ee2584dbda7cd0421aeec1be77d66bd7ecea7cd97"
+      }
+    },
+    "train/00057-1UnKg1rAb8A/85/00010": {
+      "lidar.npz": {
+        "bytes": 3025720,
+        "sha256": "36161d9ebdba5bc75925a9fff4f8d1fa44ab5ec346b81a71b3563590d3b2122c"
+      },
+      "audio.wav": {
+        "bytes": 1411304,
+        "sha256": "0901f6ed40c7989c4f89a3a4b636d89c9702d082bb62394329103a99f0f19c6a"
+      }
+    },
+    "train/00064-gQgtJ9Stk5s/39/00010": {
+      "lidar.npz": {
+        "bytes": 2991311,
+        "sha256": "953328492c6b6171f79cc9559fc3bc48282dfd9c70900dee4a9a815f5f431f13"
+      },
+      "audio.wav": {
+        "bytes": 1411304,
+        "sha256": "42748fbc3fe9b3ba2b7f26659cb7f31d0888e47664058ad5972a07366be042cc"
+      }
+    },
+    "train/00064-gQgtJ9Stk5s/412/00000": {
+      "lidar.npz": {
+        "bytes": 2293750,
+        "sha256": "3c881733ec834318f36d38c1dfa719790a8c55859483910b12368b89acbd15dc"
+      },
+      "audio.wav": {
+        "bytes": 1411304,
+        "sha256": "dd9262f035d44866da75c4e022e7cf3af7d8789e4e6703b4c2a0af3e7eca6d1d"
+      }
+    },
+    "train/00064-gQgtJ9Stk5s/412/00010": {
+      "lidar.npz": {
+        "bytes": 2277996,
+        "sha256": "62867e94baa618b0cfa6fa00f65a77edf633178494e389e2e1dfdcf2cef8343b"
+      },
+      "audio.wav": {
+        "bytes": 1411304,
+        "sha256": "34d251b6309f766f04ca79c6626fded2d6cae04e3b31c762c027140d0cfb5f98"
+      }
+    },
+    "train/00064-gQgtJ9Stk5s/412/00011": {
+      "lidar.npz": {
+        "bytes": 2776098,
+        "sha256": "6ee335ecc109a2bf8b79377694c510a4258fb6d9a7e1b1bb7d53262cbccb6606"
+      },
+      "audio.wav": {
+        "bytes": 1411304,
+        "sha256": "6b8aaf9f582479c92d73930e4b4e67dba80f1e1f2fa323847590f1df5ea5c25f"
+      }
+    },
+    "train/00064-gQgtJ9Stk5s/436/00007": {
+      "lidar.npz": {
+        "bytes": 2834450,
+        "sha256": "c8b5d94851102dc2a910e2ebbc567a654304f8853d3636dbf53f04be92784173"
+      },
+      "audio.wav": {
+        "bytes": 1411304,
+        "sha256": "41702412ac4ec084f0c0908529e0363e3dd23e0ec7511e2c54b6da76d10ad5f8"
+      }
+    },
+    "train/00064-gQgtJ9Stk5s/436/00008": {
+      "lidar.npz": {
+        "bytes": 2422867,
+        "sha256": "ee97cba5e67517f5bbf50232920fa988e8d89dcf3add6b54e3e09fd5b0e8903d"
+      },
+      "audio.wav": {
+        "bytes": 1411304,
+        "sha256": "b04d751835e89f412ba2079bf3676106af607d6630dda498f8f035295c94ac13"
+      }
+    },
+    "train/00064-gQgtJ9Stk5s/436/00011": {
+      "lidar.npz": {
+        "bytes": 2835704,
+        "sha256": "8051a52560de9b4fcc28a7e8c11e8a74a9ae2c5a70f383f848e953b9ef19e1e5"
+      },
+      "audio.wav": {
+        "bytes": 1411304,
+        "sha256": "4ddd1957c2d83cd769f4b69d37e3d524b40580002c834582afa95d2cffd77a04"
+      }
+    },
+    "train/00064-gQgtJ9Stk5s/444/00003": {
+      "lidar.npz": {
+        "bytes": 2611458,
+        "sha256": "1ab182207285dc1b89278ca1391e45ba16b8b6ea4c6d9f936f7d691ebab48983"
+      },
+      "audio.wav": {
+        "bytes": 1411304,
+        "sha256": "71e5c79e749180b262fe206892ae28d62b1365b775b1a882141b95eb330dee90"
+      }
+    },
+    "train/00064-gQgtJ9Stk5s/949/00010": {
+      "lidar.npz": {
+        "bytes": 2942332,
+        "sha256": "ea04023af5c8e6a4efa302f2540450c8e4c18842286a3de0447b55dc9bb43640"
+      },
+      "audio.wav": {
+        "bytes": 1411304,
+        "sha256": "6d00e47df5406e9f3a718860488973636cdf2de67044284b9af17b71b918e1a3"
+      }
+    },
+    "train/00096-6HRFAUDqpTb/218/00001": {
+      "lidar.npz": {
+        "bytes": 1724148,
+        "sha256": "4fd02c47519f7bb6b51952944ba3cb1a69504c9afc66bb5d873be883c334f6d8"
+      },
+      "audio.wav": {
+        "bytes": 1411304,
+        "sha256": "31a96172c6b4e2c18b09c4464d478455ebc84c1c329d300be876a7fd875b8c06"
+      }
+    },
+    "train/00096-6HRFAUDqpTb/224/00010": {
+      "lidar.npz": {
+        "bytes": 2995032,
+        "sha256": "e48fa0c943f40abe272acf3a157ccb88e17de4cdb5821843c41c218906a7937d"
+      },
+      "audio.wav": {
+        "bytes": 1411304,
+        "sha256": "21a57275ae99acf48b23c8944b39b42dee52de6c792abdf7be53320f1b514874"
+      }
+    },
+    "train/00096-6HRFAUDqpTb/3/00006": {
+      "lidar.npz": {
+        "bytes": 2654849,
+        "sha256": "fad6224af2e364fd0282cb7ad8e78bdedc1ec809c8261e48a99ebce9392afaa6"
+      },
+      "audio.wav": {
+        "bytes": 1411304,
+        "sha256": "ffb9469479a0f1860f297af6080e1eab15f09cbd84cbabcfe50e4a0310b6fbdd"
+      }
+    },
+    "train/00109-GTV2Y73Sn5t/31/00000": {
+      "lidar.npz": {
+        "bytes": 2782794,
+        "sha256": "066da9b228a52c7fba1a878c1af485d53475e2e65e09780bea1ec896d24288e6"
+      },
+      "audio.wav": {
+        "bytes": 1411304,
+        "sha256": "73e6d8d28d87adec5a95c6d7d3cb888c2205ad2646dd1a7cabadf7fdb98e0091"
+      }
+    },
+    "train/00109-GTV2Y73Sn5t/627/00003": {
+      "lidar.npz": {
+        "bytes": 2961403,
+        "sha256": "e5d121da2db524e7156bc19d337adf6157095437d6f252d81b654926661d6155"
+      },
+      "audio.wav": {
+        "bytes": 1411304,
+        "sha256": "9641fc049b4358322f6549105b17d46468bfef1b5cbd0a7b55e5770161fcb6b1"
+      }
+    },
+    "train/00109-GTV2Y73Sn5t/641/00001": {
+      "lidar.npz": {
+        "bytes": 2056372,
+        "sha256": "4137f11905df94d026fd5ad2dfe210b8307f46c1aef000628e11b0e0dfc3ff04"
+      },
+      "audio.wav": {
+        "bytes": 1411304,
+        "sha256": "6e1883c4e1e45112beee7050accd89973d54510736f181fd8924bd3362cbd192"
+      }
+    },
+    "train/00135-HeSYRw7eMtG/192/00002": {
+      "lidar.npz": {
+        "bytes": 2826164,
+        "sha256": "1431d5d918910aba5b10bda92224189ca18924f5be9711aa333b66bc1b49d5c8"
+      },
+      "audio.wav": {
+        "bytes": 1411304,
+        "sha256": "c4a4855d2a5812a7f67debb9e63b4d222931e0996ca6d7a2bd27fb29f693a5ac"
+      }
+    },
+    "train/00135-HeSYRw7eMtG/441/00009": {
+      "lidar.npz": {
+        "bytes": 2957517,
+        "sha256": "090a871d9db7a136af5f11ee61cbd7a970e35eb0d1ab81f4d0cfff2a68f3b963"
+      },
+      "audio.wav": {
+        "bytes": 1411304,
+        "sha256": "f733c982a1fadee95069aaf2e0f1cf4d79e6ea1e8e983184d86400b8c06e5b9f"
+      }
+    },
+    "train/00135-HeSYRw7eMtG/443/00007": {
+      "lidar.npz": {
+        "bytes": 3058961,
+        "sha256": "6d68afc8074ecfc0e390a50ed8e739b69fd12056f117f6f1f0b58a55fc9bf0a0"
+      },
+      "audio.wav": {
+        "bytes": 1411304,
+        "sha256": "81b86ec6d6770ceb36d5e294e827c082f0458295ad747c6d9fe9067c06a28b99"
+      }
+    },
+    "train/00135-HeSYRw7eMtG/511/00002": {
+      "lidar.npz": {
+        "bytes": 3015229,
+        "sha256": "6cb84fd997152148439f418ac89628a7abf244b073cf5d9b588abe0536dfe9e0"
+      },
+      "audio.wav": {
+        "bytes": 1411304,
+        "sha256": "683726dbf19a299b20af1c30de2faed490660660421a597eb03c9df691647283"
+      }
+    },
+    "train/00135-HeSYRw7eMtG/511/00011": {
+      "lidar.npz": {
+        "bytes": 2966513,
+        "sha256": "eda59692032804531106d3bac4daf41947648bae2db048b22e157dd3b30fb8e4"
+      },
+      "audio.wav": {
+        "bytes": 1411304,
+        "sha256": "196dc6f32cfb78f5c7dd66356be275ff281179ea8ac2103d0d05703a03abe388"
+      }
+    },
+    "train/00135-HeSYRw7eMtG/565/00007": {
+      "lidar.npz": {
+        "bytes": 2974226,
+        "sha256": "e02e03a67709f0c0356ec1dc6eb6382e26700563d2b548ab209b96b1d4a1e59f"
+      },
+      "audio.wav": {
+        "bytes": 1411304,
+        "sha256": "03d1aa12086411a921b8d22ccea5d6a0ca00b7933f8fdd541fc1eedfb80cb67a"
+      }
+    },
+    "train/00135-HeSYRw7eMtG/569/00006": {
+      "lidar.npz": {
+        "bytes": 2996250,
+        "sha256": "4e2618e88d55c356c3de1eb1ef555964211b726bead760cf4a361e2a5cdfbd96"
+      },
+      "audio.wav": {
+        "bytes": 1411304,
+        "sha256": "59debeb391daf4f6731b08e5e28de888ba04124f053f92ea6df78b01a4d2375b"
+      }
+    },
+    "train/00135-HeSYRw7eMtG/65/00009": {
+      "lidar.npz": {
+        "bytes": 2934920,
+        "sha256": "680537b3ce3589f4718a511fd7cf3591c23eac17ddaa753ce673fd908d794d9d"
+      },
+      "audio.wav": {
+        "bytes": 1411304,
+        "sha256": "f788f4dde23e1805cb99a89089ffd4500871e2057ff6746b6d7f1accd8e5e720"
+      }
+    },
+    "train/00141-iigzG1rtanx/494/00004": {
+      "lidar.npz": {
+        "bytes": 2839456,
+        "sha256": "914cadaa1879f571235a234618711a018a8da10f397b57301588b68e773778ef"
+      },
+      "audio.wav": {
+        "bytes": 1411304,
+        "sha256": "aac974ee09d1af82c3cd3d2ddb381c97142fd06889248dce8aa8b681bd7fa82b"
+      }
+    },
+    "train/00141-iigzG1rtanx/495/00007": {
+      "lidar.npz": {
+        "bytes": 2707453,
+        "sha256": "fd5a8eeb3d986abd3eca6bc94e2a48cf2eb1d545db26e27482ae84310659f91d"
+      },
+      "audio.wav": {
+        "bytes": 1411304,
+        "sha256": "afd933c05b2b423a0beda34955fc3d1d706fb4ddeeb87b79c00e45147ef8a196"
+      }
+    },
+    "train/00141-iigzG1rtanx/64/00003": {
+      "lidar.npz": {
+        "bytes": 2084184,
+        "sha256": "f2f3e12d9dcb004a1c734db7aa9a50b61d554f3d5fcc9a8d000f29dfde1114ab"
+      },
+      "audio.wav": {
+        "bytes": 1411304,
+        "sha256": "fd75bcdb2480b188becd600c673f0c13db0f3776a3aa967a12c747658b04eb08"
+      }
+    },
+    "train/00166-RaYrxWt5pR1/154/00002": {
+      "lidar.npz": {
+        "bytes": 2493820,
+        "sha256": "c9290a975573bc5269a363d593ed5f19973bb2ba22b448435b5e89030fc81101"
+      },
+      "audio.wav": {
+        "bytes": 1411304,
+        "sha256": "6711420b948c943b99444bda66c3cee6c9da4fea3324c74d82a896db4da3f3bc"
+      }
+    },
+    "train/00179-MVVzj944atG/300/00003": {
+      "lidar.npz": {
+        "bytes": 2849047,
+        "sha256": "08b947b25e15157ab5fecb8ce32788bf06ec4b4a659c799640c000956d7ba4ab"
+      },
+      "audio.wav": {
+        "bytes": 1411304,
+        "sha256": "310e47bc464a0106bf137a2732caf14e93c602d6cff5988091d2be17b365fea6"
+      }
+    },
+    "train/00217-qz3829g1Lzf/228/00000": {
+      "lidar.npz": {
+        "bytes": 2223735,
+        "sha256": "c50bb512fe8805425e0b3a3afee32da71567bd14546a79cf36804ea44657bdb7"
+      },
+      "audio.wav": {
+        "bytes": 1411304,
+        "sha256": "956c282e8a2f198eda2d14cfcf6ee49c8d555c6a57f51f276e731ab1a5f4180c"
+      }
+    },
+    "train/00217-qz3829g1Lzf/293/00006": {
+      "lidar.npz": {
+        "bytes": 2739973,
+        "sha256": "1c40636ff5db9ad62a38e5020257116ba66b9de6bf01b699dc78fa4ea14c5299"
+      },
+      "audio.wav": {
+        "bytes": 1411304,
+        "sha256": "a0a80404c3e7eba7a623c8fd70c7879a893383df980a811a60b3a7552a9633be"
+      }
+    },
+    "train/00217-qz3829g1Lzf/592/00001": {
+      "lidar.npz": {
+        "bytes": 2625819,
+        "sha256": "76c9209c305b68c6aab7811b12cb9797c121f0deb9437fe2995f83487a1be1c5"
+      },
+      "audio.wav": {
+        "bytes": 1411304,
+        "sha256": "dd8105d7d0d224f2ee93a39c827f66d0705bb004f0c1d718c42ce07b10bbe47b"
+      }
+    },
+    "train/00217-qz3829g1Lzf/592/00008": {
+      "lidar.npz": {
+        "bytes": 2925269,
+        "sha256": "919667cca66f2133b601bd959a2ae2cfd3e9f357fe1d7ba2d6b670d7bf5124d2"
+      },
+      "audio.wav": {
+        "bytes": 1411304,
+        "sha256": "b7e79d4f53007fc94f4f670c188c1279ffcd98e932f74a49994ed302cbc21092"
+      }
+    },
+    "train/00217-qz3829g1Lzf/616/00003": {
+      "lidar.npz": {
+        "bytes": 2996624,
+        "sha256": "713a53bb86b2af10d104cd93db410b95ceeed5ec0d25994cde36a323ab4eaf75"
+      },
+      "audio.wav": {
+        "bytes": 1411304,
+        "sha256": "d5cf1a4cbce5d836b1690d54a8b83f3de1e32890787d0b966e635defee19b50f"
+      }
+    },
+    "train/00234-nACV8wLu1u5/329/00000": {
+      "lidar.npz": {
+        "bytes": 2662179,
+        "sha256": "bbb6b881d52b61775a18004abf38f267bb99ee77ff23e93db8eb5425cb9fc12e"
+      },
+      "audio.wav": {
+        "bytes": 1411304,
+        "sha256": "3244ef8a8021a26ce3e322da43d41f4867171d8c6f48a1c6b2ba7f2b0cf29414"
+      }
+    },
+    "train/00256-92vYG1q49FY/1052/00001": {
+      "lidar.npz": {
+        "bytes": 2928794,
+        "sha256": "32086e5773420a03410552ccf4ee49189b2397c7c6473303362591955196cc68"
+      },
+      "audio.wav": {
+        "bytes": 1411304,
+        "sha256": "5e70a5f578beb8786dd2c45ae9153f5fc74dd081ab9f933c819e549792dd08b2"
+      }
+    },
+    "train/00256-92vYG1q49FY/1066/00011": {
+      "lidar.npz": {
+        "bytes": 2848095,
+        "sha256": "c9a943e581efc38539e96f4ed637455419003e1e4ad79c2480df507ced9b4d00"
+      },
+      "audio.wav": {
+        "bytes": 1411304,
+        "sha256": "6e3cbe13b8754b68f9cd4a0490383c592e5ca0082909ff1491b8c2e766a22474"
+      }
+    },
+    "train/00256-92vYG1q49FY/447/00002": {
+      "lidar.npz": {
+        "bytes": 2596019,
+        "sha256": "177b0e9a71a8ee64c3e418b89456dda12811c542a958a2f52a4a20c81ae9fcaf"
+      },
+      "audio.wav": {
+        "bytes": 1411304,
+        "sha256": "d03441bf12041671b861318e244a5577588bb9dd9cd7b041086bcb621eaf26d1"
+      }
+    },
+    "train/00256-92vYG1q49FY/466/00004": {
+      "lidar.npz": {
+        "bytes": 2735534,
+        "sha256": "80a84c4a6fcda45a1f45cd9df1d38614a727cfba4549b1433696abf3b07805d8"
+      },
+      "audio.wav": {
+        "bytes": 1411304,
+        "sha256": "35a8b4788170f645ce1dd0c490bb240c74fbffeb1f224d1675a026db1923bfdb"
+      }
+    },
+    "train/00256-92vYG1q49FY/466/00009": {
+      "lidar.npz": {
+        "bytes": 1840981,
+        "sha256": "2138c4c21a7da2c25136c6615fabf7464dc6832723391723bb2dbff18608e10d"
+      },
+      "audio.wav": {
+        "bytes": 1411304,
+        "sha256": "f6ed1986db306750703cf2ee261f1d29871928e8d3882704ff69db20dcc4b79e"
+      }
+    },
+    "train/00299-bdp1XNEdvmW/199/00000": {
+      "lidar.npz": {
+        "bytes": 3054457,
+        "sha256": "73287c8101bb80e1c95af06f8cddf240d7ed8b4ecf0e33b1d0507ec08c245934"
+      },
+      "audio.wav": {
+        "bytes": 1411304,
+        "sha256": "a8bed09be9e64a9ca4250940d930a2168d8f1ef3211df11c14c47deec2d63d9c"
+      }
+    },
+    "train/00299-bdp1XNEdvmW/209/00000": {
+      "lidar.npz": {
+        "bytes": 3054463,
+        "sha256": "ee09021fcb7eea58b87a3298b8870e7b3a89acea62b00b408722e5a377b539c0"
+      },
+      "audio.wav": {
+        "bytes": 1411304,
+        "sha256": "167656f657fed03e9fb19342c774abc1d186012330952c11dd312029f4f8d51a"
+      }
+    },
+    "train/00299-bdp1XNEdvmW/209/00002": {
+      "lidar.npz": {
+        "bytes": 2972352,
+        "sha256": "8c74ff40286e255cd3f880e2f2fb1b7c63cce2b0420ef8da22981bd9370afbc6"
+      },
+      "audio.wav": {
+        "bytes": 1411304,
+        "sha256": "40dc2f769f292f194ea471b36f7fb0463d7f7772d523737064420730e30a5057"
+      }
+    },
+    "train/00299-bdp1XNEdvmW/35/00001": {
+      "lidar.npz": {
+        "bytes": 2887508,
+        "sha256": "23af7f7d39ee65f10f0039e641ca83369dfa7e577bf3b58fd50e99322e00144f"
+      },
+      "audio.wav": {
+        "bytes": 1411304,
+        "sha256": "1e2b73a18f59c824dd3386b222e812fd19a9b7e2d744d5858e3af019b7c9f730"
+      }
+    },
+    "train/00299-bdp1XNEdvmW/479/00005": {
+      "lidar.npz": {
+        "bytes": 2323140,
+        "sha256": "8e26974709992baf08490059ecc79a0a80d287b01b6e2eedba963bc7042329a3"
+      },
+      "audio.wav": {
+        "bytes": 1411304,
+        "sha256": "704b12f41c73b56d7e1dbd153009e9bb45bd1cb99c7565aff52f4e37fdf16289"
+      }
+    },
+    "train/00304-X6Pct1msZv5/111/00007": {
+      "lidar.npz": {
+        "bytes": 2745355,
+        "sha256": "0882c841e730f6999add4fa6279071ebe203b9271120cde86051c129706d635f"
+      },
+      "audio.wav": {
+        "bytes": 1411304,
+        "sha256": "68748d350fd26afc80dc8f6f27f5918f1405e18ea7a641f4682f6d9331a238a1"
+      }
+    },
+    "train/00304-X6Pct1msZv5/144/00002": {
+      "lidar.npz": {
+        "bytes": 2777479,
+        "sha256": "3c71c7a103ea84c04708cc1d365f6a9af8c98ab5f3df2b30bce95bd3984989c4"
+      },
+      "audio.wav": {
+        "bytes": 1411304,
+        "sha256": "7124fd85014fd7123d53dade86eb782913375490fe14a0b7d6fdd2abad322cc0"
+      }
+    },
+    "train/00304-X6Pct1msZv5/392/00004": {
+      "lidar.npz": {
+        "bytes": 2258780,
+        "sha256": "b13dc192f82060847ffb1360005300f77f19e2a94799946fe388178118607738"
+      },
+      "audio.wav": {
+        "bytes": 1411304,
+        "sha256": "1acfe81809b061d967813e67ef9de80faafb158a4b5413258ff18f14ab8eac4d"
+      }
+    },
+    "train/00304-X6Pct1msZv5/514/00006": {
+      "lidar.npz": {
+        "bytes": 2843010,
+        "sha256": "7a1b68d5205f2bdc2b06865f824bd7da8e25bebfa89097bd679412acfc8902dd"
+      },
+      "audio.wav": {
+        "bytes": 1411304,
+        "sha256": "31e5cfaf81bdd23dd9ac345df323640c11a31e40e00fc45e6a69204674c4cc8f"
+      }
+    },
+    "train/00304-X6Pct1msZv5/564/00005": {
+      "lidar.npz": {
+        "bytes": 2840569,
+        "sha256": "69c9b82c8f37211d918ef230e256385d647f9ba4f323e80f1f1395876d693c40"
+      },
+      "audio.wav": {
+        "bytes": 1411304,
+        "sha256": "70998668564f6d69a0810c55186f92caa5de4c1045baea18acd1303b016eefe4"
+      }
+    },
+    "train/00313-PE6kVEtrxtj/631/00007": {
+      "lidar.npz": {
+        "bytes": 2840211,
+        "sha256": "2bf0aec21f4da87b483021c9e5adccfdd0ba93bc6c9d11a8521a1d597eea3185"
+      },
+      "audio.wav": {
+        "bytes": 1411304,
+        "sha256": "f60a634dca68d28c59086eba18517d7bf3adcbb49af5d5aa600289b7a84b7eda"
+      }
+    },
+    "train/00324-DoSbsoo4EAg/1/00010": {
+      "lidar.npz": {
+        "bytes": 1311877,
+        "sha256": "e7ce203a2b58cb546597b5ef753eb1a7004fc71795ba6617cd76190e6ec0fae5"
+      },
+      "audio.wav": {
+        "bytes": 1411304,
+        "sha256": "95815dc31cede47b430c517f2b74841d0501618ce48ab9b165d9139afa512288"
+      }
+    },
+    "train/00324-DoSbsoo4EAg/230/00003": {
+      "lidar.npz": {
+        "bytes": 2913457,
+        "sha256": "57690b99984c1c4abd7e80063d99e1c1eed12f7852bcc9bd54fa77f331ea5619"
+      },
+      "audio.wav": {
+        "bytes": 1411304,
+        "sha256": "38195ed34419ba7d408cd29ba761be780028ce85095136dc647637b3d5489dd9"
+      }
+    },
+    "train/00330-WhNyDTnd9g5/16/00003": {
+      "lidar.npz": {
+        "bytes": 2428158,
+        "sha256": "59b1c0a0738d3bc4b292a6bcd7f74ab1418a791b151f885af755558840ffe7ac"
+      },
+      "audio.wav": {
+        "bytes": 1411304,
+        "sha256": "22fccc52973604170c1306855c370743e525c05cb3163127d646481fc97740d9"
+      }
+    },
+    "train/00330-WhNyDTnd9g5/516/00004": {
+      "lidar.npz": {
+        "bytes": 2943141,
+        "sha256": "ad0799fdd2635c6c814bf193b898e342f5315cfdeada390c91ce417667fb43be"
+      },
+      "audio.wav": {
+        "bytes": 1411304,
+        "sha256": "9c411487bf60c6404a5984da60a7de9a1f264165754773f80522157e1a9df365"
+      }
+    },
+    "train/00330-WhNyDTnd9g5/516/00011": {
+      "lidar.npz": {
+        "bytes": 2655394,
+        "sha256": "04f1b31e4bb5de6d56b5149ec35e5486b92058e7ea156dd004a6b41644af7a50"
+      },
+      "audio.wav": {
+        "bytes": 1411304,
+        "sha256": "c8a9f9ae006932cf230071bf35233520367d880f8d0c2b0147dfabe6bd84bd8e"
+      }
+    },
+    "train/00366-fxbzYAGkrtm/209/00007": {
+      "lidar.npz": {
+        "bytes": 2940940,
+        "sha256": "190621fe9162072976b85330e8c73ae020c5ee98b497c8c900f34e41e77fa968"
+      },
+      "audio.wav": {
+        "bytes": 1411304,
+        "sha256": "fafe6b19b34db6a1a3f2e38aa6270dc10286cb235757d6395e8dc34045f799aa"
+      }
+    },
+    "train/00384-ceJTwFNjqCt/537/00010": {
+      "lidar.npz": {
+        "bytes": 3092733,
+        "sha256": "f7e4ca56e87e2bc974c600061b0d1ded6edec46d61a3b4fce173cf524332b77d"
+      },
+      "audio.wav": {
+        "bytes": 1411304,
+        "sha256": "2628122ec85f59c224d74070fd24e5a5e7f627b44b53a151e0982d7f6b5789f6"
+      }
+    },
+    "train/00384-ceJTwFNjqCt/540/00001": {
+      "lidar.npz": {
+        "bytes": 3036984,
+        "sha256": "d290f6837afc3d5b4b84aa78c456fb692450ba10c43b251ff3675a390de2fa1f"
+      },
+      "audio.wav": {
+        "bytes": 1411304,
+        "sha256": "423c20ee8fed93474ef4e2ab2d1953bd0d6d8b1c399186ffe9fb807c1b70f362"
+      }
+    },
+    "train/00384-ceJTwFNjqCt/542/00009": {
+      "lidar.npz": {
+        "bytes": 3067557,
+        "sha256": "0acddb77eb64a9b264d2a801ad9e00eeb9958cfeb1627065340b23282a5a8c8b"
+      },
+      "audio.wav": {
+        "bytes": 1411304,
+        "sha256": "e50caa41ab394a131627660814f6671a81bc6571849a3a139cdf6042a382c886"
+      }
+    },
+    "train/00384-ceJTwFNjqCt/554/00010": {
+      "lidar.npz": {
+        "bytes": 3067405,
+        "sha256": "a7dbc570150ea14c82d74e795334c00d82b011e998307b097f6c04a9e23890a8"
+      },
+      "audio.wav": {
+        "bytes": 1411304,
+        "sha256": "332a6de9c021b09d51e49673ebdbe4fb9395cb8260c9e11845f8e77fc1ff7cde"
+      }
+    },
+    "train/00397-ZNanfzgCdm3/36/00010": {
+      "lidar.npz": {
+        "bytes": 2699719,
+        "sha256": "71401ccfa9f89bae09a318b4be1bf2bce2887a6f9548d7dc2484ca5de0e245b1"
+      },
+      "audio.wav": {
+        "bytes": 1411304,
+        "sha256": "8e2aa94bdc001c4bf3bcfa0a642b888466dcf9956321c8dd0f115a02a14f234a"
+      }
+    },
+    "train/00401-H8rQCnvBgo6/68/00010": {
+      "lidar.npz": {
+        "bytes": 2979473,
+        "sha256": "e960454cc74b68839eb84eb5d8e75ffdb49ab7770e8627714b78f7c02edbdcd5"
+      },
+      "audio.wav": {
+        "bytes": 1411304,
+        "sha256": "c09fb51172dd1381b6f5b6486df1bdfc2ecae2cff470513182ce15e26f57e585"
+      }
+    },
+    "train/00401-H8rQCnvBgo6/86/00006": {
+      "lidar.npz": {
+        "bytes": 1852909,
+        "sha256": "ee773f9b2f8ddd89c2a9ea9c2c5bb599c8636d1ebb33fde96d976f4f7e6e1fcd"
+      },
+      "audio.wav": {
+        "bytes": 1411304,
+        "sha256": "3d05a23b7a2d5742fe5dea89ef3407f7c5eeaf41f66cdcd8d161fd552e775fd2"
+      }
+    },
+    "train/00410-v7DzfFFEpsD/166/00008": {
+      "lidar.npz": {
+        "bytes": 2826633,
+        "sha256": "7eded171b2fe461346c76e7712884b42e9e78b4eced2697403bbdb9c00c1aa9d"
+      },
+      "audio.wav": {
+        "bytes": 1411304,
+        "sha256": "692a919aacdb0fe5abbfe4e76e8ac7c4f5676946e82fd150cf87c9bff467797a"
+      }
+    },
+    "train/00410-v7DzfFFEpsD/746/00000": {
+      "lidar.npz": {
+        "bytes": 2974883,
+        "sha256": "d3a218a6d0f2b97a65d2aa7ceadc218abe4ea9018df85062294365f955a4c0cf"
+      },
+      "audio.wav": {
+        "bytes": 1411304,
+        "sha256": "86e8396ee3485aa1c88383d4696dfd9a48ed72f729e44981dc84f2ab0b28be1a"
+      }
+    },
+    "train/00410-v7DzfFFEpsD/746/00001": {
+      "lidar.npz": {
+        "bytes": 3018872,
+        "sha256": "14e42042fa0fdc80c6ebefb34f3f7560519403abd58f038181c08a1781b28da1"
+      },
+      "audio.wav": {
+        "bytes": 1411304,
+        "sha256": "4f23523cfd7026f01179c6778ab4c26fa548fb439cee4caa804f102417333358"
+      }
+    },
+    "train/00475-g7hUFVNac26/507/00001": {
+      "lidar.npz": {
+        "bytes": 2882346,
+        "sha256": "627d4f95d6bd1ef2a096a43eb12485c83faad64922c2e63f42d41c3c310dc78f"
+      },
+      "audio.wav": {
+        "bytes": 1411304,
+        "sha256": "9f81759d066cf11e35466b39178b6e60f3788c77ea120d7bc1cabd55fa6f57a6"
+      }
+    },
+    "train/00541-FnDDfrBZPhh/164/00010": {
+      "lidar.npz": {
+        "bytes": 3088590,
+        "sha256": "2bc69da42b384f311384fc4b4fecc427aec12a091d7b20480d7712bcc3e7bb53"
+      },
+      "audio.wav": {
+        "bytes": 1411304,
+        "sha256": "dbcd00932fbb70c2e4eacd3c5a7294c87286b2694a7f1ccd706350deef705e60"
+      }
+    },
+    "train/00541-FnDDfrBZPhh/206/00004": {
+      "lidar.npz": {
+        "bytes": 3081362,
+        "sha256": "50908b2c0eb94fcd16ede2456c1c47db5d6a79e47aa8e5f571c873eb5ae6bcdf"
+      },
+      "audio.wav": {
+        "bytes": 1411304,
+        "sha256": "1c5d2f4e56809b5faa78aaff889e76dd8f2ddca8bb7a08027118cbd188f42633"
+      }
+    },
+    "train/00541-FnDDfrBZPhh/531/00003": {
+      "lidar.npz": {
+        "bytes": 2836458,
+        "sha256": "cc75df5f32be99b2b8a35f8f1a97b6eeb2bc40e8af0eac91ceabe787402851f6"
+      },
+      "audio.wav": {
+        "bytes": 1411304,
+        "sha256": "bcb8b12ac6065b352180af88b802e288533e4631bddc68a427ea69853d505236"
+      }
+    },
+    "train/00541-FnDDfrBZPhh/602/00004": {
+      "lidar.npz": {
+        "bytes": 1862405,
+        "sha256": "bd251992461e1afbcd0823939383b473ec36308cfb292a5cc5cf3738741f1e5e"
+      },
+      "audio.wav": {
+        "bytes": 1411304,
+        "sha256": "d808d871b138bcca1c9bbe52ca8c04bfc9c88682dc68cac6899ab3ebbe2e967f"
+      }
+    },
+    "train/00547-9h5JJxM6E5S/136/00006": {
+      "lidar.npz": {
+        "bytes": 2939103,
+        "sha256": "f560e7701cead8659ef334fe71058bae06e69c72a449ee5ef115a3804a974634"
+      },
+      "audio.wav": {
+        "bytes": 1411304,
+        "sha256": "ae7465206256af0ba9b824ae02f93d2e15df3c8e9d0ddab22343cab1d5f67306"
+      }
+    },
+    "train/00547-9h5JJxM6E5S/169/00007": {
+      "lidar.npz": {
+        "bytes": 2945334,
+        "sha256": "cae0d4555148741b7ac01b9ea90a9ad109bb1c4214411a1337f8065ef0b3160a"
+      },
+      "audio.wav": {
+        "bytes": 1411304,
+        "sha256": "145a2b2e52487b2ae5d0b47d6285634a6e3a3e0a39eb51d8d9b121e041e1d8a1"
+      }
+    },
+    "train/00547-9h5JJxM6E5S/169/00009": {
+      "lidar.npz": {
+        "bytes": 2971485,
+        "sha256": "49aeaaaf96932248be487b20c5818c9fda25b3febf6528a23cdb224ea1d2a144"
+      },
+      "audio.wav": {
+        "bytes": 1411304,
+        "sha256": "1fd02406cf0483cc475a0b5939318ec14d4f7e7134a88b0a5e3489e50bd4b688"
+      }
+    },
+    "train/00569-YJDUB7hWg9h/73/00006": {
+      "lidar.npz": {
+        "bytes": 2154273,
+        "sha256": "9a0b6433a5290e9b2fb4899c118b78ff0d59cca0b92b60c764a408fe1875eba3"
+      },
+      "audio.wav": {
+        "bytes": 1411304,
+        "sha256": "826108346bfb208b9667bf7a93ede25b2774023a2b63d66c592900a932832b80"
+      }
+    },
+    "val/00022-gmuS7Wgsbrx/147/00011": {
+      "lidar.npz": {
+        "bytes": 2824563,
+        "sha256": "364a455137f57fb5d22e1dcde9385688f5420081608901d88c13e98b83f73256"
+      },
+      "audio.wav": {
+        "bytes": 1411304,
+        "sha256": "8610078c50aa3401e3ad76dd7b80fcd1366e6807992586dc28fd8671f4cbc653"
+      }
+    },
+    "val/00022-gmuS7Wgsbrx/385/00006": {
+      "lidar.npz": {
+        "bytes": 2880259,
+        "sha256": "6849b605901d5c6463057919e0e1aa13d23192f5d18cc209f1bf4a8abacd4653"
+      },
+      "audio.wav": {
+        "bytes": 1411304,
+        "sha256": "afe2fceedd702e0f51f47a82810c5ce688e9242ea0235ed9e83fc0af8537a7d8"
+      }
+    },
+    "val/00022-gmuS7Wgsbrx/385/00011": {
+      "lidar.npz": {
+        "bytes": 2927184,
+        "sha256": "5e686e9c529a0e818d5e86a059da72365868393ef1cd93d263be17290b508eca"
+      },
+      "audio.wav": {
+        "bytes": 1411304,
+        "sha256": "c1502f3466309ec1779e5bee82d32e78639fa257eb6416de15ba4d06c2bda93c"
+      }
+    },
+    "val/00022-gmuS7Wgsbrx/393/00006": {
+      "lidar.npz": {
+        "bytes": 2934426,
+        "sha256": "c6a0299062b9cd699afb0aeb9296d8365de4921fc2a40e00b7e11b7e6b099ec5"
+      },
+      "audio.wav": {
+        "bytes": 1411304,
+        "sha256": "7ba1ab8d3808477c1c5085ff5ddf7be7f8c98fbb922f482f10e37052b5500db7"
+      }
+    },
+    "val/00022-gmuS7Wgsbrx/415/00007": {
+      "lidar.npz": {
+        "bytes": 2899997,
+        "sha256": "62e7d7a035636dc8b7e1ebd28ed7cc8e323ba626692c04ad442ee325e3204274"
+      },
+      "audio.wav": {
+        "bytes": 1411304,
+        "sha256": "9d29694d51fb63c003f4c13ff4f98530ef37afc9b088e4a87f96eba2d6361cbe"
+      }
+    },
+    "val/00022-gmuS7Wgsbrx/416/00001": {
+      "lidar.npz": {
+        "bytes": 2857280,
+        "sha256": "a0c36a3cc41f89c912c5156aee0cfc0c9821a7528e6b7418396333d218531e60"
+      },
+      "audio.wav": {
+        "bytes": 1411304,
+        "sha256": "43887eb053d7a467ecba779cfc61c9b3071abb54818ef6362139a59de8f365ec"
+      }
+    },
+    "val/00022-gmuS7Wgsbrx/417/00006": {
+      "lidar.npz": {
+        "bytes": 2970940,
+        "sha256": "a09d49fc6e68a2cb93a2ff60754ee96546696cba326570eecaf323c28ee1f90c"
+      },
+      "audio.wav": {
+        "bytes": 1411304,
+        "sha256": "27ef0fcad90281fc79441856b4281683d41a6a8db7f1fb273b4ed048f5002f8f"
+      }
+    },
+    "val/00022-gmuS7Wgsbrx/511/00002": {
+      "lidar.npz": {
+        "bytes": 2870512,
+        "sha256": "1b5b447670749388303ee0e2ca11996f97843a5184b6e87296f0afb69e1d9437"
+      },
+      "audio.wav": {
+        "bytes": 1411304,
+        "sha256": "4d45b2b0c726a4073a38e2d6cd77756a8f1e5dfefa013eacf32c17909c0f5646"
+      }
+    },
+    "val/00022-gmuS7Wgsbrx/53/00005": {
+      "lidar.npz": {
+        "bytes": 2177894,
+        "sha256": "986f81bfc65df97b2963fd26d4d1893f069ca2ee16de9a3fe01cac0a73b8b1a1"
+      },
+      "audio.wav": {
+        "bytes": 1411304,
+        "sha256": "fcf6d7e8baeeae698d56c1c6f3fc8b45e97bb68515489cac9bdbfcab9203fd11"
+      }
+    },
+    "val/00022-gmuS7Wgsbrx/681/00005": {
+      "lidar.npz": {
+        "bytes": 1528229,
+        "sha256": "abdec90306b50fdeca1c7db67e9c4395f27331e9e06dcad98414f4e83026eb39"
+      },
+      "audio.wav": {
+        "bytes": 1411304,
+        "sha256": "841314a69e78363b7ddce41f76da34b42e3868630139f212db689255e4625fb7"
+      }
+    },
+    "val/00022-gmuS7Wgsbrx/94/00001": {
+      "lidar.npz": {
+        "bytes": 2848239,
+        "sha256": "54c672cd3c9e230b47043f5e10652e930775284088af3f05dcefdae8aa619686"
+      },
+      "audio.wav": {
+        "bytes": 1411304,
+        "sha256": "a3dc3fc787c4f8596e544e7e2bdd8bc97153eff778d26adf87bbecab752977a1"
+      }
+    },
+    "val/00149-UuwwmrTsfBN/280/00010": {
+      "lidar.npz": {
+        "bytes": 1855129,
+        "sha256": "fbf2eecbdcb3f1d9bdff1b0a61383e176ab89b080eec2fd4b8ba072a28964e53"
+      },
+      "audio.wav": {
+        "bytes": 1411304,
+        "sha256": "5d415107198a7c26a77295038cad4ff3f53632e055a4a0bcea4e2723f385166e"
+      }
+    },
+    "val/00149-UuwwmrTsfBN/284/00000": {
+      "lidar.npz": {
+        "bytes": 2136834,
+        "sha256": "5fc3a6c885da816e2a1b58ecda082da449bda44161c4fc74f27372b44e011f0c"
+      },
+      "audio.wav": {
+        "bytes": 1411304,
+        "sha256": "f422203bf6b1f6d4cc44ba70484357c817e2a76b16b51d1185c2d810e7f89076"
+      }
+    },
+    "val/00149-UuwwmrTsfBN/347/00001": {
+      "lidar.npz": {
+        "bytes": 2896787,
+        "sha256": "2bd513047ac449dcc1b5697be53064a3a581849280e7d2bd7605a979eb5c1e50"
+      },
+      "audio.wav": {
+        "bytes": 1411304,
+        "sha256": "9f3062d7077a5623d7073b9cf516dcfae3c74588ea77df19e6a4c0f6144fff70"
+      }
+    },
+    "val/00149-UuwwmrTsfBN/347/00006": {
+      "lidar.npz": {
+        "bytes": 2920630,
+        "sha256": "968dae91740e95d448eedc6142f861448266274437749de403ee2da92de32b5e"
+      },
+      "audio.wav": {
+        "bytes": 1411304,
+        "sha256": "3875074f49367b9caab4db31964d72336d561073dc0c9b4dd1ab1fef3630beb0"
+      }
+    },
+    "val/00149-UuwwmrTsfBN/684/00002": {
+      "lidar.npz": {
+        "bytes": 2531287,
+        "sha256": "2cd632f98f58cd2eb720bddbdfce7c0b656134f8b1086cb7aa1bf8da0ed89251"
+      },
+      "audio.wav": {
+        "bytes": 1411304,
+        "sha256": "91d39774d4d13acec93d232d76a76d7b8b7ed0d616b5ea161de19a9b11d4fc6f"
+      }
+    },
+    "val/00149-UuwwmrTsfBN/684/00005": {
+      "lidar.npz": {
+        "bytes": 2935522,
+        "sha256": "8f9f0dca50174530a2f2bab1f740449203ef87836f9737763405522483c6ffb7"
+      },
+      "audio.wav": {
+        "bytes": 1411304,
+        "sha256": "a28b3f746faea236ffb674cbf47878175428433a245b932fad2656cdf64f3b26"
+      }
+    },
+    "val/00149-UuwwmrTsfBN/737/00007": {
+      "lidar.npz": {
+        "bytes": 1788182,
+        "sha256": "93e121ed1b26b694ae401102f32da598825f2ffea8d98c181ff6233934ceb38c"
+      },
+      "audio.wav": {
+        "bytes": 1411304,
+        "sha256": "cb80bec844683d2463141d369c63cbf5669e856d7635e7f4211469d760708885"
+      }
+    },
+    "val/00149-UuwwmrTsfBN/833/00006": {
+      "lidar.npz": {
+        "bytes": 2081796,
+        "sha256": "d1c07a712d3c1059c4a289b4694c2024c3abd4d0b4ddc8d71226df8a0256fcf4"
+      },
+      "audio.wav": {
+        "bytes": 1411304,
+        "sha256": "907e328def4c670c068e11ad324ebe41bce8fb47624e209dfcaf239553a5834f"
+      }
+    },
+    "val/00149-UuwwmrTsfBN/852/00001": {
+      "lidar.npz": {
+        "bytes": 2954165,
+        "sha256": "3d62467d2c4b15f92919c4be14f7ab0bbb2bbe248e375932a2ec5fa5ed2cbfba"
+      },
+      "audio.wav": {
+        "bytes": 1411304,
+        "sha256": "bb082bf07d436fc38a6282e0adc57c7c3b3323ddcf1df4cf4aa4a66975e4307d"
+      }
+    },
+    "val/00327-xgLmjqzoAzF/359/00007": {
+      "lidar.npz": {
+        "bytes": 2920256,
+        "sha256": "24f573a1f9eed367fc5b5ec0ae8f07f40deec8ca49e24eb90adafc76aa1cb767"
+      },
+      "audio.wav": {
+        "bytes": 1411304,
+        "sha256": "cae833e20e4f22db27900aa2329eea53a371054e1381cede5b1e5a8ee7512e9b"
+      }
+    },
+    "val/00327-xgLmjqzoAzF/43/00010": {
+      "lidar.npz": {
+        "bytes": 2565765,
+        "sha256": "5f910ecbc40755a448491c4628e8615fd9c977820492cf51e245b02f7bf4ef67"
+      },
+      "audio.wav": {
+        "bytes": 1411304,
+        "sha256": "9918dd480df6ed58c7a0613ba6094f572a18b0c0d4b3a766275a54583ac10f52"
+      }
+    },
+    "val/00327-xgLmjqzoAzF/446/00001": {
+      "lidar.npz": {
+        "bytes": 2963023,
+        "sha256": "75500577802bc3b78598984a0cc95ccf37e1b6122e34b25ba0376bebf0df2e27"
+      },
+      "audio.wav": {
+        "bytes": 1411304,
+        "sha256": "aadd1d45a13b78e26beb346700ed761a9da1932bcc0cc0944c08df40f66dea1f"
+      }
+    },
+    "val/00327-xgLmjqzoAzF/457/00005": {
+      "lidar.npz": {
+        "bytes": 3000345,
+        "sha256": "de266f68acc1057a7a593188c5602844672c058c7289209b3ad5888add6f1776"
+      },
+      "audio.wav": {
+        "bytes": 1411304,
+        "sha256": "f9064be03b95a40c98ce2f614acc43fe9035bb9d1f4ade122084744ae9fbd273"
+      }
+    },
+    "val/00327-xgLmjqzoAzF/465/00004": {
+      "lidar.npz": {
+        "bytes": 2975194,
+        "sha256": "3da7d6ca2aa0a0027b98856670a9aebb94fa243ca96e2a40822a2c52e50a98cf"
+      },
+      "audio.wav": {
+        "bytes": 1411304,
+        "sha256": "49ce10be62c9ed69560a9cd342f3823612a95f45942b075144d053ac01f9f993"
+      }
+    },
+    "val/00327-xgLmjqzoAzF/466/00009": {
+      "lidar.npz": {
+        "bytes": 2831009,
+        "sha256": "097a9e40a712cc6f8b4605bb5655cc4384d1914af329d462684e6232f29cf61c"
+      },
+      "audio.wav": {
+        "bytes": 1411304,
+        "sha256": "d2c1884b77b7cbc28cffc430a89dd703f80d641b0a498644d9854a3f2ccce684"
+      }
+    },
+    "val/00327-xgLmjqzoAzF/81/00009": {
+      "lidar.npz": {
+        "bytes": 2858146,
+        "sha256": "e481652474fb1198e214e9286ebaa74865acf74830d37ec6e0e55f718ca6254e"
+      },
+      "audio.wav": {
+        "bytes": 1411304,
+        "sha256": "354438c3f758388701ef9c4db5022132652898b200e74d3e8d8c5dee63ada4ef"
+      }
+    },
+    "val/00327-xgLmjqzoAzF/81/00010": {
+      "lidar.npz": {
+        "bytes": 2911876,
+        "sha256": "c57cf1a5e06e5b46d51d6d369b294b565278ba832f9041ed4c2054af8ed99ff4"
+      },
+      "audio.wav": {
+        "bytes": 1411304,
+        "sha256": "8d665baf7d16811b57b333c627b1aa86f112df443455e31feffbfa6d1aee8b2a"
+      }
+    },
+    "val/00327-xgLmjqzoAzF/896/00005": {
+      "lidar.npz": {
+        "bytes": 2947800,
+        "sha256": "c3a0dd5319d175a251146818abfe926c35049d9ba2b0bf13babdae74eabd0856"
+      },
+      "audio.wav": {
+        "bytes": 1411304,
+        "sha256": "cbb50f96db7da81f64fed43565200ca1752885afbd9730d66757e81e0dd892dc"
+      }
+    },
+    "val/00404-QN2dRqwd84J/433/00000": {
+      "lidar.npz": {
+        "bytes": 2889656,
+        "sha256": "d8f8bc2928b48f5a13062e190344ffd8c012730ced06a6dbbadc9b2a3f05f1f7"
+      },
+      "audio.wav": {
+        "bytes": 1411304,
+        "sha256": "620e0841213cd410d22ec9e8e4f96843f278f8aee07193204aa0ee3e5f201d32"
+      }
+    },
+    "val/00404-QN2dRqwd84J/591/00007": {
+      "lidar.npz": {
+        "bytes": 2989569,
+        "sha256": "f5635f39e4a710ce151974a0e2316c0169a19062eb352717431deb9d75b1f0c6"
+      },
+      "audio.wav": {
+        "bytes": 1411304,
+        "sha256": "a17d97e40cb0d5acf601d76f30c663eb14add6884ffbbcc2e5f8eaaca614e479"
+      }
+    },
+    "val/00422-8wJuSPJ9FXG/201/00008": {
+      "lidar.npz": {
+        "bytes": 2987826,
+        "sha256": "0aec22958339642ed01bdc62f80c3c9cca22be4da488afb6c1049c650de1d763"
+      },
+      "audio.wav": {
+        "bytes": 1411304,
+        "sha256": "08368cd9d1057dbe1bffb30f231c2b18a8aca559ccfe45b7f80284e69c6660c8"
+      }
+    },
+    "val/00422-8wJuSPJ9FXG/201/00009": {
+      "lidar.npz": {
+        "bytes": 3038084,
+        "sha256": "ede61a9f2c5ac780321047ee7d2c8ecb9df50f269412f2b21f9ec691b1df8876"
+      },
+      "audio.wav": {
+        "bytes": 1411304,
+        "sha256": "dbfac8c4cfa41e1a0c04eb610c2716b4176be181a4121722ce23a74e716b1895"
+      }
+    },
+    "val/00422-8wJuSPJ9FXG/215/00006": {
+      "lidar.npz": {
+        "bytes": 2565269,
+        "sha256": "c3630e5201b2d93d6e517618ab7ab2fbfa210b1b7d1edb1efa9fab3a3094d269"
+      },
+      "audio.wav": {
+        "bytes": 1411304,
+        "sha256": "4f778839ad27f0000270414c71993bbd4d147c725e59824e65e8eac583a7f957"
+      }
+    },
+    "val/00422-8wJuSPJ9FXG/216/00006": {
+      "lidar.npz": {
+        "bytes": 2959654,
+        "sha256": "62dba834f551cb941fcd20983b1026eb96a12558219596d43a7e2db8ebdc3431"
+      },
+      "audio.wav": {
+        "bytes": 1411304,
+        "sha256": "1d8fd9cb08ce0e5429bd0c98ad96d854742e67171616af27a7b5d386cb6d419f"
+      }
+    },
+    "val/00422-8wJuSPJ9FXG/216/00009": {
+      "lidar.npz": {
+        "bytes": 3013059,
+        "sha256": "9f40083d2d6329af988e99c6c60d1338aa97414bd783e3b844b1b3ac0f22449b"
+      },
+      "audio.wav": {
+        "bytes": 1411304,
+        "sha256": "e6be9ade2cd01e7c34b279857d9c5c7541aece76c2b221ad5e1d4d32cf5c4087"
+      }
+    },
+    "val/00422-8wJuSPJ9FXG/517/00002": {
+      "lidar.npz": {
+        "bytes": 2408837,
+        "sha256": "670bc004465e1d83ab6fb440a473ccca20ac5b88d2a270601397f9a52d9c6acd"
+      },
+      "audio.wav": {
+        "bytes": 1411304,
+        "sha256": "ced06cbcf6fd37dd2621d4c751d4e7ab25287a1f7051b9f059e59b3ec357fd63"
+      }
+    },
+    "val/00434-L5QEsaVqwrY/712/00002": {
+      "lidar.npz": {
+        "bytes": 2559990,
+        "sha256": "bad2628d340aab6620c6dd3dbc3757341c069bec6c214e9dff24a1a724713687"
+      },
+      "audio.wav": {
+        "bytes": 1411304,
+        "sha256": "318858a73d6af5998ebe8e15f1be7631718d7d0f0f15b27a07b128848b3b767b"
+      }
+    },
+    "val/00434-L5QEsaVqwrY/732/00001": {
+      "lidar.npz": {
+        "bytes": 2559954,
+        "sha256": "8ff0c87b7295b7e67a35be25963cf1a10338e20cd92fbf922864a56a5440d0a2"
+      },
+      "audio.wav": {
+        "bytes": 1411304,
+        "sha256": "f24b80a3c6542fb7dcdab7a5945e66a33ba388c67f6aab6496de41df910fcb84"
+      }
+    },
+    "val/00434-L5QEsaVqwrY/753/00010": {
+      "lidar.npz": {
+        "bytes": 2376706,
+        "sha256": "f6cee0c7050a1a0ebe60caf50b29372b0faffd8d569766e72802098f2eb11a26"
+      },
+      "audio.wav": {
+        "bytes": 1411304,
+        "sha256": "ecbb047e6488f868c4d9a9d95442ef8375b23de1a14cfb90cae2cdc1312183c3"
+      }
+    },
+    "val/00476-NtnvZSMK3en/363/00004": {
+      "lidar.npz": {
+        "bytes": 2783915,
+        "sha256": "3a93f5cc6b27ea53864050de45f992d5060a85d3e17542f30fec7c76803f5bef"
+      },
+      "audio.wav": {
+        "bytes": 1411304,
+        "sha256": "b9d151dc76dbeb31e7ba09147f5a116ec76ef5b1b8d5a0afb0b0b6e97cf8ee6d"
+      }
+    },
+    "val/00476-NtnvZSMK3en/584/00002": {
+      "lidar.npz": {
+        "bytes": 2283816,
+        "sha256": "7ad55b8b7ab8b1c4d7f47ca2f3609e6843ded10751aac6565998a50b955b41c8"
+      },
+      "audio.wav": {
+        "bytes": 1411304,
+        "sha256": "cd9916ff581301917188053395bb8690087ae66b0e4802bc5374f2472f850730"
+      }
+    },
+    "val/00476-NtnvZSMK3en/584/00006": {
+      "lidar.npz": {
+        "bytes": 2009819,
+        "sha256": "91b52b14ed29cbb0fcb3d23b92351a91767eef6f642d155c9dfc901fde4346c2"
+      },
+      "audio.wav": {
+        "bytes": 1411304,
+        "sha256": "bf0298da7b936adac3a24d8847508991ad9e931bcab2fae664a0edd253a92b4f"
+      }
+    },
+    "val/00487-erXNfWVjqZ8/48/00006": {
+      "lidar.npz": {
+        "bytes": 3024355,
+        "sha256": "13929a5ed22fbf1eac4b3838fd4125101cd6ac5a971d4b3aa2edc787e4f38959"
+      },
+      "audio.wav": {
+        "bytes": 1411304,
+        "sha256": "ffe56e50d4f0e42f0df178e7511c5bd3941788079ff2ac733d87e1b36ed2b1f0"
+      }
+    },
+    "val/00487-erXNfWVjqZ8/571/00010": {
+      "lidar.npz": {
+        "bytes": 2759420,
+        "sha256": "85b9b375a9d76be23e2b53ad33185d9857c2083e12b67ce208a5b976f78b6e42"
+      },
+      "audio.wav": {
+        "bytes": 1411304,
+        "sha256": "2bce1eb31c0c2b7dc77a08eba205b32560d1852aada4107a9f4ccf0d4d3b3f20"
+      }
+    },
+    "val/00487-erXNfWVjqZ8/684/00006": {
+      "lidar.npz": {
+        "bytes": 1817739,
+        "sha256": "febe5895e9f40ae37d805e2e671c7edc41b3afeaa37f4756e9019a330b01cd2e"
+      },
+      "audio.wav": {
+        "bytes": 1411304,
+        "sha256": "df05e42c3957a005908fa4bbc79d5befe40bf5062431dcd4e5647a75155dd75a"
+      }
+    },
+    "val/00487-erXNfWVjqZ8/684/00009": {
+      "lidar.npz": {
+        "bytes": 2747426,
+        "sha256": "fe070593625865ee3f2eac9310ebcdddff53e73a6b2ac89dfc515c6b99e32a54"
+      },
+      "audio.wav": {
+        "bytes": 1411304,
+        "sha256": "63397350665ad8cb3d47f4aa4a58b58f3fb136fcd9784582b8d5ee91b758b31c"
+      }
+    },
+    "val/00487-erXNfWVjqZ8/92/00000": {
+      "lidar.npz": {
+        "bytes": 3043670,
+        "sha256": "c90521786ceb3dfa10beb36f93cab619612953f35bd4007efa0c6564be7e0bed"
+      },
+      "audio.wav": {
+        "bytes": 1411304,
+        "sha256": "e49f623d1c00062043fc05329045f62b691e95f0cbeb1a04cdd0aa07f00b65d6"
+      }
+    },
+    "val/00546-nS8T59Aw3sf/492/00001": {
+      "lidar.npz": {
+        "bytes": 2949402,
+        "sha256": "d4c16a9fe31e12489d1b842ab52b652ad0be7909c0f8e6a4846a632e3f200b4f"
+      },
+      "audio.wav": {
+        "bytes": 1411304,
+        "sha256": "3d77e92743ede66d1a4d74e0d1c20ca60da89fc91ddc30284eeb810a18290999"
+      }
+    },
+    "val/00546-nS8T59Aw3sf/492/00010": {
+      "lidar.npz": {
+        "bytes": 2916152,
+        "sha256": "c72def9fa74ab3840f9bb332b8d9641e613057af75a501642cf8a30e74883cba"
+      },
+      "audio.wav": {
+        "bytes": 1411304,
+        "sha256": "1017c9d228a4b8188f3d1be03b67fae5a3f5520cc5186b034779743fdde147fc"
+      }
+    },
+    "test/00025-ixTj1aTMup2/293/00005": {
+      "lidar.npz": {
+        "bytes": 2983449,
+        "sha256": "a5ec9da4b97b47492ad16af979622e809b9a1b9fa3fdf7450e671d38d376590f"
+      },
+      "audio.wav": {
+        "bytes": 1411304,
+        "sha256": "ccabbc72fa9e1a835a0dccf924235e299a172fb8a82f3021f5d1eadb78d86102"
+      }
+    },
+    "test/00025-ixTj1aTMup2/304/00006": {
+      "lidar.npz": {
+        "bytes": 2955020,
+        "sha256": "ea75b65443e29f5ce08beef00b8c54689848f3d4654c252e9a8a0158043637e8"
+      },
+      "audio.wav": {
+        "bytes": 1411304,
+        "sha256": "9195ee26bb9a448062bb72adbd9725643e4ca455a6ab8fc6b8131a837d416944"
+      }
+    },
+    "test/00025-ixTj1aTMup2/37/00007": {
+      "lidar.npz": {
+        "bytes": 2879450,
+        "sha256": "0422a3d4651612ddca8bfecd41c8b210a7791b4410ac04dcdc90fd3da16e5517"
+      },
+      "audio.wav": {
+        "bytes": 1411304,
+        "sha256": "5a488c3fa3b491722b4308d38b8d390113633b4e1c641814dc499f9454f33524"
+      }
+    },
+    "test/00025-ixTj1aTMup2/416/00004": {
+      "lidar.npz": {
+        "bytes": 2906158,
+        "sha256": "df17224575474b3e9b28d8aaac2d7722595adf3c8aa09a4b3a82fa12f00ebbe1"
+      },
+      "audio.wav": {
+        "bytes": 1411304,
+        "sha256": "b839f4d9b3481d5e214d3d3797b37d26c629bd06c055bbb89f89ff4565fa8a8f"
+      }
+    },
+    "test/00031-Wo6kuutE9i7/107/00005": {
+      "lidar.npz": {
+        "bytes": 2823180,
+        "sha256": "ddcaac29bdbad0a06fbd01ea335189297411d11fbc8485b15ec3a7a566f0f9c3"
+      },
+      "audio.wav": {
+        "bytes": 1411304,
+        "sha256": "270b6d6310304bb785e96aa13396eace12110c14bfbb911550d6a105a7fc8d33"
+      }
+    },
+    "test/00031-Wo6kuutE9i7/138/00000": {
+      "lidar.npz": {
+        "bytes": 2697880,
+        "sha256": "8638573b9643046fcff000c2684648901f11173d074572a903d400ae800341c0"
+      },
+      "audio.wav": {
+        "bytes": 1411304,
+        "sha256": "d6e8a5429ce4296213fdb1509f5dfeaebac8ad6ad2fd69c5a831fac98311daca"
+      }
+    },
+    "test/00031-Wo6kuutE9i7/138/00009": {
+      "lidar.npz": {
+        "bytes": 2662501,
+        "sha256": "3b165d3fb3808e1c56dcb1ed2a3047ffb73e553f23efa4e8a5605b42109842cc"
+      },
+      "audio.wav": {
+        "bytes": 1411304,
+        "sha256": "48fdbf9025603b46d6f5d39924339d2700c2da026ec4e7c1fa82aca6b053204a"
+      }
+    },
+    "test/00031-Wo6kuutE9i7/154/00006": {
+      "lidar.npz": {
+        "bytes": 2880363,
+        "sha256": "1b6e40cc7bd722c1d79358eb4cda1086db99f6950d20895119dc59150ec1dca0"
+      },
+      "audio.wav": {
+        "bytes": 1411304,
+        "sha256": "cd6cd6f4ac49fc8525d2764e98cb7cbe6c30cc07c0a5938b5484be3930589e23"
+      }
+    },
+    "test/00031-Wo6kuutE9i7/154/00008": {
+      "lidar.npz": {
+        "bytes": 2687881,
+        "sha256": "a204aadc4b9dc19ba27a5a7e4635651274fcd705e7d5dd8776c2572fd868e9be"
+      },
+      "audio.wav": {
+        "bytes": 1411304,
+        "sha256": "9b5d740ca4e4c321f6ef290378cc087c823c4ed4cc601104b6806ac398fa7ccf"
+      }
+    },
+    "test/00031-Wo6kuutE9i7/154/00010": {
+      "lidar.npz": {
+        "bytes": 2855460,
+        "sha256": "d89bcb0c62b27f866867a11e6450644569c50732d26c69d110643605165a6b6b"
+      },
+      "audio.wav": {
+        "bytes": 1411304,
+        "sha256": "baff7303c41825202d0ee5e99a9031ba54c0fd0c97a811f0e587eac47ef72750"
+      }
+    },
+    "test/00031-Wo6kuutE9i7/155/00002": {
+      "lidar.npz": {
+        "bytes": 2900623,
+        "sha256": "c0d6796f1e236d06e99e0f008740e9162bf1994adca2c707a90f7182402c4ab2"
+      },
+      "audio.wav": {
+        "bytes": 1411304,
+        "sha256": "f58511721a3cc7fefccf3ca5d62f73af772c9301eb2a407233ab7bff1e569228"
+      }
+    },
+    "test/00031-Wo6kuutE9i7/155/00003": {
+      "lidar.npz": {
+        "bytes": 2836420,
+        "sha256": "e0bfd24c9c14648d6f225ef21e7ee8cf322d923170fb47b724f387fc8e899ef8"
+      },
+      "audio.wav": {
+        "bytes": 1411304,
+        "sha256": "47c1166d386f3c387883d5a1f61111db574128e849e9725f352306657f476c7c"
+      }
+    },
+    "test/00031-Wo6kuutE9i7/155/00005": {
+      "lidar.npz": {
+        "bytes": 2907433,
+        "sha256": "dbc57ab53ad8767280372ab5b2bf30d652c99f399a0c4ca520c81880554cce37"
+      },
+      "audio.wav": {
+        "bytes": 1411304,
+        "sha256": "84eef78f61118d17ba73da0e8d13b90effd7477595aff13aa0179bff23a196fb"
+      }
+    },
+    "test/00031-Wo6kuutE9i7/159/00004": {
+      "lidar.npz": {
+        "bytes": 1313228,
+        "sha256": "4b6276fb478d498c07e694965442c84a6dfadf217f927824711f9ebf74af8844"
+      },
+      "audio.wav": {
+        "bytes": 1411304,
+        "sha256": "c07bc385601b86faf4ee692d75a714577211f334998ee6990887e1012c4f502d"
+      }
+    },
+    "test/00031-Wo6kuutE9i7/159/00005": {
+      "lidar.npz": {
+        "bytes": 2836337,
+        "sha256": "d2b944c044d7182c4b41b098a2fb21a70cd58c6238fcd06c64d5b7f982ed1e35"
+      },
+      "audio.wav": {
+        "bytes": 1411304,
+        "sha256": "00d95a36508e43b179fe2410370886bc612489059ebed1507f80cfce961d86ed"
+      }
+    },
+    "test/00031-Wo6kuutE9i7/218/00006": {
+      "lidar.npz": {
+        "bytes": 2860379,
+        "sha256": "e4c5cbd74ddb2d5e05298f73bbf06cb99ec69070652e8019ad35b31fadd0c527"
+      },
+      "audio.wav": {
+        "bytes": 1411304,
+        "sha256": "29738036e55d3a1dc81f09db05bf5b218faca0ce86222e23560e4e7db267d8ec"
+      }
+    },
+    "test/00031-Wo6kuutE9i7/227/00001": {
+      "lidar.npz": {
+        "bytes": 2698010,
+        "sha256": "5fbe0eaf5bd5290e6d51b69da1f86cdcd79567fb356ad8922a4bde43e89d7190"
+      },
+      "audio.wav": {
+        "bytes": 1411304,
+        "sha256": "81869c63d8143e00ecb26061f4aecc20e7f4f7cd559d9d2f37c2a40c17ff02a1"
+      }
+    },
+    "test/00031-Wo6kuutE9i7/87/00005": {
+      "lidar.npz": {
+        "bytes": 2828382,
+        "sha256": "e6b96691f3708be2980039a94939a046e8562738e6a177042de3c8fda1d6f99d"
+      },
+      "audio.wav": {
+        "bytes": 1411304,
+        "sha256": "d1b2e042ec92138556b9923de5c919b4a9d8d31aa8d552524be44c84a697b894"
+      }
+    },
+    "test/00031-Wo6kuutE9i7/87/00011": {
+      "lidar.npz": {
+        "bytes": 2227745,
+        "sha256": "a23c4a9401528036d64384da365dff295095774912846f205c052d15b6600fbe"
+      },
+      "audio.wav": {
+        "bytes": 1411304,
+        "sha256": "c06cde7b9ccd8d3c4db7d75f9df145fb428f25348f3b4f103910278d13bf2ee1"
+      }
+    },
+    "test/00033-oPj9qMxrDEa/102/00004": {
+      "lidar.npz": {
+        "bytes": 2888916,
+        "sha256": "2014257f942b2f8aa058b40a299cc435b264b34f5a18aa12e4a0b5f90d294636"
+      },
+      "audio.wav": {
+        "bytes": 1411304,
+        "sha256": "1f277f14a9ec6064dfb8926de92e2c58e19c2045ea43483fe2e115619f8e6789"
+      }
+    },
+    "test/00033-oPj9qMxrDEa/131/00008": {
+      "lidar.npz": {
+        "bytes": 2474119,
+        "sha256": "0b95f8fe4da0dc6485c0d68ef03f6f7324f89df704d0a2c433148cd747f69d14"
+      },
+      "audio.wav": {
+        "bytes": 1411304,
+        "sha256": "c23f163b57c127b1e90e5a49fa76c05b9517ef27b09a0eb09fe81cce3cca19d7"
+      }
+    },
+    "test/00033-oPj9qMxrDEa/131/00011": {
+      "lidar.npz": {
+        "bytes": 2780723,
+        "sha256": "6cc03ab4242833916b0703be0dd1f10adb2678972c954178d0ccc445fee278da"
+      },
+      "audio.wav": {
+        "bytes": 1411304,
+        "sha256": "f24af1dcefb09004e833aec6bd13ab7867a3129c587849119f737b08a29e9e1d"
+      }
+    },
+    "test/00033-oPj9qMxrDEa/144/00003": {
+      "lidar.npz": {
+        "bytes": 2874701,
+        "sha256": "d5df29a734790f32de1235cfe5c6840bb7cf630cbfa1a952e0345497756998af"
+      },
+      "audio.wav": {
+        "bytes": 1411304,
+        "sha256": "80282abb94752ef90495177f60e8cda25c50f78a863be24fe4eadb6d11c84a40"
+      }
+    },
+    "test/00033-oPj9qMxrDEa/37/00006": {
+      "lidar.npz": {
+        "bytes": 2849213,
+        "sha256": "607f20001f8272b5cb35610d9f044201395310103195fd392c24382f54024699"
+      },
+      "audio.wav": {
+        "bytes": 1411304,
+        "sha256": "0838002c073e5451b4cfd01a92eccc2d4ec05d92c43944b7a04f8ed0ba295bf6"
+      }
+    },
+    "test/00188-dQrLTxHvLXU/106/00004": {
+      "lidar.npz": {
+        "bytes": 2828772,
+        "sha256": "c3bcf63474a396e8c71a0437888387f4b0daefdd3b3eb1e1876d71cd2538b396"
+      },
+      "audio.wav": {
+        "bytes": 1411304,
+        "sha256": "91f4fa90408cc73a3868cc10972c63b26c95894325c56a321a9c610ba1339f45"
+      }
+    },
+    "test/00188-dQrLTxHvLXU/321/00001": {
+      "lidar.npz": {
+        "bytes": 2914995,
+        "sha256": "56ab4fb0d2488529c2ab9f2c50bb6ebf8fef8b5e14875cb03f872d0218893ff3"
+      },
+      "audio.wav": {
+        "bytes": 1411304,
+        "sha256": "6dd5890a32a446134719773174c2e5f3b16f4dd0ab724a120ecfe39271145fa7"
+      }
+    },
+    "test/00188-dQrLTxHvLXU/321/00004": {
+      "lidar.npz": {
+        "bytes": 2708968,
+        "sha256": "dfb72b42d401ab8120bf0d89bf66c9cbb6a469b57a01c471fefcd0517e37dcdb"
+      },
+      "audio.wav": {
+        "bytes": 1411304,
+        "sha256": "65394f330082b6b98c0a9fd0212e4cb784cc5bcf717584f7b9efad9edc5ae207"
+      }
+    },
+    "test/00188-dQrLTxHvLXU/359/00011": {
+      "lidar.npz": {
+        "bytes": 1194601,
+        "sha256": "a254fd01d7e8cede3bc6e19c725bc520e147fe50b091972e5c912133a7ddffae"
+      },
+      "audio.wav": {
+        "bytes": 1411304,
+        "sha256": "36044e500ad2410700ebb293f490ed7537c443a3533068a4a577e461ddb31d87"
+      }
+    },
+    "test/00241-h6nwVLpAKQz/326/00008": {
+      "lidar.npz": {
+        "bytes": 2906252,
+        "sha256": "de1f58fdc128034b06b0698e234a536f17d7082aa2a610e4eca4199aa0e86555"
+      },
+      "audio.wav": {
+        "bytes": 1411304,
+        "sha256": "19e6494636c9b164902d37f573aa586a64430fd2412185f63f8816406686e419"
+      }
+    },
+    "test/00241-h6nwVLpAKQz/327/00008": {
+      "lidar.npz": {
+        "bytes": 2885898,
+        "sha256": "54c5d0e3dc427bafcf2ff3e729ffa6c3935e3a422e548416135ecd0012dd6bb5"
+      },
+      "audio.wav": {
+        "bytes": 1411304,
+        "sha256": "0fbe0f6cff76093c6fd13308480c5899b8a4432408bafbd429f20753ec4576db"
+      }
+    },
+    "test/00241-h6nwVLpAKQz/398/00000": {
+      "lidar.npz": {
+        "bytes": 2882674,
+        "sha256": "368632816a102a64efadd3f85209f446edca035d160a3ec141d1eff2592826d5"
+      },
+      "audio.wav": {
+        "bytes": 1411304,
+        "sha256": "287a4c99b5569a38e1f9eb2ba521af00f3433dfb5736ad96796cf49bf9238f3b"
+      }
+    },
+    "test/00269-JNiWU5TZLtt/374/00004": {
+      "lidar.npz": {
+        "bytes": 2824531,
+        "sha256": "66fc3e5e856506afc3378749955e25a59477371eadd4e9cc8387040c29eeb48e"
+      },
+      "audio.wav": {
+        "bytes": 1411304,
+        "sha256": "2609b86611a1fe9c44c2e97cfe7ec827b526d135f029be7a57a433fd185019cc"
+      }
+    },
+    "test/00269-JNiWU5TZLtt/374/00006": {
+      "lidar.npz": {
+        "bytes": 2824394,
+        "sha256": "c6678429f3d7782caace9ecf7333df99bdd20f04b3aa11a106db8afeb3be1c4f"
+      },
+      "audio.wav": {
+        "bytes": 1411304,
+        "sha256": "dfe5a42ea247d0c7e4c78295de2cbd61740226bf6205479a6623a8ae06814c3a"
+      }
+    },
+    "test/00269-JNiWU5TZLtt/495/00006": {
+      "lidar.npz": {
+        "bytes": 2827883,
+        "sha256": "cce80fbe3c90c774a65032f0b1c1b89d92c7640f57f5dc25dce0b4437b68c01a"
+      },
+      "audio.wav": {
+        "bytes": 1411304,
+        "sha256": "6912dc71f969f75699ca99e033b26318567b88f1d84eb8043f775a80b79a2478"
+      }
+    },
+    "test/00269-JNiWU5TZLtt/501/00001": {
+      "lidar.npz": {
+        "bytes": 2138025,
+        "sha256": "b47fcea0ada12a3b0d47759710eb7249837a31049f98fc5077b3eaebc83fdd0c"
+      },
+      "audio.wav": {
+        "bytes": 1411304,
+        "sha256": "384a0c8b0714232c9dd05b4cdce8c49c6d87fb12bc928fa7d5dfd2a3eefbb576"
+      }
+    },
+    "test/00269-JNiWU5TZLtt/501/00011": {
+      "lidar.npz": {
+        "bytes": 2885933,
+        "sha256": "8fa883d683c168e602382c83fc6acf23503b22fb72cfb23a5f6f48f7727baff9"
+      },
+      "audio.wav": {
+        "bytes": 1411304,
+        "sha256": "840b37336c60110fef855158b5712dfc0ee67251de853610da4a5003eb99d8b5"
+      }
+    },
+    "test/00269-JNiWU5TZLtt/734/00007": {
+      "lidar.npz": {
+        "bytes": 2821900,
+        "sha256": "6f3daeb471f4e16293d3aebc3164f9a44f40d09138635e16370251dd07b9eff7"
+      },
+      "audio.wav": {
+        "bytes": 1411304,
+        "sha256": "e7dbfcbc29d11a6aee89344b88c15d413fe9215d8224034b0f960e506df2426f"
+      }
+    },
+    "test/00272-kA2nG18hCAr/168/00003": {
+      "lidar.npz": {
+        "bytes": 2541830,
+        "sha256": "4864ee3893b73dcc89d7001962227bdbed7fd003fdb2126972aa20fdae378a61"
+      },
+      "audio.wav": {
+        "bytes": 1411304,
+        "sha256": "5f1b7a20cd220078f7a38a1b3acd4a44b8224c147eed598c57d781ffd15cd3ae"
+      }
+    },
+    "test/00272-kA2nG18hCAr/171/00001": {
+      "lidar.npz": {
+        "bytes": 2986700,
+        "sha256": "d8c12931c1cfbabc7a6e11910621985a13c23d19520a71238a84a0c860a5eae4"
+      },
+      "audio.wav": {
+        "bytes": 1411304,
+        "sha256": "509e98afe4b6c65a35a871cbd42b37a5e03f1bb24dde2405c27a6ddb2f999779"
+      }
+    },
+    "test/00272-kA2nG18hCAr/171/00004": {
+      "lidar.npz": {
+        "bytes": 2979572,
+        "sha256": "6e0994532b09530881c26b0d3c4b8a11889ed61f07dc33a071b56a424b20ad4a"
+      },
+      "audio.wav": {
+        "bytes": 1411304,
+        "sha256": "71291b1dce21bb1c724a524aec5cf10ccc5db776b998b9190390e83bf4ec56e3"
+      }
+    },
+    "test/00272-kA2nG18hCAr/33/00006": {
+      "lidar.npz": {
+        "bytes": 2912366,
+        "sha256": "95d479f1a8cb1bbcaef773cb33a867d30bf79d1dc255764f281e5ef23cd08fab"
+      },
+      "audio.wav": {
+        "bytes": 1411304,
+        "sha256": "a3aef337b87fe5764a8a7d8f5e8096ff7adfc610d0d3cdfc6569f011cc082cb5"
+      }
+    },
+    "test/00272-kA2nG18hCAr/358/00000": {
+      "lidar.npz": {
+        "bytes": 2994687,
+        "sha256": "9a9822d0581f27ee4ab1863e5cd4ed0c420d7d73a3131ae1374580733a883287"
+      },
+      "audio.wav": {
+        "bytes": 1411304,
+        "sha256": "98cf62345768eb44fc94f6030af0deb6635efc832080429d97cc57ab82723fa0"
+      }
+    },
+    "test/00272-kA2nG18hCAr/358/00008": {
+      "lidar.npz": {
+        "bytes": 2992740,
+        "sha256": "57042b9015fdadacbf3cd97598dee3fe47a7aae2aa28ed29a7400badcb2701cc"
+      },
+      "audio.wav": {
+        "bytes": 1411304,
+        "sha256": "e3984305daf5d6e308122c65a2a0462eb688538e92664224a8159ea02363f28e"
+      }
+    },
+    "test/00272-kA2nG18hCAr/358/00011": {
+      "lidar.npz": {
+        "bytes": 2975032,
+        "sha256": "02dacf2e8bf32309020f5874b651971dc996a2ad2cc448612f7481b4bd50b9a0"
+      },
+      "audio.wav": {
+        "bytes": 1411304,
+        "sha256": "226c1c81cb0d84775af91f05fd79a1ad6c62a53ad404018f36c14d0c61695b62"
+      }
+    },
+    "test/00272-kA2nG18hCAr/414/00011": {
+      "lidar.npz": {
+        "bytes": 2773262,
+        "sha256": "6b4a4f5cd769b830b86ca3e18ae0e0400cc895f2cf686d3cd950280d19291213"
+      },
+      "audio.wav": {
+        "bytes": 1411304,
+        "sha256": "1dec182e0ab12cd597c50891f914449abe777c7380ff78beb3455cbe4b89959d"
+      }
+    },
+    "test/00272-kA2nG18hCAr/957/00007": {
+      "lidar.npz": {
+        "bytes": 2619416,
+        "sha256": "2fe1691bc7cbca3c058318adbd98add0320ab938c80dbbd27640a05a63661a8f"
+      },
+      "audio.wav": {
+        "bytes": 1411304,
+        "sha256": "8992beaf9e3287f98c7da7bdb75dafebec199e87810a64616a75b769e63a6e04"
+      }
+    },
+    "test/00272-kA2nG18hCAr/958/00008": {
+      "lidar.npz": {
+        "bytes": 2556584,
+        "sha256": "84f28c19ed3707b3ec2dc01ede93d79bd422d50fac36d5e244647800d0446815"
+      },
+      "audio.wav": {
+        "bytes": 1411304,
+        "sha256": "c2e043753140cc9fe68bfc1f76d9fe836475ddbcc0d9226aae4137a6a73894fe"
+      }
+    },
+    "test/00272-kA2nG18hCAr/958/00009": {
+      "lidar.npz": {
+        "bytes": 3079430,
+        "sha256": "1b48c8a440c69d8772490f8e258ff4f34b5b030204ed305c0245e3ab2f91a457"
+      },
+      "audio.wav": {
+        "bytes": 1411304,
+        "sha256": "90fc52115968dbb8ae61562b3d814a273d051a7826e38c1bd66b1b264737edd5"
+      }
+    },
+    "test/00537-oahi4u45xMf/112/00002": {
+      "lidar.npz": {
+        "bytes": 2791800,
+        "sha256": "9a01c19fc2def6d3dd4e1ddd6cee54ebd0f81d489963a6b2d863185da02aa26a"
+      },
+      "audio.wav": {
+        "bytes": 1411304,
+        "sha256": "f2711143a3cf210d80d0e78e9f1ccf72317a5a2a05e25713c1c005c025eda934"
+      }
+    },
+    "test/00537-oahi4u45xMf/112/00004": {
+      "lidar.npz": {
+        "bytes": 2826484,
+        "sha256": "92b1a4a6c7819d914da523c3f982b569316e33a18a90614c54b5a73508e863f2"
+      },
+      "audio.wav": {
+        "bytes": 1411304,
+        "sha256": "6a5870c05c03f3c1c435005177e2a6d030cf09ead94f15f70e22399ecd47edcc"
+      }
+    }
+  }
+}

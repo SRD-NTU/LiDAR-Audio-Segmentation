@@ -1,0 +1,26 @@
+{
+  "frozen_utc": "2026-10-12 20:03 UTC",
+  "selection_split": "val",
+  "selection_observations": 768,
+  "selection_metric": "mean foreground IoU on original points",
+  "selected_rule": "fused",
+  "selected_validation_mean_iou": 0.4709921314697567,
+  "gate_weight": 1.0,
+  "gate2_weight": 1.0,
+  "selected_validation_report": "ORBIT/reports/utonia_dualgate_equal_val.json",
+  "selected_validation_report_sha256": "9b3f6a0f5b0bd3b14a1ccaa94e92a8a25d39cd0053bc9547939f4f45184273a9",
+  "test_performance_seen_at_freeze": false,
+  "test_evaluation_count_planned": 1,
+  "test_geometry": "ORBIT/cache/utonia-heldout-test-v1",
+  "test_posterior": "ORBIT/cache/utonia-heldout-test-v1/adaptive_test_posterior.npy",
+  "test_posterior_sha256": "d43c6281a41a95c18bfabfa1daca566c0f26ab6e4183405ec02495eac4f8432d",
+  "checkpoints": {
+    "masks": "12a239a1e6b559be6a5294e18bb5f96cf14bd178c059f90f5fb27e6cddf7201e",
+    "selector": "9a1d22f44f747d40f4fabaec258389b1adce8a8bf9904bbf9e3b0e32720e904f",
+    "apex": "ef8051d50dcef52ef0ddfc13b78b848c631cf46659e832efd8882f2c8d28d573",
+    "gate": "9a1544c6ba2fc94a0947f78ff06c4333399fda9dfec5c5bbecd5c7032aa93f50",
+    "gate2": "b3e19090f1132beef05920e004f62facedfea4cfe47173b75f7cc431cb61f82a"
+  },
+  "evaluator_source_sha256": "0de10ef9674fde0a2a27640a643f12744536175752b23ef5029e941ee1650596",
+  "decision_note": "Highest complete full-validation observation-only rule. Its 0.47-point edge over the single gate is uncertain across nine validation scenes. No choice will be changed based on TEST."
+}

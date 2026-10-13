@@ -1,0 +1,434 @@
+{
+  "input": "ORBIT/reports/sonata_pipeline_val.json",
+  "rule": "hybrid",
+  "test_used": false,
+  "overall": {
+    "n": 768,
+    "selected_mean_iou": 0.3366243564557105,
+    "candidate_oracle_mean_iou": 0.6526565394396281,
+    "selection_regret": 0.31603218298391766,
+    "candidate_oracle_below_0.25": 100,
+    "candidate_oracle_at_least_0.5_but_selected_below_0.1": 164,
+    "source_seed_missed": 73
+  },
+  "by_difficulty": {
+    "easy": {
+      "n": 420,
+      "selected_mean_iou": 0.36621624807261727,
+      "candidate_oracle_mean_iou": 0.6614253351010293,
+      "selection_regret": 0.2952090870284121,
+      "candidate_oracle_below_0.25": 48,
+      "candidate_oracle_at_least_0.5_but_selected_below_0.1": 67,
+      "source_seed_missed": 21
+    },
+    "hard": {
+      "n": 109,
+      "selected_mean_iou": 0.22885226642866746,
+      "candidate_oracle_mean_iou": 0.5892128795470803,
+      "selection_regret": 0.36036061311841283,
+      "candidate_oracle_below_0.25": 23,
+      "candidate_oracle_at_least_0.5_but_selected_below_0.1": 37,
+      "source_seed_missed": 24
+    },
+    "medium": {
+      "n": 239,
+      "selected_mean_iou": 0.333773157015739,
+      "candidate_oracle_mean_iou": 0.6661814965546875,
+      "selection_regret": 0.33240833953894855,
+      "candidate_oracle_below_0.25": 29,
+      "candidate_oracle_at_least_0.5_but_selected_below_0.1": 60,
+      "source_seed_missed": 28
+    }
+  },
+  "by_category": {
+    "clock": {
+      "n": 48,
+      "selected_mean_iou": 0.1572689175566969,
+      "candidate_oracle_mean_iou": 0.6712088106845234,
+      "selection_regret": 0.5139398931278265,
+      "candidate_oracle_below_0.25": 6,
+      "candidate_oracle_at_least_0.5_but_selected_below_0.1": 20,
+      "source_seed_missed": 7
+    },
+    "coffee machine": {
+      "n": 48,
+      "selected_mean_iou": 0.36661585203061503,
+      "candidate_oracle_mean_iou": 0.682618871608914,
+      "selection_regret": 0.31600301957829896,
+      "candidate_oracle_below_0.25": 5,
+      "candidate_oracle_at_least_0.5_but_selected_below_0.1": 12,
+      "source_seed_missed": 5
+    },
+    "dishwasher": {
+      "n": 48,
+      "selected_mean_iou": 0.1582032925216481,
+      "candidate_oracle_mean_iou": 0.4206982245668769,
+      "selection_regret": 0.2624949320452288,
+      "candidate_oracle_below_0.25": 17,
+      "candidate_oracle_at_least_0.5_but_selected_below_0.1": 10,
+      "source_seed_missed": 13
+    },
+    "door": {
+      "n": 48,
+      "selected_mean_iou": 0.2583285585278645,
+      "candidate_oracle_mean_iou": 0.6297176184986407,
+      "selection_regret": 0.37138905997077626,
+      "candidate_oracle_below_0.25": 7,
+      "candidate_oracle_at_least_0.5_but_selected_below_0.1": 15,
+      "source_seed_missed": 6
+    },
+    "fan": {
+      "n": 48,
+      "selected_mean_iou": 0.36773679382167757,
+      "candidate_oracle_mean_iou": 0.6758831205467383,
+      "selection_regret": 0.30814632672506076,
+      "candidate_oracle_below_0.25": 13,
+      "candidate_oracle_at_least_0.5_but_selected_below_0.1": 9,
+      "source_seed_missed": 13
+    },
+    "kettle": {
+      "n": 48,
+      "selected_mean_iou": 0.5487838169792667,
+      "candidate_oracle_mean_iou": 0.7358203257317655,
+      "selection_regret": 0.18703650875249878,
+      "candidate_oracle_below_0.25": 1,
+      "candidate_oracle_at_least_0.5_but_selected_below_0.1": 9,
+      "source_seed_missed": 1
+    },
+    "keyboard": {
+      "n": 48,
+      "selected_mean_iou": 0.21007964806631207,
+      "candidate_oracle_mean_iou": 0.2924900829481582,
+      "selection_regret": 0.08241043488184611,
+      "candidate_oracle_below_0.25": 19,
+      "candidate_oracle_at_least_0.5_but_selected_below_0.1": 0,
+      "source_seed_missed": 5
+    },
+    "microwave": {
+      "n": 48,
+      "selected_mean_iou": 0.38202640779005986,
+      "candidate_oracle_mean_iou": 0.6762191108427942,
+      "selection_regret": 0.2941927030527343,
+      "candidate_oracle_below_0.25": 3,
+      "candidate_oracle_at_least_0.5_but_selected_below_0.1": 5,
+      "source_seed_missed": 2
+    },
+    "printer": {
+      "n": 48,
+      "selected_mean_iou": 0.4598970801259081,
+      "candidate_oracle_mean_iou": 0.7713914016882578,
+      "selection_regret": 0.3114943215623498,
+      "candidate_oracle_below_0.25": 0,
+      "candidate_oracle_at_least_0.5_but_selected_below_0.1": 5,
+      "source_seed_missed": 0
+    },
+    "refrigerator": {
+      "n": 48,
+      "selected_mean_iou": 0.31578632193850353,
+      "candidate_oracle_mean_iou": 0.8110535660137733,
+      "selection_regret": 0.49526724407526973,
+      "candidate_oracle_below_0.25": 1,
+      "candidate_oracle_at_least_0.5_but_selected_below_0.1": 16,
+      "source_seed_missed": 1
+    },
+    "speaker": {
+      "n": 48,
+      "selected_mean_iou": 0.21322233208532756,
+      "candidate_oracle_mean_iou": 0.6328338424597556,
+      "selection_regret": 0.41961151037442806,
+      "candidate_oracle_below_0.25": 10,
+      "candidate_oracle_at_least_0.5_but_selected_below_0.1": 16,
+      "source_seed_missed": 10
+    },
+    "toaster": {
+      "n": 48,
+      "selected_mean_iou": 0.35586772071837913,
+      "candidate_oracle_mean_iou": 0.6812143469384561,
+      "selection_regret": 0.325346626220077,
+      "candidate_oracle_below_0.25": 2,
+      "candidate_oracle_at_least_0.5_but_selected_below_0.1": 10,
+      "source_seed_missed": 0
+    },
+    "toilet": {
+      "n": 48,
+      "selected_mean_iou": 0.5337888565845788,
+      "candidate_oracle_mean_iou": 0.7309456480046114,
+      "selection_regret": 0.1971567914200326,
+      "candidate_oracle_below_0.25": 3,
+      "candidate_oracle_at_least_0.5_but_selected_below_0.1": 5,
+      "source_seed_missed": 1
+    },
+    "tv": {
+      "n": 48,
+      "selected_mean_iou": 0.3788232633523876,
+      "candidate_oracle_mean_iou": 0.8145564471681913,
+      "selection_regret": 0.43573318381580367,
+      "candidate_oracle_below_0.25": 0,
+      "candidate_oracle_at_least_0.5_but_selected_below_0.1": 15,
+      "source_seed_missed": 0
+    },
+    "vacuum cleaner": {
+      "n": 48,
+      "selected_mean_iou": 0.34890946180288057,
+      "candidate_oracle_mean_iou": 0.564806731728216,
+      "selection_regret": 0.21589726992533542,
+      "candidate_oracle_below_0.25": 12,
+      "candidate_oracle_at_least_0.5_but_selected_below_0.1": 8,
+      "source_seed_missed": 9
+    },
+    "washing machine": {
+      "n": 48,
+      "selected_mean_iou": 0.33065137938926153,
+      "candidate_oracle_mean_iou": 0.6510464816043774,
+      "selection_regret": 0.3203951022151159,
+      "candidate_oracle_below_0.25": 1,
+      "candidate_oracle_at_least_0.5_but_selected_below_0.1": 9,
+      "source_seed_missed": 0
+    }
+  },
+  "by_scene": {
+    "00022-gmuS7Wgsbrx": {
+      "n": 168,
+      "selected_mean_iou": 0.33094176481383675,
+      "candidate_oracle_mean_iou": 0.7158455159736886,
+      "selection_regret": 0.3849037511598518,
+      "candidate_oracle_below_0.25": 17,
+      "candidate_oracle_at_least_0.5_but_selected_below_0.1": 45,
+      "source_seed_missed": 16
+    },
+    "00149-UuwwmrTsfBN": {
+      "n": 156,
+      "selected_mean_iou": 0.3442308608985816,
+      "candidate_oracle_mean_iou": 0.6720367645589599,
+      "selection_regret": 0.32780590366037826,
+      "candidate_oracle_below_0.25": 19,
+      "candidate_oracle_at_least_0.5_but_selected_below_0.1": 36,
+      "source_seed_missed": 16
+    },
+    "00327-xgLmjqzoAzF": {
+      "n": 108,
+      "selected_mean_iou": 0.2863770904368721,
+      "candidate_oracle_mean_iou": 0.6514460612632791,
+      "selection_regret": 0.36506897082640705,
+      "candidate_oracle_below_0.25": 14,
+      "candidate_oracle_at_least_0.5_but_selected_below_0.1": 29,
+      "source_seed_missed": 8
+    },
+    "00404-QN2dRqwd84J": {
+      "n": 60,
+      "selected_mean_iou": 0.3051703792375823,
+      "candidate_oracle_mean_iou": 0.5466295050146679,
+      "selection_regret": 0.24145912577708561,
+      "candidate_oracle_below_0.25": 14,
+      "candidate_oracle_at_least_0.5_but_selected_below_0.1": 9,
+      "source_seed_missed": 6
+    },
+    "00422-8wJuSPJ9FXG": {
+      "n": 96,
+      "selected_mean_iou": 0.2809656446722026,
+      "candidate_oracle_mean_iou": 0.6157615232999282,
+      "selection_regret": 0.3347958786277256,
+      "candidate_oracle_below_0.25": 14,
+      "candidate_oracle_at_least_0.5_but_selected_below_0.1": 22,
+      "source_seed_missed": 10
+    },
+    "00434-L5QEsaVqwrY": {
+      "n": 48,
+      "selected_mean_iou": 0.4582069778504471,
+      "candidate_oracle_mean_iou": 0.6171873779967427,
+      "selection_regret": 0.15898040014629564,
+      "candidate_oracle_below_0.25": 3,
+      "candidate_oracle_at_least_0.5_but_selected_below_0.1": 3,
+      "source_seed_missed": 3
+    },
+    "00476-NtnvZSMK3en": {
+      "n": 60,
+      "selected_mean_iou": 0.40182729503527903,
+      "candidate_oracle_mean_iou": 0.6509648736566305,
+      "selection_regret": 0.24913757862135147,
+      "candidate_oracle_below_0.25": 8,
+      "candidate_oracle_at_least_0.5_but_selected_below_0.1": 5,
+      "source_seed_missed": 4
+    },
+    "00487-erXNfWVjqZ8": {
+      "n": 48,
+      "selected_mean_iou": 0.2970309010706842,
+      "candidate_oracle_mean_iou": 0.5771413067510972,
+      "selection_regret": 0.28011040568041307,
+      "candidate_oracle_below_0.25": 11,
+      "candidate_oracle_at_least_0.5_but_selected_below_0.1": 12,
+      "source_seed_missed": 10
+    },
+    "00546-nS8T59Aw3sf": {
+      "n": 24,
+      "selected_mean_iou": 0.5273570278659463,
+      "candidate_oracle_mean_iou": 0.7286549955606461,
+      "selection_regret": 0.20129796769469976,
+      "candidate_oracle_below_0.25": 0,
+      "candidate_oracle_at_least_0.5_but_selected_below_0.1": 3,
+      "source_seed_missed": 0
+    }
+  },
+  "worst_selection_regret": [
+    {
+      "rel": "val/00022-gmuS7Wgsbrx/13/00002",
+      "category": "fan",
+      "tier": "easy",
+      "selected_iou": 0.0,
+      "oracle_candidate_iou": 1.0,
+      "source_seed_hit": true
+    },
+    {
+      "rel": "val/00022-gmuS7Wgsbrx/147/00009",
+      "category": "tv",
+      "tier": "medium",
+      "selected_iou": 0.0,
+      "oracle_candidate_iou": 1.0,
+      "source_seed_hit": true
+    },
+    {
+      "rel": "val/00022-gmuS7Wgsbrx/385/00004",
+      "category": "speaker",
+      "tier": "medium",
+      "selected_iou": 0.0,
+      "oracle_candidate_iou": 1.0,
+      "source_seed_hit": true
+    },
+    {
+      "rel": "val/00022-gmuS7Wgsbrx/53/00008",
+      "category": "fan",
+      "tier": "medium",
+      "selected_iou": 0.0,
+      "oracle_candidate_iou": 1.0,
+      "source_seed_hit": true
+    },
+    {
+      "rel": "val/00022-gmuS7Wgsbrx/681/00006",
+      "category": "fan",
+      "tier": "hard",
+      "selected_iou": 0.0,
+      "oracle_candidate_iou": 1.0,
+      "source_seed_hit": true
+    },
+    {
+      "rel": "val/00022-gmuS7Wgsbrx/94/00000",
+      "category": "fan",
+      "tier": "easy",
+      "selected_iou": 0.0,
+      "oracle_candidate_iou": 1.0,
+      "source_seed_hit": true
+    },
+    {
+      "rel": "val/00149-UuwwmrTsfBN/833/00000",
+      "category": "coffee machine",
+      "tier": "hard",
+      "selected_iou": 0.0,
+      "oracle_candidate_iou": 1.0,
+      "source_seed_hit": true
+    },
+    {
+      "rel": "val/00327-xgLmjqzoAzF/896/00006",
+      "category": "refrigerator",
+      "tier": "medium",
+      "selected_iou": 0.0,
+      "oracle_candidate_iou": 1.0,
+      "source_seed_hit": true
+    },
+    {
+      "rel": "val/00327-xgLmjqzoAzF/896/00010",
+      "category": "refrigerator",
+      "tier": "medium",
+      "selected_iou": 0.0,
+      "oracle_candidate_iou": 1.0,
+      "source_seed_hit": true
+    },
+    {
+      "rel": "val/00487-erXNfWVjqZ8/571/00009",
+      "category": "toilet",
+      "tier": "medium",
+      "selected_iou": 0.0,
+      "oracle_candidate_iou": 1.0,
+      "source_seed_hit": true
+    },
+    {
+      "rel": "val/00476-NtnvZSMK3en/583/00006",
+      "category": "washing machine",
+      "tier": "easy",
+      "selected_iou": 0.0,
+      "oracle_candidate_iou": 0.9979879260063171,
+      "source_seed_hit": true
+    },
+    {
+      "rel": "val/00422-8wJuSPJ9FXG/208/00011",
+      "category": "refrigerator",
+      "tier": "medium",
+      "selected_iou": 0.0,
+      "oracle_candidate_iou": 0.9897435903549194,
+      "source_seed_hit": true
+    },
+    {
+      "rel": "val/00022-gmuS7Wgsbrx/511/00010",
+      "category": "printer",
+      "tier": "medium",
+      "selected_iou": 0.0,
+      "oracle_candidate_iou": 0.9873417615890503,
+      "source_seed_hit": true
+    },
+    {
+      "rel": "val/00022-gmuS7Wgsbrx/393/00003",
+      "category": "speaker",
+      "tier": "easy",
+      "selected_iou": 0.0,
+      "oracle_candidate_iou": 0.9753086566925049,
+      "source_seed_hit": true
+    },
+    {
+      "rel": "val/00022-gmuS7Wgsbrx/393/00004",
+      "category": "speaker",
+      "tier": "hard",
+      "selected_iou": 0.0,
+      "oracle_candidate_iou": 0.970588207244873,
+      "source_seed_hit": true
+    },
+    {
+      "rel": "val/00149-UuwwmrTsfBN/56/00000",
+      "category": "toilet",
+      "tier": "easy",
+      "selected_iou": 0.005988024175167084,
+      "oracle_candidate_iou": 0.976190447807312,
+      "source_seed_hit": true
+    },
+    {
+      "rel": "val/00022-gmuS7Wgsbrx/385/00006",
+      "category": "speaker",
+      "tier": "medium",
+      "selected_iou": 0.0,
+      "oracle_candidate_iou": 0.9599999785423279,
+      "source_seed_hit": true
+    },
+    {
+      "rel": "val/00422-8wJuSPJ9FXG/517/00005",
+      "category": "toilet",
+      "tier": "easy",
+      "selected_iou": 0.0,
+      "oracle_candidate_iou": 0.9538461565971375,
+      "source_seed_hit": true
+    },
+    {
+      "rel": "val/00327-xgLmjqzoAzF/464/00001",
+      "category": "microwave",
+      "tier": "medium",
+      "selected_iou": 0.0,
+      "oracle_candidate_iou": 0.949999988079071,
+      "source_seed_hit": true
+    },
+    {
+      "rel": "val/00149-UuwwmrTsfBN/684/00011",
+      "category": "clock",
+      "tier": "medium",
+      "selected_iou": 0.0,
+      "oracle_candidate_iou": 0.9482758641242981,
+      "source_seed_hit": true
+    }
+  ]
+}

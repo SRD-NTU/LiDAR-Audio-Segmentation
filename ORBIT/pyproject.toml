@@ -1,0 +1,24 @@
+[build-system]
+requires = ["setuptools>=68", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "orbit-lidar-audio-segmentation"
+version = "0.1.0"
+description = "Audio-prompted sounding-object segmentation from LiDAR and four-channel audio"
+requires-python = ">=3.10"
+dependencies = [
+  "numpy>=1.26,<2",
+  "scipy>=1.15",
+  "soundfile>=0.14",
+  "torch>=2.8",
+  "transformers>=4.47,<5",
+  "huggingface-hub>=0.36,<1",
+]
+
+[tool.setuptools]
+packages = ["orbit", "apex"]
+py-modules = ["gate0_3d"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]

@@ -1,4 +1,0 @@
-# Use a CUDA 12.8 PyTorch build with RTX 5090 (sm_120) support.
-numpy>=1.26,<3
-scipy>=1.13,<2
-torch>=2.8,<3

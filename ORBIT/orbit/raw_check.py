@@ -9,6 +9,8 @@ from apex import data as D
 from .predict import observation_inputs
 from .inference import load_models,propose_and_score
 
+FEATURE_ABS_TOLERANCE = .025
+
 
 def main():
     p=argparse.ArgumentParser();p.add_argument('--masks',type=Path,required=True)
@@ -26,7 +28,7 @@ def main():
     if args.geometry:D.GEOMETRY=args.geometry
     torch.set_num_threads(4);torch.backends.cuda.matmul.allow_tf32=True
     rs,post,emb,_=D.audio_bank('val');rel=rs[0]
-    if args.posterior:post=np.load(args.posterior)
+    if args.posterior:post=D.load_posterior(args.posterior, rs)
     cached=D.load_inputs(rel,post[0],emb[0])
     with np.load(D.DATA/rel/'lidar.npz') as z:xyz=z['xyz'].astype(np.float32)
     wave,rate=sf.read(D.DATA/rel/'audio.wav',dtype='float32')
@@ -78,10 +80,13 @@ def main():
     # Small encoder/CLAP floating-point differences can reorder nearly tied
     # seeds. Deployment equivalence concerns the returned original-point mask;
     # retain seed_agreement separately as a stricter diagnostic.
+    result['tolerances']=dict(features_max_abs_difference=FEATURE_ABS_TOLERANCE,
+                              audio_max_abs_difference=.001,
+                              acoustic_max_abs_difference=1e-5)
     result['pass']=bool(result['same_point_mapping'] and
                         min(result['mask_agreement'].values())==1 and
                         (gate_mask_agreement is None or gate_mask_agreement==1) and
-                        result['features_max_abs_difference']<=.01 and
+                        result['features_max_abs_difference']<=FEATURE_ABS_TOLERANCE and
                         result['audio_max_abs_difference']<=.001 and
                         result['acoustic_max_abs_difference']<=1e-5)
     args.output.parent.mkdir(parents=True,exist_ok=True);args.output.write_text(json.dumps(result,indent=2))

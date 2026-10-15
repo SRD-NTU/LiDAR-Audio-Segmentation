@@ -6,35 +6,70 @@ import numpy as np
 import soundfile as sf
 import torch
 from apex import data as D
-from apex.predict import raw_inputs as sonata_inputs
+from apex.predict import range_grid
 from .inference import load_models,propose_and_score
 
 
-def observation_inputs(xyz,wave,rate,calibration,geometry='sonata',projection=None,device='cuda',spatial=None):
-    # The established observation extractor provides CLAP/SRP and the verified
-    # range-grid contract. Utonia replaces geometry only, preserving that mapping.
-    x=sonata_inputs(xyz,wave,rate,calibration,device)
-    if geometry=='utonia':
-        from .utonia_features import UtoniaFeatures,HERE
-        if projection is None:raise ValueError('Utonia requires the TRAIN-fitted projection')
-        p=torch.load(projection,map_location='cpu',weights_only=True)
-        encoder=UtoniaFeatures(HERE/'pretrained/utonia/utonia.pth',p,device)
-        features,pixels,inverse=encoder.encode(xyz)
-        aligned=D.align_inverse(xyz,pixels,inverse)
-        if not np.array_equal(aligned,x['inverse']):raise AssertionError('Backbone voxel mapping differs')
-        x['features']=features.half().cpu().numpy()
-        del encoder
-    if spatial is not None:
-        from .spatial import BandSRP,BandReliability
-        ck=torch.load(spatial,map_location='cpu',weights_only=False)
-        scorer=BandSRP(calibration['positions_lidar_m'],rate,device)
-        scores,coherence=scorer(wave[None])
-        adapter=BandReliability(ck['adaptive']).to(device).eval();adapter.load_state_dict(ck['model'])
-        with torch.inference_mode():
-            logits=adapter(torch.tensor(scores,device=device),torch.tensor(coherence,device=device))[0]
+class ObservationEncoder:
+    """Reusable XYZ/WAV extractor executing only the selected backbone."""
+    def __init__(self,calibration,geometry='sonata',projection=None,device='cuda',spatial=None):
+        self.calibration=calibration;self.geometry=geometry;self.device=device
+        root=D.ROOT/'ORBIT'
+        if geometry=='utonia':
+            from .utonia_features import UtoniaFeatures
+            if projection is None:raise ValueError('Utonia requires the TRAIN-fitted projection')
+            p=torch.load(projection,map_location='cpu',weights_only=True)
+            self.encoder=UtoniaFeatures(root/'pretrained/utonia/utonia.pth',p,device)
+        elif geometry=='sonata':
+            from lidarwm.sonata_geometry import SonataGeometry
+            self.encoder=SonataGeometry(checkpoint=str(root/'pretrained/sonata/sonata.pth')).to(device).eval()
+        else:raise ValueError(f'Unknown geometry backbone: {geometry}')
+        from lidarwm.foundation import FrozenClap
+        self.clap=FrozenClap(device)
+        self.scorer=self.adapter=None
+        if spatial is not None:
+            from .spatial import BandSRP,BandReliability
+            ck=torch.load(spatial,map_location='cpu',weights_only=False)
+            self.scorer=BandSRP(calibration['positions_lidar_m'],44100,device)
+            self.adapter=BandReliability(ck['adaptive']).to(device).eval()
+            self.adapter.load_state_dict(ck['model'])
+
+    @torch.inference_mode()
+    def __call__(self,xyz,wave,rate):
+        if rate!=44100 or wave.ndim!=2 or wave.shape[1]!=4:
+            raise ValueError('Expected four physical 44100 Hz microphone channels')
+        if xyz.ndim!=2 or xyz.shape[1]!=3 or not len(xyz) or not np.isfinite(xyz).all() or not np.isfinite(wave).all():
+            raise ValueError('Invalid or non-finite XYZ/WAV input')
+        if self.geometry=='utonia':
+            features,pixels,inverse=self.encoder.encode(xyz)
+            features=features.half().cpu().numpy()
+        else:
+            grid,valid,_=range_grid(xyz)
+            encoded=self.encoder._encode(torch.from_numpy(grid)[None].to(self.device),
+                torch.from_numpy(valid)[None].to(self.device),sparse=True)[0]
+            features=encoded['features'].half().cpu().numpy()
+            pixels=encoded['pixels'].cpu().numpy();inverse=encoded['inverse'].cpu().numpy()
+        inverse=D.align_inverse(xyz,pixels,inverse)
+        centre,count=D.geometry_inputs(xyz,features,inverse)
+        embedding,_=self.clap([wave],sample_rate=rate)
+        silent=bool(np.max(np.abs(wave),initial=0)<=1e-12)
+        if silent:posterior=np.zeros(D.acoustic.N_DIRS,np.float32)
+        elif self.scorer is not None:
+            scores,coherence=self.scorer(wave[None])
+            logits=self.adapter(torch.as_tensor(scores,device=self.device),torch.as_tensor(coherence,device=self.device))[0]
             posterior=(logits-logits.max()).exp().cpu().numpy()
-        x['acoustic']=D.acoustic_features(x['xyz'],posterior)
-    return x
+        else:
+            posterior=D.acoustic.srp_phat_3d(wave.astype(np.float64),rate,np.asarray(self.calibration['positions_lidar_m']))
+        return dict(features=features,xyz=centre,count=count,inverse=inverse,
+                    acoustic=D.acoustic_features(centre,posterior),audio=embedding[0].cpu().numpy(),silence=silent)
+
+
+def observation_inputs(xyz,wave,rate,calibration,geometry='sonata',projection=None,device='cuda',spatial=None):
+    if rate!=44100 or wave.ndim!=2 or wave.shape[1]!=4 or not len(wave):
+        raise ValueError('Expected nonempty four-channel 44100 Hz waveform')
+    if xyz.ndim!=2 or xyz.shape[1]!=3 or not len(xyz) or not np.isfinite(xyz).all() or not np.isfinite(wave).all():
+        raise ValueError('Invalid or non-finite XYZ/WAV input')
+    return ObservationEncoder(calibration,geometry,projection,device,spatial)(xyz,wave,rate)
 
 
 def main():
@@ -101,7 +136,7 @@ def main():
     if args.gate:hashes['gate_checkpoint_sha256']=D.sha(args.gate)
     if args.gate2:hashes['gate2_checkpoint_sha256']=D.sha(args.gate2)
     if args.spatial:hashes['spatial_checkpoint_sha256']=D.sha(args.spatial)
-    np.savez_compressed(args.output,sound_mask=mask.astype(np.uint8),selected_origin=selected_origin,
+    np.savez_compressed(args.output,method_version='orbit-consistent-v2',sound_mask=mask.astype(np.uint8),selected_origin=selected_origin,
         rule=('audio_gate_reranker' if args.gate else 'learned_reranker') if args.reranker else args.rule,
         gate_weight=args.gate_weight if args.gate else 0.,gate2_weight=args.gate2_weight,**hashes)
     print(json.dumps(dict(n_points=len(mask),foreground_points=int(mask.sum()),rule=args.rule,

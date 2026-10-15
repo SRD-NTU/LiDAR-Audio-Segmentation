@@ -67,6 +67,8 @@ def supervision(rel, x):
     ok = node_object >= 0
     node_category[ok] = labels[node_object[ok]]
     source_ids, source_counts = np.unique(iid[mask], return_counts=True)
+    if not len(source_ids):
+        raise ValueError(f'No sounding instance for supervised training: {rel}')
     source_id = source_ids[source_counts.argmax()]
     source_index = np.flatnonzero(ids[selected] == source_id)
     if len(source_index) != 1:
@@ -79,7 +81,7 @@ def supervision(rel, x):
     positives = np.bincount(x['inverse'], weights=mask, minlength=nvox).astype(np.float32)
     return dict(memberships=memberships, node_object=node_object, node_category=node_category,
                 categories=labels, source_object=target, source_class=int(labels[target]),
-                positive=positives)
+                positive=positives, instance_ids=ids[selected], source_instance_id=int(source_id))
 
 
 def neighbors(xyz, k=12):

@@ -21,7 +21,7 @@ def main():
             provenance['geometry_manifest_sha256']=D.sha(D.GEOMETRY/'COMPLETE.json')
         if args.spatial:
             path=args.spatial/f'adaptive_{split}_posterior.npy'
-            post=np.load(path)
+            post=D.load_posterior(path, rs)
             if post.shape!=(len(rs),D.acoustic.N_DIRS):raise ValueError('Wrong posterior dimensions')
             provenance['replacement_posterior_sha256']=D.sha(path)
         provenance['variant_wrapper_sha256']=D.sha(Path(__file__))

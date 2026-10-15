@@ -36,7 +36,7 @@ def semantic_scores(x,pred,models,device):
 def gather(split,models,device,train_stride,geometry=None,posterior_dir=None):
     rs,post,emb,_=D.audio_bank(split)
     if posterior_dir:
-        post=np.load(posterior_dir/f'adaptive_{split}_posterior.npy')
+        post=D.load_posterior(posterior_dir/f'adaptive_{split}_posterior.npy', rs)
         if post.shape!=(len(rs),D.acoustic.N_DIRS):raise ValueError('Posterior mismatch')
     index=np.arange(len(rs))[::train_stride] if split=='train' else np.arange(len(rs))
     rows=[];start=time.time()

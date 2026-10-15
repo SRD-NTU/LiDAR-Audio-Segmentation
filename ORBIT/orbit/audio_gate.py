@@ -41,13 +41,13 @@ class AudioSeedGate(nn.Module):
 
 def sample_seeds(row,rng,max_other=7,max_background=4):
     ids=row['node_object'];positive=np.flatnonzero(row['positive']>0)
-    if len(positive)==0:raise ValueError('No source voxel')
+    if len(positive)==0:raise ValueError('No retained source voxel; skip this row for gate training')
     seeds=[int(rng.choice(positive))]
     valid=np.unique(ids[ids>=0]);valid=valid[valid!=int(row['source_object'])]
     for object_id in rng.choice(valid,min(len(valid),max_other),replace=False):
-        nodes=np.flatnonzero(ids==object_id)
-        seeds.append(int(rng.choice(nodes)))
-    background=np.flatnonzero(ids<0)
+        nodes=np.flatnonzero((ids==object_id) & (row['positive']==0))
+        if len(nodes):seeds.append(int(rng.choice(nodes)))
+    background=np.flatnonzero((ids<0) & (row['positive']==0))
     if len(background):
         seeds.extend(map(int,rng.choice(background,min(len(background),max_background),replace=False)))
     return seeds

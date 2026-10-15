@@ -9,11 +9,12 @@ from .linear_selector import LinearObjectSelector
 from .objects import pool_masks, neighbors
 
 
-def load_models(mask_checkpoint, selector_checkpoint, apex_checkpoint, device='cuda'):
-    mc=torch.load(mask_checkpoint,map_location='cpu',weights_only=False)
+def load_models(mask_checkpoint, selector_checkpoint, apex_checkpoint, device='cuda', mask_model=None):
+    mc=torch.load(mask_checkpoint,map_location='cpu',weights_only=False) if mask_checkpoint is not None else {'threshold':.5}
     sc=torch.load(selector_checkpoint,map_location='cpu',weights_only=False)
     ac=torch.load(apex_checkpoint,map_location='cpu',weights_only=False)
-    masks=PromptMasks().to(device).eval();masks.load_state_dict(mc['model'])
+    masks=PromptMasks().to(device).eval() if mask_model is None else mask_model.eval()
+    if mask_model is None:masks.load_state_dict(mc['model'])
     selector=(LinearObjectSelector() if sc.get('kind')=='linear' else ObjectSelector()).to(device).eval()
     selector.load_state_dict(sc['model'])
     apex=APEX(expand=ac['expand']).to(device).eval();apex.load_state_dict(ac['model'])
@@ -21,6 +22,8 @@ def load_models(mask_checkpoint, selector_checkpoint, apex_checkpoint, device='c
 
 
 def diverse_seeds(xyz, score, n, min_distance=.18, excluded=None):
+    if n < 0:raise ValueError('Seed budget must be nonnegative')
+    if n == 0:return []
     seeds=[] if excluded is None else list(excluded)
     added=[]
     # A broad acoustic or point-score maximum often differs by just a few
@@ -46,6 +49,8 @@ def propose_and_score(x, models, device='cuda', n_seeds=48):
     Labels are absent from this function signature and never loaded. Returns
     candidates and alternative predeclared scoring rules for an external evaluator.
     """
+    if n_seeds < 0:raise ValueError('Seed budget must be nonnegative')
+    if x.get('silence', False):return null_prediction(x, reason='silent_observation')
     mask_model,selector,apex,config=models
     f,xyz,acoustic,audio,count=tensor_inputs(x,device)
     apex_prob=apex(f,xyz,acoustic,audio,count)['logits'].sigmoid().cpu().numpy()
@@ -81,8 +86,7 @@ def propose_and_score(x, models, device='cuda', n_seeds=48):
     if fallback.any():
         masks.append(fallback);quality.append(.5);origins.append('apex')
     if not masks:
-        fallback=np.zeros(len(x['count']),bool);fallback[int(apex_prob.argmax())]=True
-        masks=[fallback];quality=[.01];origins=['single_voxel_fallback']
+        return null_prediction(x, apex_prob, reason='no_nonempty_candidate')
     # Remove exact duplicates without labels, preserving their first occurrence.
     kept=[];seen=set()
     for j,m in enumerate(masks):
@@ -104,3 +108,12 @@ def propose_and_score(x, models, device='cuda', n_seeds=48):
     rank_features=np.column_stack([g[:,512:],a,mean_apex,quality,selector_score/10]).astype(np.float32)
     return dict(masks=masks,choices=choices,scores=scores,seeds=seeds,origins=origins,
                 quality=quality,apex_probability=apex_prob,rank_features=rank_features)
+
+
+def null_prediction(x, apex_probability=None, reason='no_association'):
+    """An explicit empty prediction; never invent a foreground voxel."""
+    scores={key:np.zeros(1,np.float32) for key in ('selector','hybrid','apex_quality')}
+    return dict(masks=np.zeros((1,len(x['count'])),bool), choices={key:0 for key in scores},
+                scores=scores, seeds=[], origins=['null:'+reason], quality=np.ones(1,np.float32),
+                apex_probability=np.zeros(len(x['count']),np.float32) if apex_probability is None else apex_probability,
+                rank_features=np.zeros((1,35),np.float32), rejection_reason=reason)

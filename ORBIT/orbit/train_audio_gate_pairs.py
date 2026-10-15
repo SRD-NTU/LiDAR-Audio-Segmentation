@@ -20,47 +20,54 @@ from .selector import ObjectSelector
 from .linear_selector import LinearObjectSelector
 from .train_audio_gate import gate_logits
 from .train_masks import load_split
+from .cache_contracts import require_consistent_cache, METHOD_VERSION, sampling_statistics
 
 
 def same_scan_groups(rows):
     grouped = defaultdict(list)
     for row in rows:
-        rel = row['rel']
-        meta = json.loads((D.DATA / rel / 'metadata.json').read_text())
-        listener = meta['listener']
-        key = (rel.split('/')[1], *listener['position_world'], *listener['rotation_world'])
-        grouped[key].append(row)
+        require_consistent_cache(row)
+        grouped[str(row['geometry_uid'])].append(row)
     result = []
     for group in grouped.values():
-        scans = defaultdict(list)
-        for row in group:
-            xyz = np.asarray(row['xyz'])
-            key = (xyz.shape, hashlib.sha256(xyz.tobytes()).digest())
-            scans[key].append(row)
-        for scan in scans.values():
-            if len({int(row['source_object']) for row in scan}) < 2:
-                continue
-            if any(not np.array_equal(row['xyz'], scan[0]['xyz']) for row in scan[1:]):
-                raise AssertionError('XYZ hash collision or inconsistent cache')
-            result.append(scan)
+        if len({int(row['source_instance_id']) for row in group}) < 2:
+            continue
+        for row in group[1:]:
+            if str(row['raw_xyz_sha256']) != str(group[0]['raw_xyz_sha256']):
+                raise ValueError('Geometry identity collision')
+            for key in ('selected_voxel_ids', 'xyz', 'count', 'instance_ids', 'node_object'):
+                if not np.array_equal(row[key], group[0][key]):
+                    raise ValueError(f'Shared geometry has inconsistent {key}; rebuild the cache')
+        result.append(group)
     return result
 
 
 def pairs_from_group(group):
     return [(a, b) for i, a in enumerate(group) for b in group[i+1:]
-            if int(a['source_object']) != int(b['source_object'])]
+            if int(a['source_instance_id']) != int(b['source_instance_id'])]
+
+
+def usable_pairs(group):
+    return [(a, b) for a, b in pairs_from_group(group)
+            if ((a['positive'] > 0) & (b['positive'] == 0)).any()
+            and ((b['positive'] > 0) & (a['positive'] == 0)).any()]
 
 
 def query_seeds(a, b, rng):
     ids = a['node_object']
-    seeds = [int(rng.choice(np.flatnonzero(a['positive'] > 0))),
-             int(rng.choice(np.flatnonzero(b['positive'] > 0)))]
+    first = np.flatnonzero((a['positive'] > 0) & (b['positive'] == 0))
+    second = np.flatnonzero((b['positive'] > 0) & (a['positive'] == 0))
+    if not len(first) or not len(second):
+        raise ValueError('Ambiguous or absent paired prompts: no exclusive source support')
+    seeds = [int(rng.choice(first)), int(rng.choice(second))]
+    negative = (a['positive'] == 0) & (b['positive'] == 0)
     other = np.unique(ids[ids >= 0])
     other = [int(v) for v in other if int(v) not in
              (int(a['source_object']), int(b['source_object']))]
     for object_id in rng.choice(other, min(4, len(other)), replace=False):
-        seeds.append(int(rng.choice(np.flatnonzero(ids == object_id))))
-    background = np.flatnonzero(ids < 0)
+        nodes = np.flatnonzero((ids == object_id) & negative)
+        if len(nodes):seeds.append(int(rng.choice(nodes)))
+    background = np.flatnonzero((ids < 0) & negative)
     if len(background):
         seeds.extend(map(int, rng.choice(background, min(2, len(background)), replace=False)))
     return seeds
@@ -82,14 +89,17 @@ def evaluate(groups, models, gate, device):
     gate.eval()
     correct = []
     for group in groups:
-        for i, (a, b) in enumerate(pairs_from_group(group)):
+        for i, (a, b) in enumerate(usable_pairs(group)):
             seeds = query_seeds(a, b, np.random.default_rng(8177 + i))
             sa = gate_logits(a, models, gate, device, seeds)
             sb = gate_logits(b, models, gate, device, seeds)
             correct.append((bool(sa[0] > sa[1]), bool(sb[1] > sb[0])))
     if not correct:
-        raise ValueError('No identical-XYZ different-source validation pairs')
-    return dict(n_pairs=len(correct), privileged_true_source_seeds=True,
+        return dict(n_pairs=0,excluded_ambiguous_pairs=sum(len(pairs_from_group(g)) for g in groups),
+                    privileged_true_source_seeds=True,deployable_segmentation_result=False,
+                    pair_both_accuracy=None,individual_accuracy=None)
+    return dict(n_pairs=len(correct), excluded_ambiguous_pairs=sum(
+                    len(pairs_from_group(g))-len(usable_pairs(g)) for g in groups), privileged_true_source_seeds=True,
                 deployable_segmentation_result=False,
                 pair_both_accuracy=float(np.mean([x and y for x, y in correct])),
                 individual_accuracy=float(np.mean(correct)))
@@ -102,7 +112,12 @@ def main():
     p.add_argument('--epochs', type=int, default=12)
     p.add_argument('--seed', type=int, default=1337)
     p.add_argument('--device', default='cuda')
+    p.add_argument('--selection-metric',choices=('deployable','privileged'),default='deployable')
+    p.add_argument('--apex',type=Path,help='Required for deployment-matched checkpoint selection')
+    p.add_argument('--deployment-posterior',type=Path)
     args = p.parse_args()
+    if args.selection_metric=='deployable' and args.apex is None:
+        p.error('--apex is required for deployment-matched selection; use --selection-metric privileged only for diagnostics')
     args.output.mkdir(parents=True, exist_ok=True)
     if (args.output / 'best.pt').exists():
         raise FileExistsError(args.output)
@@ -110,7 +125,10 @@ def main():
     torch.backends.cuda.matmul.allow_tf32 = True
     torch.manual_seed(args.seed)
     models = load_frozen(args.masks, args.selector, args.device)
-    for model in models[:2]:
+    if args.apex is not None:
+        from .inference import load_models
+        models=load_models(args.masks,args.selector,args.apex,args.device)
+    for model in [m for m in models[:3] if m is not None]:
         model.eval()
         for param in model.parameters():
             param.requires_grad_(False)
@@ -118,17 +136,25 @@ def main():
     va = load_split(args.cache, 'val')
     train_groups = same_scan_groups(tr)
     val_groups = same_scan_groups(va)
+    raw_train_groups = len(train_groups)
+    excluded_train_pairs = sum(len(pairs_from_group(g))-len(usable_pairs(g)) for g in train_groups)
+    train_groups = [group for group in train_groups if usable_pairs(group)]
     print(json.dumps(dict(train_exact_xyz_groups=len(train_groups),
                           val_exact_xyz_groups=len(val_groups))), flush=True)
     if not train_groups or not val_groups:
         raise ValueError('Missing shared-XYZ source pairs')
+    if args.selection_metric=='privileged' and not any(usable_pairs(group) for group in val_groups):
+        raise ValueError('No unambiguous validation pairs for privileged selection')
     if {row['rel'].split('/')[1] for group in train_groups for row in group} & \
        {row['rel'].split('/')[1] for group in val_groups for row in group}:
         raise AssertionError('TRAIN and VAL scene overlap')
     gate = AudioSeedGate().to(args.device)
     opt = torch.optim.AdamW(gate.parameters(), lr=.0005, weight_decay=.05)
     scheduler = torch.optim.lr_scheduler.CosineAnnealingLR(opt, args.epochs, eta_min=.00005)
-    config = dict(cache=str(args.cache), epochs=args.epochs, seed=args.seed,
+    config = dict(method_version=METHOD_VERSION, selection_metric=args.selection_metric,
+                  cache=str(args.cache), epochs=args.epochs, seed=args.seed,
+                  raw_train_groups=raw_train_groups, excluded_train_pairs=excluded_train_pairs,
+                  sampling_statistics=sampling_statistics(tr),
                   test_used=False, train_same_scan_groups=len(train_groups),
                   val_same_scan_groups=len(val_groups),
                   masks_sha256=D.sha(args.masks), selector_sha256=D.sha(args.selector),
@@ -142,7 +168,7 @@ def main():
         gate.train()
         loss_total = 0.0
         for step, j in enumerate(rng.permutation(len(train_groups))):
-            options = pairs_from_group(train_groups[j])
+            options = usable_pairs(train_groups[j])
             a, b = options[int(rng.integers(len(options)))]
             seeds = query_seeds(a, b, rng)
             sa = gate_logits(a, models, gate, args.device, seeds)
@@ -165,20 +191,27 @@ def main():
         scheduler.step()
         if epoch == 1 or epoch % 2 == 0 or epoch == args.epochs:
             result = evaluate(val_groups, models, gate, args.device)
+            deployment=None
+            if args.selection_metric=='deployable':
+                from .validation import deployment_validation
+                deployment=deployment_validation(models,args.device,args.cache,gate,args.deployment_posterior)
+            selected_metric=deployment['mean_iou'] if deployment else result['pair_both_accuracy']
             info = dict(epoch=epoch, train_loss=loss_total/len(train_groups),
+                        selected_validation_metric=selected_metric, selection_metric=args.selection_metric,
                         **{k:v for k,v in result.items() if k not in ('privileged_true_source_seeds',
                                                                        'deployable_segmentation_result')},
                         elapsed_seconds=time.time()-start)
             print(json.dumps(info), flush=True)
             history.append(info)
-            if result['pair_both_accuracy'] > best:
-                best = result['pair_both_accuracy']
+            if selected_metric > best:
+                best = selected_metric
                 torch.save(dict(model=gate.state_dict(), config=config, epoch=epoch),
                            args.output / 'best.pt')
                 (args.output / 'privileged_validation.json').write_text(json.dumps(result, indent=2))
+                if deployment:(args.output/'deployable_validation.json').write_text(json.dumps(deployment,indent=2))
             (args.output / 'history.json').write_text(json.dumps(history, indent=2))
     (args.output / 'COMPLETE.json').write_text(json.dumps(dict(test_used=False,
-        best_privileged_pair_both_accuracy=best,
+        selection_metric=args.selection_metric,best_selected_validation_metric=best,
         checkpoint_sha256=D.sha(args.output / 'best.pt')), indent=2))
 
 

@@ -1,2 +1,6 @@
-# Optional raw foundation-geometry stack; requires a compatible CUDA/PyTorch platform.
--e ../LiDAR-WM[geometry]
+# CUDA 12.8 / PyTorch 2.8 inference extensions; install after requirements.txt.
+# This matches the versions used by ORBIT/scripts/setup_env.sh.
+--find-links https://data.pyg.org/whl/torch-2.8.0+cu128.html
+--only-binary=:all:
+spconv-cu126==2.3.8 ; platform_system == "Linux"
+torch-scatter==2.1.2+pt28cu128 ; platform_system == "Linux"

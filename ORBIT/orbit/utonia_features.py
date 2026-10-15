@@ -16,7 +16,7 @@ HERE=Path(__file__).resolve().parents[1]
 class UtoniaFeatures:
     def __init__(self,checkpoint,projection=None,device='cuda',patch_size=256):
         sys.path.insert(0,str(HERE/'third_party/Utonia'))
-        sys.path.insert(0,str(D.ROOT/'LiDAR-WM/src'))
+        sys.path.insert(0,str(HERE/'runtime'))
         from utonia.model import load
         from lidarwm.sonata_geometry import geometry_normals
         self.normals=geometry_normals;self.device=device
@@ -116,7 +116,8 @@ def main():
     report=dict(written=written,checked_mappings=checked,test_used=False,feature_dim=256,
         backbone='Pointcept/Utonia',huggingface_revision='fb39b40d33d215d29d1d4717ffb86287f4700c4d',
         code_revision='da776a0bd3a48c6df83ac2ae0e27b26141cc7e31',checkpoint_sha256=D.sha(args.checkpoint),
-        projection_sha256=D.sha(args.output/'projection.pt'),projection_training_samples=projection_rels,
+        projection_sha256=D.sha(args.output/'projection.pt'),projection_path=str((args.output/'projection.pt').resolve()),
+        projection_training_samples=projection_rels,
         inherited_projection=str(args.projection) if args.projection else None,
         source_sha256=D.sha(Path(__file__)),inputs=['xyz','xyz-derived normals','zero color'],
         physical_voxel_size=.05,coordinate_scale=.5,patch_size=256,

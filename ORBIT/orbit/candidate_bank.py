@@ -35,7 +35,7 @@ def main():
         rs,post,emb,provenance=D.audio_bank(split);rows=[]
         if args.spatial:
             path=args.spatial/f'adaptive_{split}_posterior.npy'
-            post=np.load(path)
+            post=D.load_posterior(path, rs)
             if post.shape!=(len(rs),D.acoustic.N_DIRS):raise ValueError('Wrong posterior dimensions')
             posterior_hashes[split]=D.sha(path)
         indices=np.arange(len(rs))[::args.train_stride] if split=='train' else np.arange(len(rs))
@@ -53,7 +53,7 @@ def main():
             target=D.load_targets(rel,x['inverse'],x['count']);masks=pred['masks']
             inter=(masks*target['positive'][None]).sum(1)
             union=(masks*x['count'][None]).sum(1)+target['positive'].sum()-inter
-            ious=inter/union.clip(1)
+            ious=np.where(union==0,1.,inter/union.clip(1))
             rows.append(dict(rel=rel,features=features,baseline=baseline,
                              ious=ious.astype(np.float32),origins=pred['origins']))
             if (done+1)%100==0:print(f'candidates {split} {done+1}/{len(indices)} {time.time()-start:.1f}s',flush=True)

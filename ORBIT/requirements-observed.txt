@@ -1,9 +1,0 @@
-# Observed existing runtime. Do not blindly install over the shared environment.
-numpy==1.26.4
-scipy==1.15.3
-soundfile==0.14.0
-torch==2.8.0
-transformers==4.47.0
-huggingface-hub==0.36.2
-# Existing binary extensions: spconv-cu126 2.3.8,
-# torch-scatter 2.1.2+pt28cu128. Match local CUDA/PyTorch before installing.

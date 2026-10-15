@@ -15,6 +15,7 @@ from .objects import neighbors
 
 @torch.inference_mode()
 def gate_per_seed(x,models,gate,seeds,device):
+    if not len(seeds):return {}
     masks,selector,_,_=models
     f,xyz,acoustic,audio,count=tensor_inputs(x,device)
     knn=torch.as_tensor(neighbors(x['xyz']),device=device,dtype=torch.long)
@@ -36,7 +37,10 @@ def candidate_gate_values(x,models,gate,pred,device):
     values=np.array([by_seed.get(int(origin.split(':')[1]),0.) if origin.startswith('prompt:')
                      else 0. for origin in pred['origins']],np.float32)
     valid=np.array([origin.startswith('prompt:') for origin in pred['origins']])
-    if valid.any():values[valid]-=values[valid].mean()
+    # Each represented seed has one vote regardless of threshold multiplicity.
+    represented={int(origin.split(':')[1]) for origin in pred['origins'] if origin.startswith('prompt:')}
+    if represented:
+        values[valid]-=np.mean([by_seed[seed] for seed in sorted(represented)])
     return values
 
 
@@ -79,21 +83,26 @@ def main():
     rs,post,emb,provenance=D.audio_bank(args.split)
     if args.spatial:
         path=args.spatial/f'adaptive_{args.split}_posterior.npy'
-        post=np.load(path)
+        post=D.load_posterior(path, rs)
         if post.shape!=(len(rs),D.acoustic.N_DIRS):raise ValueError('Posterior mismatch')
         provenance['replacement_posterior_sha256']=D.sha(path)
     if args.posterior:
-        post=np.load(args.posterior)
+        post=D.load_posterior(args.posterior, rs)
         if post.shape!=(len(rs),D.acoustic.N_DIRS):raise ValueError('Posterior mismatch')
         provenance['replacement_posterior_sha256']=D.sha(args.posterior)
     rng=np.random.default_rng(1701)
-    partners=[int(rng.choice([j for j,s in enumerate(rs) if s.split('/')[1]!=rel.split('/')[1]]))
-              for rel in rs]
+    partners=[]
+    if args.control=='shuffled':
+        for rel in rs:
+            choices=[j for j,s in enumerate(rs) if s.split('/')[1]!=rel.split('/')[1]]
+            if not choices:raise ValueError('Shuffled control requires at least two scenes')
+            partners.append(int(rng.choice(choices)))
     rows=[];start=time.time()
     for done,rel in enumerate(rs):
         j=partners[done] if args.control=='shuffled' else done
         posterior=np.ones_like(post[j]) if args.control=='uniform-spatial' else post[j]
         x=D.load_inputs(rel,posterior,emb[j])
+        if args.control=='uniform-spatial':x['acoustic']=D.neutral_acoustic_features(len(x['xyz']))
         pred=propose_and_score(x,models,args.device)
         values=candidate_gate_values(x,models,gate,pred,args.device)
         if gate2 is not None:
@@ -106,7 +115,7 @@ def main():
         masks=pred['masks'];positive=targets['positive'];count=x['count']
         inter=(masks*positive[None]).sum(1)
         union=(masks*count[None]).sum(1)+positive.sum()-inter
-        ious=inter/union.clip(1)
+        ious=np.where(union==0,1.,inter/union.clip(1))
         meta=json.loads((D.DATA/rel/'metadata.json').read_text())
         distance=float(meta['relative_source']['distance_m'])
         selected=dict(baseline=int(pred['choices']['hybrid']),fused=int(fused.argmax()),
@@ -118,13 +127,15 @@ def main():
                 scores=ranker(torch.as_tensor(features,device=args.device),
                               torch.as_tensor(fused,device=args.device,dtype=torch.float32))
             selected['reranked']=int(scores.argmax())
-        rows.append(dict(rel=rel,scene=rel.split('/')[1],category=D.CATS[targets['source']],
+        rows.append(dict(rel=rel,scene=rel.split('/')[1],category=D.CATS[targets['source']] if targets['source']>=0 else 'none',
                          tier='easy' if distance<=3 else 'medium' if distance<=5 else 'hard',
                          **{key:float(ious[index]) for key,index in selected.items()},
                          oracle_candidate_iou=float(ious.max()),
                          choices={key:pred['origins'][index] for key,index in selected.items()}))
         if (done+1)%50==0:print(f'gate eval {done+1}/{len(rs)} fused={np.mean([r["fused"] for r in rows]):.4f}',flush=True)
-    result=dict(split=args.split,test_used=args.split=='test',full_validation=args.split=='val',full_split=True,
+    result=dict(method_version='orbit-consistent-v2', gate_centering='unique-represented-seeds',
+                spatial_control='neutral-all-derived-channels' if args.control=='uniform-spatial' else args.control,
+                split=args.split,test_used=args.split=='test',full_validation=args.split=='val',full_split=True,
                 control=args.control,
                 geometry=str(D.GEOMETRY),provenance=provenance,
                 gate_weight=args.gate_weight,

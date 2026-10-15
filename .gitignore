@@ -1,4 +1,4 @@
-# Python and editor state
+# Local Python and editor state
 __pycache__/
 *.py[cod]
 .pytest_cache/
@@ -8,25 +8,14 @@ build/
 .idea/
 .vscode/
 
-# Generated experiments and downloadable assets
-cache/
-logs/
-outputs/
-reports/
-runs/
-pretrained/
-data/
-dataset/
+# Generated ORBIT artifacts and separately downloaded model assets
+ORBIT/cache/
+ORBIT/logs/
+ORBIT/outputs/
+ORBIT/reports/
+ORBIT/runs/
+ORBIT/pretrained/
 *.pt
 *.pth
 *.ckpt
 *.mmap
-
-# Optional external repositories cloned as described in LiDAR-WM/third_party/README.md
-LiDAR-WM/third_party/Point-SAM/
-LiDAR-WM/third_party/sonata/
-LiDAR-WM/learned-suppression-3d/
-
-# The curated, versioned demonstration subset is intentionally included.
-!dataset-sample/
-!dataset-sample/**

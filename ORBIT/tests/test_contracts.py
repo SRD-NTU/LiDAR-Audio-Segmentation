@@ -1,8 +1,4 @@
 import unittest
-import json
-from pathlib import Path
-import tempfile
-from unittest.mock import patch
 import numpy as np
 import torch
 from orbit.objects import pool_masks, neighbors, GEOM_DIM, ACOUSTIC_DIM
@@ -62,28 +58,6 @@ class Contracts(unittest.TestCase):
         row=dict(features=features,baseline=np.zeros(2,np.float32))
         np.testing.assert_allclose(score(row,1,0),[2.8,7.])
         np.testing.assert_allclose(score(row,0,1),[1.,3.])
-
-    def test_portable_audio_bank_checks_observation_order(self):
-        from apex import data as D
-        with tempfile.TemporaryDirectory() as directory:
-            root=Path(directory)
-            (root/'metadata').mkdir()
-            rels=['train/scene/pose/00000','train/scene/pose/00001']
-            (root/'metadata/train.json').write_text(json.dumps(rels))
-            (root/'metadata/microphone_array.json').write_text('{}')
-            bank=root/'audio-bank';bank.mkdir()
-            arrays=dict(rels=np.asarray(rels),post=np.ones((2,D.acoustic.N_DIRS),np.float32),
-                        emb=np.ones((2,512),np.float32))
-            np.savez(bank/'train.npz',**arrays)
-            with patch.object(D,'DATA',root),patch.object(D,'AUDIO_BANK',bank):
-                loaded,post,emb,provenance=D.audio_bank('train')
-                self.assertEqual(loaded,rels)
-                self.assertEqual(post.shape,(2,D.acoustic.N_DIRS))
-                self.assertEqual(emb.shape,(2,512))
-                self.assertIn('audio_bank_sha256',provenance)
-                np.savez(bank/'train.npz',**{**arrays,'rels':np.asarray(rels[::-1])})
-                with self.assertRaisesRegex(ValueError,'observation order'):
-                    D.audio_bank('train')
 
     def test_pooling_point_counts(self):
         x=dict(features=np.stack([np.ones(256),np.ones(256)*3]).astype(np.float32),

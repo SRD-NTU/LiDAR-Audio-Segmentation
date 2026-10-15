@@ -53,14 +53,20 @@ def main():
         logits=adapter(torch.tensor(scores,device=args.device),
                        torch.tensor(coherence,device=args.device))[0]
         posterior=(logits-logits.max()).exp().cpu().numpy().astype(np.float32)
+        if float(np.max(np.abs(wave),initial=0))<=1e-12:posterior[:]=0
         post.append(posterior)
         if (i+1)%100==0:print(f'heldout observations {i+1}/{len(rels)} {time.time()-start:.1f}s',flush=True)
     array=np.stack(post)
     np.save(args.output/'adaptive_test_posterior.npy',array)
+    D.write_posterior_identity(args.output/'adaptive_test_posterior.npy', rels, dependencies={
+        str(args.projection):D.sha(args.projection), str(args.spatial):D.sha(args.spatial),
+        str(HERE/'pretrained/utonia/utonia.pth'):D.sha(HERE/'pretrained/utonia/utonia.pth'),
+        str(Path(__file__).resolve()):D.sha(Path(__file__))})
     (args.output/'rels.json').write_text(json.dumps(rels))
     result=dict(split='test',n=len(rels),test_observation_inputs_read=True,
                 test_annotations_read=False,test_performance_evaluated=False,
-                geometry_projection_sha256=D.sha(args.projection),spatial_checkpoint_sha256=D.sha(args.spatial),
+                geometry_projection_sha256=D.sha(args.projection),projection_path=str(args.projection.resolve()),
+                spatial_checkpoint_sha256=D.sha(args.spatial),
                 calibration_sha256=D.sha(D.DATA/'metadata/microphone_array.json'),
                 utonia_checkpoint_sha256=D.sha(HERE/'pretrained/utonia/utonia.pth'),
                 source_sha256=D.sha(Path(__file__)),posterior_shape=list(array.shape),

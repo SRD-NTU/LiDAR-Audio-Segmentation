@@ -38,7 +38,7 @@ class BandSRP:
         s=torch.stft(x.reshape(b*c,t),n_fft=2048,hop_length=1024,window=self.window,
                      center=True,pad_mode='constant',return_complex=True).reshape(b,c,1025,-1)[:,:,self.keep]
         energy=s.abs().square().sum((1,2))
-        active=energy>energy.amax(1,keepdim=True)*.05
+        active=energy>torch.maximum(energy.amax(1,keepdim=True)*.05,torch.full_like(energy[:,:1],1e-20))
         crosses=[]
         for i,j in self.pairs:
             cross=s[:,i]*s[:,j].conj()
@@ -139,7 +139,11 @@ def main():
                     with torch.inference_mode():
                         for split,(s,c,_) in cache.items():
                             logits=model(s,c);post=(logits-logits.amax(1,keepdim=True)).exp().cpu().numpy()
+                            post[(c.amax(1)<=1e-12).cpu().numpy()]=0
                             np.save(args.output/f'{key}_{split}_posterior.npy',post)
+                            D.write_posterior_identity(args.output/f'{key}_{split}_posterior.npy', D.rels(split),
+                                dependencies={str(args.output/f'{key}.pt'):D.sha(args.output/f'{key}.pt'),
+                                              str(Path(__file__).resolve()):D.sha(Path(__file__))}, replace=True)
         reports[key]=history
     base={}
     for split in ('train','val'):

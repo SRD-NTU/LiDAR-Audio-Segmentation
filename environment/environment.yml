@@ -1,8 +1,10 @@
-name: lidar-audio-segmentation
+name: orbit-lidar-audio-segmentation
+# Create from the LiDAR-Audio-Segmentation root. For CUDA inference use
+# environment/setup.sh instead; this Conda file installs only core packages.
 channels:
   - conda-forge
 dependencies:
   - python=3.10
   - pip
   - pip:
-      - -r requirements.txt
+      - -r environment/requirements.txt

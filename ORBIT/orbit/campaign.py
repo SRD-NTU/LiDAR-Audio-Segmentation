@@ -63,7 +63,7 @@ def main():
     else:
         common=['--masks',ROOT/'runs/masks-1337/best.pt',
                 '--selector',ROOT/'runs/linear-selector-v2-1337/best.pt',
-                '--apex',ROOT/'runs/apex-sonata-1337/best.pt']
+                '--apex',ROOT/'runs/apex-tetra-aligned-1337/best.pt']
         for control in ('matched','shuffled','uniform-spatial'):
             run('orbit.evaluate',*common,'--reranker',ROOT/'runs/reranker-sonata-1337/best.pt',
                 '--control',control,'--output',ROOT/f'reports/sonata_reranker_{control}_val.json')

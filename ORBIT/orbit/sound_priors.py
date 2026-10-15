@@ -36,7 +36,7 @@ def main():
     if args.output.exists():raise FileExistsError(args.output)
     torch.set_num_threads(4)
     from transformers import ClapModel,ClapProcessor
-    cache=str(D.ROOT/'LiDAR-WM/pretrained/hub')
+    cache=str(D.ROOT/'ORBIT/pretrained/clap-hub')
     processor=ClapProcessor.from_pretrained('laion/clap-htsat-unfused',cache_dir=cache,local_files_only=True)
     model=ClapModel.from_pretrained('laion/clap-htsat-unfused',cache_dir=cache,local_files_only=True).to(args.device).eval()
     text=[f'The sound of {event}.' for c in D.CATS for event in EVENTS[c]]

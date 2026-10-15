@@ -14,7 +14,8 @@ def report(rows, key):
     result=dict(n=len(rows),mean_iou=float(values.mean()),median_iou=float(np.median(values)),
                 zero_iou_fraction=float((values==0).mean()),fraction_iou_ge_half=float((values>=.5).mean()),
                 by_difficulty={name:dict(n=sum(r['tier']==name for r in rows),
-                    mean_iou=float(np.mean([r[key] for r in rows if r['tier']==name]))) for name in ('easy','medium','hard')},
+                    mean_iou=float(np.mean([r[key] for r in rows if r['tier']==name])) if any(r['tier']==name for r in rows) else None)
+                    for name in ('easy','medium','hard')},
                 by_category={c:float(np.mean([r[key] for r in rows if r['category']==c])) for c in sorted({r['category'] for r in rows})},
                 by_scene={s:float(np.mean([r[key] for r in rows if r['scene']==s])) for s in sorted({r['scene'] for r in rows})})
     rng=np.random.default_rng(726);scenes=sorted(result['by_scene'])
@@ -49,13 +50,18 @@ def main():
         ranker.load_state_dict(checkpoint['model']);ranker.eval()
     rs,post,emb,provenance=D.audio_bank(args.split)
     if args.posterior:
-        post=np.load(args.posterior)
+        post=D.load_posterior(args.posterior, rs)
         if post.shape!=(len(rs),D.acoustic.N_DIRS):raise ValueError('Wrong posterior bank shape')
         provenance['replacement_posterior_sha256']=D.sha(args.posterior)
     provenance['geometry']=str(D.GEOMETRY)
     idx=np.arange(len(rs)) if not args.limit else np.linspace(0,len(rs)-1,min(args.limit,len(rs)),dtype=int)
     rng=np.random.default_rng(1701)
-    partners=[int(rng.choice([j for j,s in enumerate(rs) if s.split('/')[1]!=r.split('/')[1]])) for r in rs]
+    partners=[]
+    if args.control=='shuffled':
+        for r in rs:
+            choices=[j for j,s in enumerate(rs) if s.split('/')[1]!=r.split('/')[1]]
+            if not choices:raise ValueError('Shuffled control requires at least two scenes')
+            partners.append(int(rng.choice(choices)))
     rows=[];start=time.time()
     for done,i in enumerate(idx):
         rel=rs[i];j=partners[i] if args.control=='shuffled' else i
@@ -72,22 +78,22 @@ def main():
         positive=targets['positive'];count=x['count'];masks=pred['masks']
         inter=(masks*positive[None]).sum(1)
         union=(masks*count[None]).sum(1)+positive.sum()-inter
-        ious=inter/union.clip(1)
+        ious=np.where(union==0,1.,inter/union.clip(1))
         meta=json.loads((D.DATA/rel/'metadata.json').read_text())
         distance=float(meta['relative_source']['distance_m'])
         apexmask=pred['apex_probability']>=models[-1]['apex_threshold']
         ai=float((apexmask*positive).sum());au=float((apexmask*count).sum()+positive.sum()-ai)
-        row=dict(rel=rel,scene=rel.split('/')[1],category=D.CATS[targets['source']],distance=distance,
+        row=dict(rel=rel,scene=rel.split('/')[1],category=D.CATS[targets['source']] if targets['source']>=0 else 'none',distance=distance,
                  tier='easy' if distance<=3 else 'medium' if distance<=5 else 'hard',
                  **{k:float(ious[v]) for k,v in pred['choices'].items()},
-                 apex=ai/max(au,1),oracle_candidate_iou=float(ious.max()),candidates=len(masks),
+                 apex=ai/max(au,1) if au else 1.,oracle_candidate_iou=float(ious.max()),candidates=len(masks),
                  source_seed_hit=bool((positive[pred['seeds']]>0).any()),
                  choices={k:pred['origins'][v] for k,v in pred['choices'].items()})
         rows.append(row)
         if (done+1)%50==0:
             print(json.dumps(dict(done=done+1,n=len(idx),hybrid_iou=float(np.mean([r['hybrid'] for r in rows])),
                 oracle_coverage=float(np.mean([r['oracle_candidate_iou'] for r in rows])),elapsed=time.time()-start)),flush=True)
-    result=dict(split=args.split,test_evaluated=args.split=='test',control=args.control,
+    result=dict(method_version='orbit-consistent-v2',split=args.split,test_evaluated=args.split=='test',control=args.control,
                 full_validation=args.split=='val' and args.limit is None,full_split=args.limit is None,
                 checkpoints={k:dict(path=str(getattr(args,k)),sha256=D.sha(getattr(args,k))) for k in
                              (('masks','selector','apex','reranker') if args.reranker else ('masks','selector','apex'))},

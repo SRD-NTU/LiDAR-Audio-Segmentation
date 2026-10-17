@@ -19,3 +19,12 @@ ORBIT/pretrained/
 *.pth
 *.ckpt
 *.mmap
+
+# Acoustic-WM model assets, predictions, examples and runtime caches
+/Acoustic-WM/**/checkpoints/*.pt
+/Acoustic-WM/**/assets/pointbind/point-audio.pt
+/Acoustic-WM/**/outputs/**/*.npz
+/Acoustic-WM/**/examples/*.npz
+/Acoustic-WM/**/examples/*.npy
+/Acoustic-WM/**/outputs/.cache/
+/Acoustic-WM/**/__pycache__/

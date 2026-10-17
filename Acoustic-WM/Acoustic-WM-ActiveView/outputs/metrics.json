@@ -1,0 +1,12 @@
+{
+  "version": "Acoustic-WM-ActiveView",
+  "seed": 1337,
+  "audio_observations": 2,
+  "point_clouds": 1,
+  "validation_iou": 0.541458785533905,
+  "test_iou": 0.43951416015625,
+  "validation_samples": 768,
+  "test_samples": 768,
+  "test_scope": "Existing supplemental TEST; historical results were previously seen",
+  "output_mask": "Complete source-object mask on original reference points"
+}

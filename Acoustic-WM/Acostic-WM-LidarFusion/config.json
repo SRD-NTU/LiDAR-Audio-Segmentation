@@ -1,0 +1,31 @@
+{
+  "paths": {
+    "dataset": "assets/sensor",
+    "orbit": "../../ORBIT",
+    "geometry": "../../ORBIT/cache/utonia-xyz-v1",
+    "masks": "../../ORBIT/runs/masks-consistent-v2-full-1337/best.pt",
+    "selector": "../../ORBIT/runs/selector-utonia-spatial-1337/best.pt",
+    "apex": "../../ORBIT/runs/apex-utonia-spatial-1337/best.pt",
+    "gate": "../../ORBIT/runs/audio-gate-consistent-v2-full-1337/best.pt",
+    "gate2": "../../ORBIT/runs/audio-gate-pairs-consistent-v2-full-1337/best.pt",
+    "spatial": "../../ORBIT/cache/spatial-v1"
+  },
+  "preparation": {
+    "seeds": 48,
+    "hypotheses": 4
+  },
+  "version": "Acoustic-WM-LiDARFusion-v2",
+  "audio_observations": 2,
+  "point_clouds": 2,
+  "fusion": {
+    "voxel_size_m": 0.02,
+    "registration": "provided_rigid_receiver_poses",
+    "mode": "measured_two_scan_fusion",
+    "feature_backend": "frozen_utonia_on_unstructured_fused_geometry",
+    "feature_voxel_size_m": 0.05,
+    "fused_normals": "measured_local_PCA_oriented_to_acquiring_receiver",
+    "trained_for_fusion": true,
+    "acoustic_world_frozen": true,
+    "ranking_checkpoint": "checkpoints/fusion_ranker.pt"
+  }
+}

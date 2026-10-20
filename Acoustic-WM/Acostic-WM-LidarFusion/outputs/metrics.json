@@ -1,0 +1,82 @@
+{
+  "complete": true,
+  "selected": {
+    "name": "mlp-b2",
+    "kind": "union",
+    "val_iou": 0.5683918048938116,
+    "epoch": 11,
+    "baseline_iou": 0.5400446032250935,
+    "checkpoint": "checkpoints/fusion_ranker.pt",
+    "completed_epochs": 17
+  },
+  "checkpoint_sha256": "b2b2676e5eef238d118309a0683f0ebdb582444685f5a357bc97ab903208ef15",
+  "splits": {
+    "val": {
+      "samples": 768,
+      "iou": 0.5683918079444842,
+      "second_iou": 0.5154104032720473,
+      "two_scan_iou": 0.5526233996618733,
+      "matched_activeview_iou": 0.5400446032250935,
+      "frozen_recovery_base_iou": 0.5400446032250935,
+      "preserved_reference_iou": 0.5400446032250935,
+      "preserved_second_iou": 0.48590142796486663,
+      "preserved_two_scan_iou": 0.519435025284262,
+      "minus_activeview_pp": 2.8347204719390673,
+      "second_only_source_points": 1284307,
+      "second_only_source_recalled": 912210,
+      "second_only_source_recall": 0.7102741011300258,
+      "preserved_second_only_source_recall": 0.7072771541383797,
+      "episode_bootstrap_gain_ci95_pp": [
+        1.3216412612367396,
+        4.3607586500185835
+      ],
+      "episodes": 64,
+      "predictions_verified": 768
+    },
+    "test": {
+      "samples": 768,
+      "iou": 0.44727177272413127,
+      "second_iou": 0.3868842359325602,
+      "two_scan_iou": 0.4156219338687303,
+      "matched_activeview_iou": 0.4410848287297995,
+      "frozen_recovery_base_iou": 0.4410848287297995,
+      "preserved_reference_iou": 0.4410848287297995,
+      "preserved_second_iou": 0.38480377530754595,
+      "preserved_two_scan_iou": 0.4140838356572658,
+      "minus_activeview_pp": 0.6186943994331784,
+      "second_only_source_points": 877655,
+      "second_only_source_recalled": 526256,
+      "second_only_source_recall": 0.5996160222410856,
+      "preserved_second_only_source_recall": 0.6377597119597108,
+      "episode_bootstrap_gain_ci95_pp": [
+        -0.9374738595007178,
+        2.0508263586786284
+      ],
+      "episodes": 64,
+      "predictions_verified": 768
+    }
+  },
+  "audio_observations": 2,
+  "point_clouds": 2,
+  "selection_split": "val",
+  "test_used_for_selection": false,
+  "test_scope": "Previously seen supplemental TEST; excluded from adaptation and selection",
+  "activeview_unchanged": true,
+  "world_model": "original action-conditioned acoustic world, frozen",
+  "geometry": "two measured scans with known poses; reference masks retained in union mode",
+  "seed": 1337,
+  "version": "Acoustic-WM-LiDARFusion-v2",
+  "raw_deployment_checked": true,
+  "validation_iou": 0.5683918079444842,
+  "test_iou": 0.44727177272413127,
+  "validation_samples": 768,
+  "test_samples": 768,
+  "headline_metric": "mean IoU on original reference points",
+  "final_verification": {
+    "activeview_unchanged": true,
+    "selected_checkpoint_sha256_verified": true,
+    "predictions": 1536,
+    "regression_tests": 32,
+    "raw_deployment_passed": true
+  }
+}

@@ -1,0 +1,88 @@
+schema: said-data-config-v1
+
+dcase_recordings:
+  dataset: dcase2026_task3_track_a
+  root: /path/to/dcase2026
+  train_split: dev_train
+  validation_split: dev_test
+  rotation_views: true
+  maximum_sources: 6
+  class_counts: [45691, 50198, 877, 1502, 5023, 30488, 2988, 859, 39702, 4065, 843, 765, 57]
+  class_balancing:
+    exponent: 1.0
+    minimum_weight: 0.1
+    maximum_weight: 12.0
+    no_class_weight: 0.05
+
+simulated_scenes:
+  scene_count: 2500000
+  seed: 260914
+  vctk:
+    release: "0.80"
+    license: ODC-By-1.0
+    source_root: /path/to/vctk-v0.80
+    prepared_root: /path/to/prepared-vctk-v0.80
+    training_split: train
+    preprocessing:
+      sample_rate: 48000
+      segment_duration: 2.0
+      activity_mode: rms
+      activity_window_seconds: 0.05
+      activity_hop_ratio: 0.1
+      silence_threshold: 0.0055
+      held_out_speakers: 10
+  sourcebank:
+    manifest: /path/to/sourcebank.tsv
+    source_audio_root: /path/to/source_audio
+    require_commercial_use: false
+  room:
+    width_m: [2.0, 10.0]
+    length_m: [2.0, 10.0]
+    height_m: [2.0, 4.0]
+    wall_absorption: [0.0, 0.5]
+    maximum_reflection_order: 5
+  sources:
+    audio2sph_count: [0, 4]
+    said_count_probabilities:
+      1: 0.623429588964657
+      2: 0.2744557412832443
+      3: 0.08263377727448036
+      4: 0.0164200782846311
+      5: 0.0022484265117385916
+      6: 0.0008123876812486152
+    class_probabilities:
+      0: 0.24892921103959292
+      1: 0.27348380503305875
+      2: 0.004777985119207787
+      3: 0.008183048630615844
+      4: 0.027365814428484278
+      5: 0.16610172213729418
+      6: 0.01627892763533964
+      7: 0.004679919290079235
+      8: 0.21630053044787634
+      9: 0.02214653307819801
+      10: 0.004592749664187189
+      11: 0.004167797737963463
+      12: 0.002991955758102414
+    source_rms: 0.08
+    extent:
+      point_spacing_degrees: 4.0
+      sizes_degrees: [3.0, 8.0, 13.0]
+      probabilities: [0.30, 0.45, 0.25]
+    activity:
+      always_active_probability: 0.3
+      minimum_intervals: 1
+      maximum_intervals: 3
+      minimum_interval_seconds: 0.2
+      maximum_interval_seconds: 1.0
+      minimum_gap_seconds: 0.05
+    noise:
+      enabled_for_sourcebank: true
+      snr_db: [10.0, 30.0]
+    target_standard_deviation_degrees: 4.0
+
+audio:
+  array: eigenmike32
+  capsule_indices_1based: [6, 10, 26, 22]
+  sample_rate: 48000
+  segment_duration: 2.0

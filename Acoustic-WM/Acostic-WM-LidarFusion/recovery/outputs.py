@@ -1,6 +1,6 @@
 """Map both measured scans back onto the registered fused representatives."""
 import numpy as np
-from orbit_world.fusion import fuse_clouds
+from acoustic_wm.fusion import fuse_clouds
 
 
 def fused_outputs(reference_xyz,second_xyz,action,reference_mask,second_mask,reference_probability,second_probability):

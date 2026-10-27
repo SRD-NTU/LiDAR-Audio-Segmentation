@@ -2,8 +2,8 @@
 import numpy as np
 import torch
 from scipy.spatial import cKDTree
-from orbit_world.audio.predictive_features import covariance48_from_wave
-from orbit_world.fusion import validate_actions,fuse_clouds
+from acoustic_wm.audio.predictive_features import covariance48_from_wave
+from acoustic_wm.fusion import validate_actions,fuse_clouds
 from recovery.runtime import bank_input
 from recovery.features import acoustic_features
 from recovery.union import assemble,geometric_overlap
@@ -14,13 +14,21 @@ class RecoveryPipeline:
         self.model=model;self.encoder=encoder;self.ranker=ranker;self.kind=kind
 
     @torch.inference_mode()
-    def run(self,xyz,wave,actions,acquire,*,rate=44100,valid=None):
+    def run(self,xyz,wave,actions,acquire,*,rate=44100,valid=None,movement_cost=None,max_translation_m=3.0):
+        if rate!=44100:raise ValueError('Expected four-channel 44100 Hz audio')
         model=self.model;actions=validate_actions(actions)
         valid=np.ones(len(actions),bool) if valid is None else np.asarray(valid,bool)
+        distance_m=np.linalg.norm(actions[:,:3],axis=1)
+        costs=distance_m.copy() if movement_cost is None else np.asarray(movement_cost,np.float32)
+        if valid.shape!=(len(actions),) or costs.shape!=(len(actions),) or not np.isfinite(costs).all() or (costs<0).any():raise ValueError('Invalid validity/cost arrays')
+        if not np.isfinite(max_translation_m) or max_translation_m<0:raise ValueError('Invalid translation bound')
+        valid=valid & (distance_m<=max_translation_m+1e-6)
         available=np.flatnonzero(valid)
-        if not len(available):raise ValueError('At least one valid receiver action is required')
         observed,reliability=covariance48_from_wave(wave)
         reference_row=self.encoder.encode_arrays(xyz,wave,rate)
+        if not len(available):
+            state=model.current(reference_row,observed,reliability);single=model.result(state,state['base'])
+            return dict(reference_sound_mask=single['sound_mask'],reference_point_probability=single['point_probability'],reference_xyz=xyz,second_xyz=np.empty((0,3),np.float32),second_sound_mask=np.empty(0,np.uint8),second_point_probability=np.empty(0,np.float32),posterior=single['posterior'],selected_object=single['selected_object'],selected_bank=np.str_('reference'),chosen_action=np.int64(-1),movement_cost=costs,chosen_movement_cost=np.float32(0),distance_m=np.float32(0),budget_used=np.int64(0),audio_observations=np.int64(1),point_clouds=np.int64(1),action_valid=valid,relative_actions=actions,max_translation_m=np.float32(max_translation_m),planning_policy=np.str_('grouped'))
         plan=model.plan(reference_row,observed,reliability,actions[available])
         query=int(available[int(plan['query'])]);action=actions[query]
         # Action and its forecast are frozen BEFORE acquisition of either sensor.
@@ -71,6 +79,8 @@ class RecoveryPipeline:
             reference_candidates=np.int64(nr),fused_candidates=np.int64(len(f)),
             matched_activeview_sound_mask=cpu(r[int(rs.argmax()),ri]).astype(np.uint8),
             chosen_action=np.int64(query),relative_actions=actions,action_valid=valid,
+            movement_cost=costs,chosen_movement_cost=np.float32(costs[query]),distance_m=np.float32(distance_m[query]),budget_used=np.int64(1),
+            max_translation_m=np.float32(max_translation_m),planning_policy=np.str_(plan['planning_policy']),
             query_utilities=cpu(plan['utilities']),audio_observations=np.int64(2),point_clouds=np.int64(2),
             prior_predicted_covariance=torch.view_as_real(plan['prediction']).cpu().numpy(),
             prior_log_error_scale=cpu(plan['log_variance']),geometry_source=np.str_('two_measured_scans'))

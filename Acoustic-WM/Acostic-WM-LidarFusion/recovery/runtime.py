@@ -16,8 +16,8 @@ def setup(output, rank):
 def bank_input(encoder,model,xyz,wave,rate,action,observed,reliability,future_observed,future_reliability,*,row=None,plan=None):
     import numpy as np
     import torch
-    from orbit_world.models.pointbind_adapter import proposal_points
-    from orbit_world.audio.predictive_features import geometric_tokens
+    from acoustic_wm.models.pointbind_adapter import proposal_points
+    from acoustic_wm.audio.predictive_features import geometric_tokens
     if row is None:row=encoder.encode_arrays(xyz,wave,rate)
     body=[]
     clouds=np.stack([proposal_points(row['xyz'],m) for m in row['masks']])

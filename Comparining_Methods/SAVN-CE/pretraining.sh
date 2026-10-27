@@ -1,0 +1,93 @@
+#!/bin/bash
+# Pretraining script for SAVN-CE baselines (av_nav, smt_audio, savi, oracle_accddoa, magnet).
+# Uncomment one block below, set task/exp_id/model_dir, and run.
+
+port=${1:-29500}
+
+export HABITAT_SIM_LOG='quiet'
+export PYTHONPATH="$PYTHONPATH:$(pwd)"
+export MASTER_PORT=${port}
+
+# --- Usage notes ---
+
+# Environment: Examples use clean env; for Distracted Environment, replace
+#   **/rgbd_ddppo_clean_pretraining.yaml  ->  **/rgbd_ddppo_distractor_pretraining.yaml
+
+# Single GPU: Replace the torchrun block with:
+#   CUDA_VISIBLE_DEVICES=0 python savnce_baselines/<method>/run.py ...
+
+
+# --- smt_audio ---
+# task=savnce_pretraining
+# exp_id=smt_audio
+# model_dir=data/models/${task}/${exp_id}
+
+# CUDA_VISIBLE_DEVICES=0,1,2,3 \
+# torchrun \
+#     --nproc_per_node 4 \
+#     --master_port ${port} \
+#     savnce_baselines/savi/run.py \
+#     --run-type train \
+#     --exp-config savnce_baselines/benchmark/config/smt_audio/rgbd_ddppo_clean_pretraining.yaml \
+#     --model-dir ${model_dir}
+
+
+# --- savi ---
+# task=savnce_pretraining
+# exp_id=savi
+# model_dir=data/models/${task}/${exp_id}
+
+# CUDA_VISIBLE_DEVICES=0,1,2,3 \
+# torchrun \
+#     --nproc_per_node 4 \
+#     --master_port ${port} \
+#     savnce_baselines/savi/run.py \
+#     --run-type train \
+#     --exp-config savnce_baselines/savi/config/mp3d/rgbd_ddppo_clean_pretraining.yaml \
+#     --model-dir ${model_dir}
+
+
+# --- oracle_accddoa ---
+# task=savnce_pretraining
+# exp_id=oracle_accddoa
+# model_dir=data/models/${task}/${exp_id}
+
+# CUDA_VISIBLE_DEVICES=0,1,2,3 \
+# torchrun \
+#     --nproc_per_node 4 \
+#     --master_port ${port} \
+#     savnce_baselines/magnet/run.py \
+#     --run-type train \
+#     --exp-config savnce_baselines/magnet/config/mp3d/rgbd_ddppo_benchmark_pretraining.yaml \
+#     --model-dir ${model_dir}
+
+
+# --- oracle_accddoa_everlasting ---
+# task=savnce_pretraining
+# exp_id=oracle_accddoa_everlasting
+# model_dir=data/models/${task}/${exp_id}
+
+# CUDA_VISIBLE_DEVICES=0,1,2,3 \
+# torchrun \
+#     --nproc_per_node 4 \
+#     --master_port ${port} \
+#     savnce_baselines/magnet/run.py \
+#     --run-type train \
+#     --exp-config savnce_baselines/magnet/config/mp3d/rgbd_ddppo_benchmark_pretraining.yaml \
+#     --model-dir ${model_dir} \
+#     TASK_CONFIG.TASK.ORACLE_ACCDDOA_SENSOR.EVERLASTING True
+
+
+# --- magnet ---
+# task=savnce_pretraining
+# exp_id=magnet
+# model_dir=data/models/${task}/${exp_id}
+
+# CUDA_VISIBLE_DEVICES=0,1,2,3 \
+# torchrun \
+#     --nproc_per_node 4 \
+#     --master_port ${port} \
+#     savnce_baselines/magnet/run.py \
+#     --run-type train \
+#     --exp-config savnce_baselines/magnet/config/mp3d/rgbd_ddppo_clean_pretraining.yaml \
+#     --model-dir ${model_dir}

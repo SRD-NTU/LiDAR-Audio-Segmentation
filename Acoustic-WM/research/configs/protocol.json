@@ -1,0 +1,105 @@
+{
+  "version": 1,
+  "frozen_utc": "2026-10-23T16:15:07.092739+00:00",
+  "main_method": "ActiveView",
+  "extension": "LiDARFusion",
+  "architecture": "Selected release weights frozen; adaptation confined to declared control heads/rankers",
+  "budget": {
+    "initial_audio": 1,
+    "additional_audio_max": 1,
+    "main_point_clouds": 1,
+    "extension_point_clouds": 2,
+    "max_translation_m": 3.0,
+    "objective": "fixed observation count; no travel optimality claim",
+    "travel_cost": "record Euclidean receiver displacement and supplied nonnegative costs; no shortest path claim",
+    "no_valid_action": "return single-observation result with zero query cost; include in all-sample metrics"
+  },
+  "deployment_inputs": [
+    "initial measured XYZ",
+    "initial four-channel audio",
+    "known microphone array",
+    "known relative receiver poses",
+    "source-independent validity in new generated benchmark"
+  ],
+  "offline_only": [
+    "true source positions",
+    "instance labels",
+    "RIRs",
+    "dry recordings",
+    "candidate IoU"
+  ],
+  "historical_scope": "Historical receiver sampling is source-conditioned through distance strata and target-visible-point filtering. These data support conditional-menu controlled experiments, not source-independent deployment claims.",
+  "splits": {
+    "train": "head/ranker fitting only",
+    "val": "epoch selection only, fixed hyperparameters",
+    "test": "previously exposed supplemental evaluation; never model selection",
+    "fresh_confirmation": "requires separately generated common-menu evidence; no pristine unseen-scene claim"
+  },
+  "weights": "equal starting-observation weight; paired scene-cluster bootstrap confidence intervals; report scene macro mean",
+  "seeds": [
+    1337,
+    2027,
+    3407
+  ],
+  "planning": "between-group predictive disagreement heuristic, not exact expected information gain",
+  "grouping": {
+    "method": "deterministic complete-link mask IoU, exact-duplicate normalization",
+    "iou_threshold": 0.9,
+    "meaning": "geometric hypothesis families; not proven physical instances",
+    "sensitivity": [
+      0.8,
+      0.9,
+      0.95,
+      1.0
+    ]
+  },
+  "prediction_variants": [
+    "repeat_current",
+    "analytic_direct",
+    "no_assimilation",
+    "no_transition",
+    "world"
+  ],
+  "policies": [
+    "fixed",
+    "random",
+    "farthest",
+    "legacy_active",
+    "grouped_active",
+    "analytic_active"
+  ],
+  "updates": [
+    "single",
+    "released_predictive",
+    "trained_predictive",
+    "standard_pose_covariance_semantic_fusion"
+  ],
+  "standard_control": "same candidate support, two audio semantic representations, full complex covariances, pose, spatial direct residuals and same TRAIN supervision",
+  "fusion_controls": [
+    "reference_only_ranker",
+    "reference_expansion_ranker",
+    "union_ranker",
+    "zero_correction"
+  ],
+  "fusion_metrics": [
+    "reference",
+    "second",
+    "two_scan",
+    "second_only_voxel"
+  ],
+  "interpretation": {
+    "new_surface": "second-only measured voxels; no verified occlusion completion",
+    "pose": "provided rigid receiver poses; no estimated registration",
+    "uncertainty": "log_variance error association and calibration diagnostics; no calibrated uncertainty claim",
+    "ranker": "bounded correction can degrade; no safety guarantee"
+  },
+  "epochs": 40,
+  "fusion_epochs": 30,
+  "fusion_patience": 6,
+  "split_hashes": {
+    "train": "5b54f70c35f4e65aa9ecc54d87a3992283508791acfdf29a301dc3606c1bd7a4",
+    "val": "2f71105084770edc35d6dc20cb94b1dfac7dec670a8ec8dd9d945063e68541f1",
+    "test": "6763c14934235c4be91dbe7dee9dc5a39110595520bb24cd07baeb6363716503"
+  },
+  "protected_originals": "8c681cd4d42537ab0e35c4f1139949633f27aa6fc1c99f1bec51638727871fe0"
+}

@@ -1,0 +1,15 @@
+{
+  "seed": 20261024,
+  "receiver_count": 12,
+  "radius_m": 3.0,
+  "minimum_separation_m": 0.5,
+  "attempt_limit": 10000,
+  "anchor": "first seeded geometry-valid anchor admitting the fixed pose count",
+  "poses": "same shared geometry-only menu for every source in a scene",
+  "source_set": "all historical split sources; no visibility/distance/acoustic-success filtering",
+  "split": "preserve historical scene-disjoint train/val/test; new observations in previously exposed test scenes are supplemental",
+  "failure": "fail scene explicitly; never remove individual source-specific actions",
+  "outputs": "four physical point microphones, measured raycast XYZ and separate labels",
+  "historical_result_selection": false,
+  "anchor_attempts": 32
+}

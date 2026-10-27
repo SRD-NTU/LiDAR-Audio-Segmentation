@@ -1,0 +1,16 @@
+{
+  "scope": "historical matched-query extension; original queries unchanged across all controls",
+  "action_cost": "record displacement, report full historical set and <=3m subset separately; subset is conditional analysis, not local replanning",
+  "architecture": "same MLP 297*2->64->1, bound2, 30 epochs, patience6, lr.001, TRAIN normalization, VAL reference IoU selection",
+  "reference_ranker": "same 297-dimensional sensory features including cross-bank evidence, but only reference candidates may be selected",
+  "reference_expansion": "same trained reference ranker and selection; deterministic geometric extension after selection",
+  "union": "reference plus fused candidates under same query/evidence/supervision",
+  "seeds": [
+    1337,
+    2027,
+    3407
+  ],
+  "test_previously_seen": true,
+  "reference_audio_control": "Same 38145-parameter ranker, first 245 reference acoustic/geometry features, cross-bank 52 features zeroed, no second LiDAR evidence. Added before campaign freeze to separate ranking training from added geometry.",
+  "reference_evidence_control": "Same reference candidates but all 297 cross-bank sensory descriptors; isolates adding fused candidates at matched evidence."
+}

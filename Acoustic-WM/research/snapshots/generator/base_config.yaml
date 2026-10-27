@@ -1,0 +1,137 @@
+benchmark: AudioLiDAR-HM3D
+stage: v1
+seed: 20260929
+hm3d_root: data/hm3d-v02
+dataset_config: data/hm3d-v02/hm3d_annotated_basis.scene_dataset_config.json
+output: data/benchmark/v1
+audio_manifest: assets/audio/manifest.json
+category_config: configs/categories.yaml
+scene_counts:
+  train: 35
+  val: 5
+  test: 10
+sources_per_scene: 8
+minimum_sources_per_scene: 1
+listeners_per_source: 12
+max_listener_attempts: 1000
+min_listener_separation_m: 0.5
+listener_distance_m:
+- 0.8
+- 8.0
+min_source_points: 30
+source_surface_offset_m: 0.06
+mesh_to_world_rotation:
+- - 1
+  - 0
+  - 0
+- - 0
+  - 0
+  - 1
+- - 0
+  - -1
+  - 0
+lidar:
+  profile: generic-64-uniform-45deg
+  num_beams: 64
+  horizontal_fov_deg: 360.0
+  horizontal_resolution_deg: 0.2
+  vertical_angles_deg:
+  - -22.5
+  - -21.7857143
+  - -21.0714286
+  - -20.3571429
+  - -19.6428571
+  - -18.9285714
+  - -18.2142857
+  - -17.5
+  - -16.7857143
+  - -16.0714286
+  - -15.3571429
+  - -14.6428571
+  - -13.9285714
+  - -13.2142857
+  - -12.5
+  - -11.7857143
+  - -11.0714286
+  - -10.3571429
+  - -9.6428571
+  - -8.9285714
+  - -8.2142857
+  - -7.5
+  - -6.7857143
+  - -6.0714286
+  - -5.3571429
+  - -4.6428571
+  - -3.9285714
+  - -3.2142857
+  - -2.5
+  - -1.7857143
+  - -1.0714286
+  - -0.3571429
+  - 0.3571429
+  - 1.0714286
+  - 1.7857143
+  - 2.5
+  - 3.2142857
+  - 3.9285714
+  - 4.6428571
+  - 5.3571429
+  - 6.0714286
+  - 6.7857143
+  - 7.5
+  - 8.2142857
+  - 8.9285714
+  - 9.6428571
+  - 10.3571429
+  - 11.0714286
+  - 11.7857143
+  - 12.5
+  - 13.2142857
+  - 13.9285714
+  - 14.6428571
+  - 15.3571429
+  - 16.0714286
+  - 16.7857143
+  - 17.5
+  - 18.2142857
+  - 18.9285714
+  - 19.6428571
+  - 20.3571429
+  - 21.0714286
+  - 21.7857143
+  - 22.5
+  min_range_m: 0.5
+  max_range_m: 20.0
+  sensor_height_m: 1.2
+  noise: none
+  returns: first
+  frame: x-forward_y-left_z-up
+  range_unit: metres
+audio:
+  sample_rate: 44100
+  duration_sec: 2.0
+  mode: binaural
+  channel_order:
+  - left
+  - right
+soundspaces:
+  enableMaterials: true
+  materials_json: external/habitat-sim/src/deps/rlr-audio-propagation/RLRAudioPropagationPkg/data/mp3d_material_config.json
+  acoustics:
+    direct: true
+    indirect: true
+    diffraction: true
+    transmission: true
+    directRayCount: 500
+    indirectRayCount: 5000
+    indirectRayDepth: 200
+    sourceRayCount: 200
+    sourceRayDepth: 10
+    maxDiffractionOrder: 10
+    maxIRLength: 2.0
+    unitScale: 1.0
+    globalVolume: 1.0
+    threadCount: 4
+    temporalCoherence: false
+    meshSimplification: false
+prerequisite_validation: data/benchmark/pilot/metadata/stage_validation.json

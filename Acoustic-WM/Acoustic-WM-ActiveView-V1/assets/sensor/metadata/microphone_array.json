@@ -1,0 +1,33 @@
+{
+  "name": "tetrahedral-circumradius-56mm-omnidirectional",
+  "frame": "x-forward_y-left_z-up",
+  "element_type": "omnidirectional_mono",
+  "channel_order": [
+    "tetra_a",
+    "tetra_b",
+    "tetra_c",
+    "tetra_d"
+  ],
+  "positions_lidar_m": [
+    [
+      0.03266,
+      0.03266,
+      0.03266
+    ],
+    [
+      0.03266,
+      -0.03266,
+      -0.03266
+    ],
+    [
+      -0.03266,
+      0.03266,
+      -0.03266
+    ],
+    [
+      -0.03266,
+      -0.03266,
+      0.03266
+    ]
+  ]
+}

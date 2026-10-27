@@ -1,6 +1,7 @@
 """Label-free features from frozen acoustic forecasts and mask hypotheses."""
+import math
 import torch
-from orbit_world.models.future_grounding import initial_belief
+from acoustic_wm.models.future_grounding import initial_belief
 
 
 @torch.no_grad()
@@ -36,6 +37,17 @@ def acoustic_features(model, row):
     return features,score
 
 
+def pad_rows(rows, device):
+    count=len(rows); width=max(len(r['base']) for r in rows); dimension=rows[0]['x'].shape[1]
+    x=torch.zeros(count,width,dimension,device=device)
+    score=torch.full((count,width),-1e4,device=device)
+    quality=torch.zeros(count,width,device=device)
+    valid=torch.zeros(count,width,dtype=torch.bool,device=device)
+    for i,row in enumerate(rows):
+        n=len(row['base']);x[i,:n]=row['x'].float().to(device)
+        score[i,:n]=row['base'].float().to(device);quality[i,:n]=row['iou'].float().to(device)
+        valid[i,:n]=True
+    return x,score,quality,valid
 
 
 class ConservativeRanker(torch.nn.Module):
@@ -59,3 +71,18 @@ class ConservativeRanker(torch.nn.Module):
         context=(normalized*probability[...,None]).sum(1,keepdim=True).expand_as(normalized)
         delta=self.bound*torch.tanh(self.network(torch.cat([normalized,context],-1)).squeeze(-1))
         return (base+delta).masked_fill(~valid,-1e4),delta
+
+
+def objective(score,base,quality,valid,delta):
+    """TRAIN labels only: original-point regret, significant pair ordering, restraint."""
+    probability=score.softmax(-1)
+    regret=(quality.max(-1).values-(probability*quality).sum(-1)).mean()
+    # Weight mistakes involving plausible predictions; avoid density-based targets.
+    difference=quality[:,:,None]-quality[:,None,:]
+    pairs=(difference>.05)&valid[:,:,None]&valid[:,None,:]
+    emphasis=(base.softmax(-1)[:,:,None]+base.softmax(-1)[:,None,:]).detach()
+    weights=difference.clamp_min(0)*pairs*emphasis
+    pair=torch.nn.functional.softplus(score[:,None,:]-score[:,:,None]+.05)
+    ranking=(pair*weights).sum((1,2))/weights.sum((1,2)).clamp_min(1e-6)
+    regularization=(delta.square()*valid).sum(-1)/valid.sum(-1).clamp_min(1)
+    return regret+ranking.mean()+.02*regularization.mean()

@@ -1,0 +1,37 @@
+{
+  "echosegnet": {
+    "published_name": "EchoSegnet",
+    "variant": "published RGB/3D-GS pipeline",
+    "protocol": "passive",
+    "status": "blocked_incompatible_inputs",
+    "reason": "The released pipeline needs registered RGB/COLMAP frames, 2D object proposals and per-scene Gaussian splatting; none are observations in this LiDAR/audio package. No full trained checkpoint is present."
+  },
+  "jaeger": {
+    "published_name": "JAEGER",
+    "variant": "published RGB-D/FOA model",
+    "protocol": "passive",
+    "status": "blocked_incompatible_inputs",
+    "reason": "The published model requires RGB-D and calibrated first-order ambisonics; the dataset has point LiDAR and four point microphones. No local JAEGER/Qwen checkpoint is present."
+  },
+  "said": {
+    "published_name": "SAID",
+    "variant": "published PaSST Eigenmike model",
+    "protocol": "passive",
+    "status": "blocked_array_domain",
+    "reason": "The published weights expect Eigenmike capsules [6,10,26,22] at 48 kHz with rigid-sphere responses; the dataset has a free-field tetrahedral point array at 44.1 kHz. The checkpoint is not present locally."
+  },
+  "magnet": {
+    "published_name": "MAGNet / SAVN-CE",
+    "variant": "published continuous-navigation policy",
+    "protocol": "active",
+    "status": "blocked_protocol_and_inputs",
+    "reason": "MAGNet needs RGB/depth, navigation actions and simulator trajectories. The specified dataset has source-conditioned receiver menus, so a source-independent active comparison is invalid. No compatible trained policy is present locally."
+  },
+  "sound3dvdet": {
+    "published_name": "Sound3DVDet",
+    "variant": "published multiview RGB/mic-array model",
+    "protocol": "passive",
+    "status": "blocked_incompatible_inputs",
+    "reason": "The released model fuses multiview RGB features with microphone features; the dataset has no RGB observations. The repo references an epoch-100 checkpoint but includes no model weights, and its LoFTR path is external."
+  }
+}

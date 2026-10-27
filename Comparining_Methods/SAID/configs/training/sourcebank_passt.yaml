@@ -1,0 +1,31 @@
+schema: said-config-v1
+preset: paper
+
+model: said
+class_feature_encoder: passt
+
+data: simulated_scenes
+data_config: ../data.yaml
+
+load_said_ckpt: null
+load_audio2sph_ckpt: ../../checkpoints/audio2sph.ckpt
+load_class_feature_encoder_ckpt: ../../checkpoints/said_passt.ckpt
+
+training:
+  output_directory: ../../runs/said_sourcebank_passt
+  total_steps: 500000
+  batch_size: 1
+  num_workers: 8
+  seed: 260915
+  device: auto
+  learning_rate: 1.0e-4
+  audio2sph_learning_rate: 2.5e-6
+  warmup_steps: 1000
+  minimum_learning_rate_ratio: 0.1
+  ema_decay: 0.999
+  save_every_steps: 10000
+  keep_every_steps: 100000
+  log_every_steps: 100
+  validate_every_steps: 10000
+  validation_batches: 16
+  selection_metric: validation_loss

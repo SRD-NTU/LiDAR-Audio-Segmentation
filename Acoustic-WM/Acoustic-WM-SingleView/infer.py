@@ -12,8 +12,8 @@ import argparse,json
 import numpy as np
 import soundfile as sf
 import torch
-from orbit_world.model import ReleasedModel
-from orbit_world.audio.predictive_features import covariance48_from_wave
+from acoustic_wm.model import ReleasedModel
+from acoustic_wm.audio.predictive_features import covariance48_from_wave
 
 if __name__=='__main__':
     p=argparse.ArgumentParser()
@@ -32,7 +32,7 @@ if __name__=='__main__':
             observed,reliability=z['observed'],z['reliability']
     else:
         if not a.lidar or not a.audio:p.error('Provide --prepared, or both --lidar and --audio')
-        from orbit_world.frontend import RawObservationEncoder
+        from acoustic_wm.frontend import RawObservationEncoder
         config=json.loads((HERE/'config.json').read_text())
         config['paths']['dataset']=str(HERE/'assets/sensor')
         with np.load(a.lidar) as z:xyz=z['xyz'].astype(np.float32)

@@ -2,8 +2,8 @@ import torch
 import torch.nn as nn
 import torch.nn.functional as F
 from timm.models.layers import DropPath
-from orbit_world.models import pointbind_adapter as misc
-from orbit_world.models.pointbind_adapter import KNN
+from acoustic_wm.models import pointbind_adapter as misc
+from acoustic_wm.models.pointbind_adapter import KNN
 
 from utils.logger import *
 

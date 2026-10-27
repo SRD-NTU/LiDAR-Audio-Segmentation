@@ -17,7 +17,7 @@ import numpy as np
 import regex as re
 import torch
 import torch.nn as nn
-from orbit_world.models.pointbind_adapter import path_manager as g_pathmgr
+from acoustic_wm.models.pointbind_adapter import path_manager as g_pathmgr
 from timm.models.layers import trunc_normal_
 
 from imagebind.helpers import VerboseNNModule, cast_if_src_dtype

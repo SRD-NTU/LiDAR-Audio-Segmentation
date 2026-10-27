@@ -1,0 +1,78 @@
+[build-system]
+requires = ["setuptools>=77", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "said-acoustic-imaging"
+version = "1.0.0"
+description = "Semantic Acoustic Imaging Detector"
+readme = "README.md"
+requires-python = ">=3.10,<3.13"
+authors = [
+  {name = "Runbang Wang"},
+]
+license = "MIT AND Apache-2.0"
+license-files = [
+  "LICENSE",
+  "THIRD_PARTY_NOTICES.md",
+  "LICENSES/AudioMAE-CC-BY-NC-4.0.txt",
+  "LICENSES/ConvNeXt-MIT.txt",
+  "LICENSES/Deformable-DETR-Apache-2.0.txt",
+  "LICENSES/Detectron2-Apache-2.0.txt",
+  "LICENSES/Mask2Former-MIT.txt",
+  "LICENSES/NESD-MIT.txt",
+  "LICENSES/PaSST-Apache-2.0.txt",
+  "LICENSES/SAM2-Apache-2.0.txt",
+  "LICENSES/SAID-Model-Weights-NonCommercial-1.0.txt",
+  "LICENSES/STAIRS26-MIT.txt",
+  "LICENSES/STARSS23-MIT.txt",
+]
+dependencies = [
+  "hear21passt==0.0.26",
+  "librosa>=0.10,<1",
+  "matplotlib>=3.8,<4",
+  "numpy>=1.26,<3",
+  "Pillow>=10,<13",
+  "pycocotools>=2.0.7,<3",
+  "PyYAML>=6.0",
+  "safetensors>=0.4,<1",
+  "scipy>=1.11,<2",
+  "soundfile>=0.12,<1",
+  "timm==1.0.26",
+  "torch==2.5.1",
+  "torchaudio==2.5.1",
+  "torchvision==0.20.1",
+  "tqdm>=4.66,<5",
+]
+
+[project.optional-dependencies]
+render = [
+  "pyroomacoustics==0.10.1",
+]
+
+[project.scripts]
+said = "said.cli:main"
+
+[project.urls]
+Repository = "https://github.com/IN03X/SAID"
+Paper = "https://arxiv.org/abs/2609.31492"
+Models = "https://huggingface.co/IN03X/SAID"
+"DCASE2026 Results" = "https://dcase.community/challenge2026/task-semantic-acoustic-imaging-for-sound-event-localization-and-detection-from-spatial-audio-and-audiovisual-scenes-results"
+
+[tool.setuptools]
+include-package-data = true
+
+[tool.setuptools.packages.find]
+where = ["."]
+include = ["said*"]
+exclude = ["tests*", "said.evaluation.metrics.official*"]
+
+[tool.setuptools.package-data]
+said = [
+  "README.md",
+  "arrays/*.csv",
+  "demo_data/README.md",
+  "demo_data/*/*.wav",
+  "demo_data/*/*.mp4",
+  "demo_data/*/*.json.gz",
+]

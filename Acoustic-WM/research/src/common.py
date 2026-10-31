@@ -9,7 +9,7 @@ ROOT=BASE if SCOPE=='historical' else BASE/'scopes/common'
 DATA=PROJECT/'dataset/v2-tetra4-4channel-full' if SCOPE=='historical' else BASE/'generated/common'
 FRONTEND_ROOT=BASE.parent/'frontend_runtime'
 ACTIVE=BASE.parent/'Acoustic-WM-ActiveView'
-FUSION=BASE.parent/'Acostic-WM-LidarFusion'
+FUSION=BASE.parent/'Acoustic-WM-LidarFusion'
 ARCHIVE=PROJECT/'.redun/20261020/Acostic-WM-LidarFusion/outputs'
 PYTHON=BASE.parent/'.venv/bin/python'
 sys.dont_write_bytecode=True

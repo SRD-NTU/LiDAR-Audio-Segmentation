@@ -11,7 +11,7 @@ matplotlib.use('Agg')
 import matplotlib.pyplot as plt
 
 HERE = Path(__file__).resolve().parent
-MODEL = HERE.parent / 'Acostic-WM-LidarFusion'
+MODEL = HERE.parent / 'Acoustic-WM-LidarFusion'
 DATASET = HERE.parent.parent / 'dataset/v2-tetra4-4channel-full'
 
 

@@ -6,7 +6,7 @@ import json
 
 ROOT=Path(__file__).resolve().parents[1]
 PROJECT=ROOT.parent
-PACKAGES=['Acoustic-WM-ActiveView','Acoustic-WM-SingleView','Acostic-WM-LidarFusion']
+PACKAGES=['Acoustic-WM-ActiveView','Acoustic-WM-SingleView','Acoustic-WM-LidarFusion']
 
 
 def digest(path):
